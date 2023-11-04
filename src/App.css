@@ -1,0 +1,71 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /* border: 1px solid red !important; */
+}
+.center {
+  @apply flex justify-center items-center;
+}
+
+main::-webkit-scrollbar, aside::-webkit-scrollbar{
+  display: none
+}
+
+.main-container{
+  @apply w-full flex-1 mt-6 xl:max-w-carouselContainer navBreak:max-w-carouselContainer2 max-w-[100vw];
+}
+
+a {
+  @apply text-sm text-indigo-600;
+}
+
+.container-r{
+  @apply flex flex-col gap-5 my-10;
+}
+
+.h1, .footer-h1{
+  @apply sm:text-2xl text-lg font-semibold;
+}
+
+.h1-between{
+  @apply h1 font-bold flex justify-between items-center;
+}
+
+table th , table td {
+  @apply py-4 px-4;
+}
+
+table th{
+  @apply text-xs text-gray-500 capitalize;
+}
+
+table td{
+  @apply text-base font-bold;
+}
+
+.footer-h1{
+  @apply sm:text-2xl text-xl font-bold;
+}
+
+.carousel-container{
+  /* background-color: hotpink; */
+  display: flex;
+  gap: 5rem;
+  /* @apply grid place-items-center; */
+}
+.carousel-container > ul{
+  /* @apply flex gap-5; */
+}
+
+.carousel-container > ul > li{
+  @apply flex justify-center;
+}
+
+.carousel-container > button{
+  @apply bg-slate-400 opacity-40 w-12 h-12;
+}
+
+.carousel-container > button:hover{
+  @apply bg-slate-500 opacity-70;
+}
