@@ -13,7 +13,7 @@ import { BsFillQuestionCircleFill } from "react-icons/bs";
 const Navbar = (props, ref) => {
   const [showNav, setShowNav] = useState(false);
   const [isNavShowAnim, setIsNavShowAnim] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(true);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {

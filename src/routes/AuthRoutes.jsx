@@ -1,6 +1,7 @@
 import React from "react"
 
 import MainLayout from "../layouts/MainLayout";
+import Loader from "../components/Loader";
 
 const LazyLoad = (path) => React.lazy(() => import(path)) 
 
@@ -59,6 +60,6 @@ export default AuthRoutes.map(item => ({
   ...item,
   children: item.children.map( child => ({
     ...child,
-    element: <React.Suspense fallback="Loading...">{child.element}</React.Suspense>
+    element: <React.Suspense fallback={<Loader />}>{child.element}</React.Suspense>
   }))
 }));
