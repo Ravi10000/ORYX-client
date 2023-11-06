@@ -167,13 +167,13 @@ const Search = ({ className, name, placeholder }) => {
   );
 };
 
-Input.TextInput = TextInput;
-Input.Checkbox = Checkbox;
-Input.Select = Select;
-Input.Search = Search;
-Input.LabelInput = LabelInput;
-Input.Textarea = Textarea;
-Input.File = File;
-Input.Toggle = Toggle;
+Input.TextInput   = TextInput;
+Input.Checkbox    = Checkbox;
+Input.Select      = Select;
+Input.Search      = Search;
+Input.LabelInput  = LabelInput;
+Input.Textarea    = Textarea;
+Input.File        = File;
+Input.Toggle      = Toggle;
 
 export default Input;
