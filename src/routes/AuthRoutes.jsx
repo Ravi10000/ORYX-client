@@ -5,6 +5,7 @@ import Marketplace from "../pages/Marketplace";
 import UpcomingPage from "../pages/UpcomingPage";
 import Overview from "../pages/Overview";
 import MyProperties from "../pages/MyProperties";
+import Payouts from "../pages/Payouts";
 
 
 const AuthRoutes = [
@@ -35,6 +36,10 @@ const AuthRoutes = [
       {
         path: "/my-properties",
         element: <MyProperties />,
+      },
+      {
+        path: "/payouts",
+        element: <Payouts />,
       },
     ]
   },

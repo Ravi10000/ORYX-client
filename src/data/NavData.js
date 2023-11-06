@@ -52,6 +52,11 @@ const navbar = [
         path: "/my-properties",
         name: "my properties",
         icon: LuInbox
+      },
+      {
+        path: "/payouts",
+        name: "payouts",
+        icon: LuInbox
       }
     ]
   }
