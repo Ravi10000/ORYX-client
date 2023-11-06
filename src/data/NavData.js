@@ -12,7 +12,7 @@ const navbar = [
       },
       {
         path: "/",
-        name: "inbox",
+        name: "settings",
         icon: LuInbox,
       },
     ],

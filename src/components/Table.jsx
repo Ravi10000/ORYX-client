@@ -131,13 +131,116 @@ const Colored = () => {
               </a>
             </td>
           </tr>
-          
         </tbody>
       </table>
     </div>
   );
 };
 
-Table.Colored = Colored
+import { BiDotsHorizontal } from "react-icons/bi";
+
+const Bordered = () => {
+  return (
+    <div className="relative overflow-x-auto border border-slate-300 sm:rounded-lg">
+      <table className="w-full text-left " role="colored">
+        <thead className="text-base text-slate-900 uppercase ">
+          <tr className="p-5 border-b border-slate-300">
+            <th scope="col" className="p-6 text-sm">
+              Name
+            </th>
+            <th scope="col" className="p-6 text-sm">
+              Date
+            </th>
+            <th scope="col" className="p-6 text-sm">
+              Price
+            </th>
+            <th scope="col" className="p-6 text-sm">
+              NFTs Owned
+            </th>
+            <th scope="col" className="p-6 text-sm">
+              Payout
+            </th>
+            <th scope="col" className="p-6 text-sm">
+              Status
+            </th>
+            <th scope="col" className="p-6 text-sm"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr className="border-b border-slate-300 font-semibold">
+            <td
+              scope="row"
+              className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
+            >
+              <img
+                className="w-14 h-14 rounded-lg"
+                src="https://oryx.maxocart.com/assets/dream2earn/image_02.png"
+                alt="Jese image"
+              />
+              <div className="pl-3 ">
+                <div className=" text-gray-700 font-semibold text-base">
+                  Modern 3-Bedroom Family Home
+                </div>
+              </div>
+            </td>
+            <td className="px-6 py-4 text-sm">01-03-2022</td>
+            <td className="px-6 py-4">$2999</td>
+            <td>50/1000</td>
+            <td>$40.10</td>
+
+            <td className="px-6 py-4">
+              <div className="flex items-center">
+                <div className="h-2 w-2 rounded-full bg-green-500 mr-2"></div>{" "}
+                Pending
+              </div>
+            </td>
+            <td className="px-6 py-4">
+              <div href="#" className="font-medium hover:underline">
+                <BiDotsHorizontal size={24} />
+              </div>
+            </td>
+          </tr>
+
+          <tr className="border-b border-slate-300 font-semibold">
+            <td
+              scope="row"
+              className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
+            >
+              <img
+                className="w-14 h-14 rounded-lg"
+                src="https://oryx.maxocart.com/assets/dream2earn/image_03.png"
+                alt="Jese image"
+              />
+              <div className="pl-3 ">
+                <div className=" text-gray-700 font-semibold text-base">
+                  Modern 3-Bedroom Family Home
+                </div>
+              </div>
+            </td>
+            <td className="px-6 py-4 text-sm">01-03-2022</td>
+            <td className="px-6 py-4">$2999</td>
+            <td>50/1000</td>
+            <td>$40.10</td>
+
+            <td className="px-6 py-4">
+              <div className="flex items-center">
+                <div className="h-2 w-2 rounded-full bg-green-500 mr-2"></div>{" "}
+                Pending
+              </div>
+            </td>
+            <td className="px-6 py-4">
+              <div href="#" className="font-medium hover:underline">
+                <BiDotsHorizontal size={24} />
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+Table.Colored = Colored;
+Table.Bordered = Bordered;
 
 export default Table;

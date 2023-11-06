@@ -9,7 +9,7 @@ const Overview = () => {
     <div>
       <Heading heading={"Overview"} isHorizontalline={false}></Heading>
 
-      <div className="grid grid-cols-4 py-10 gap-6">
+      <div className="grid 2xl:grid-cols-4 py-10 gap-6 md:grid-cols-3 grid-cols-2">
         <OverviewCard />
         <OverviewCard />
         <OverviewCard />

@@ -4,12 +4,12 @@ import Input from "../components/Input";
 const FilterForm = () => {
   return (
     <form className="flex py-3 2xl:gap-10 gap-5 flex-wrap">
-      <Input.Select />
       <Input.Search
-        className="flex-1"
+        className="flex-1 min-w-[250px]"
         name={"search"}
         placeholder={"search by name"}
       ></Input.Search>
+      <Input.Select />
       <Input.Select />
       <Input.Select />
       <Input.Select />
