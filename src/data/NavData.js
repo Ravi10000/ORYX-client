@@ -47,6 +47,11 @@ const navbar = [
         path: "/overview",
         name: "overview",
         icon: LuInbox
+      },
+      {
+        path: "/my-properties",
+        name: "my properties",
+        icon: LuInbox
       }
     ]
   }

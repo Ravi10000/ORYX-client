@@ -115,10 +115,10 @@ const Tabs = () => {
   return (
     <>
 
-      <ul className="hidden text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg shadow sm:flex dark:divide-gray-400 dark:text-gray-700">
+      <ul className=" text-sm font-medium grid grid-cols-3  text-center text-gray-500 divide-x divide-gray-200 rounded-lg shadow sm:flex dark:divide-gray-400 dark:text-gray-700">
         <li className="w-full">
           <div
-            className="inline-block w-full p-4 px-10 bg-gray-100 rounded-l-lg focus:ring-4 focus:ring-blue-300 focus:outline-none"
+            className="inline-block w-full p-4 px-10 2xl:px-8 bg-gray-100 rounded-l-lg focus:ring-4 focus:ring-blue-300 focus:outline-none"
             aria-current="page"
           >
             <span className="text-green-600">+8%</span>
@@ -126,14 +126,14 @@ const Tabs = () => {
         </li>
         <li className="w-full">
           <div
-            className="inline-block w-full p-4 px-10 bg-white "
+            className="inline-block w-full p-4 px-10 2xl:px-8 bg-white "
           >
             6/1000
           </div>
         </li>
         <li className="w-full">
           <div
-            className="inline-block w-full p-4 px-10 bg-white  rounded-r-lg"
+            className="inline-block w-full p-4 px-10 2xl:px-8 bg-white  rounded-r-lg"
           >
             $14,400
           </div>
@@ -145,15 +145,15 @@ const Tabs = () => {
 
 const MortageInfo = () => {
   return (
-    <div>
-      <div className="center px-8">
+    <div className="my-10">
+      <div className="center">
         <div className="flex flex-col gap-4">
-          <div className="center text-xs gap-5 items-center">
-            <div className="flex-1">Profit/Loss</div>
-            <div className="flex-1">NFTs Owned</div>
-            <div className="flex-1">Current Value</div>
+          <div className="grid grid-cols-3 text-xs items-center">
+            <div className="text-center">Profit/Loss</div>
+            <div className="text-center">NFTs Owned</div>
+            <div className="text-center">Current Value</div>
           </div>
-          <div className="text-xs ">
+          <div className="text-xs">
             <Tabs />
           </div>
         </div>

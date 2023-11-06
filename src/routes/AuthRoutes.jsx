@@ -4,6 +4,7 @@ import Dashboard from "../pages/Dashboard";
 import Marketplace from "../pages/Marketplace";
 import UpcomingPage from "../pages/UpcomingPage";
 import Overview from "../pages/Overview";
+import MyProperties from "../pages/MyProperties";
 
 
 const AuthRoutes = [
@@ -30,6 +31,10 @@ const AuthRoutes = [
       {
         path: "/overview",
         element: <Overview />,
+      },
+      {
+        path: "/my-properties",
+        element: <MyProperties />,
       },
     ]
   },
