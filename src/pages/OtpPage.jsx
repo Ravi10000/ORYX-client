@@ -1,6 +1,6 @@
 import React from "react";
 import FormContainer from "../components/FormContainer";
-import OtpInput from "../components/OtpInput";
+import OtpInput from "../screens/OtpInput";
 import Button from "../components/Button";
 
 const OtpPage = () => {

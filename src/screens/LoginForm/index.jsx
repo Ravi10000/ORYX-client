@@ -1,9 +1,9 @@
 import React, { useState }  from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import TextInput, { Checkbox } from "../Input";
+import Input from "../../components/Input";
 import { Link } from "react-router-dom";
 
-import Button from "../Button";
+import Button from "../../components/Button";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -15,18 +15,18 @@ const LoginForm = () => {
   return (
     <form className="space-y-4">
       <div>
-        <TextInput
+        <Input.TextInput
           type={showPassword ? "text" : "password"}
           name="password"
           placeholder="Email"
-        ></TextInput>
+        ></Input.TextInput>
       </div>
       <div className="relative">
-        <TextInput
+        <Input.TextInput
           type={showPassword ? "text" : "password"}
           name="password"
           placeholder="password"
-        ></TextInput>
+        ></Input.TextInput>
         <button
           type="button"
           className="absolute top-1/2 right-2 transform -translate-y-1/2"
@@ -36,12 +36,12 @@ const LoginForm = () => {
         </button>
       </div>
       <div className="flex items-center justify-between flex-wrap gap-y-5">
-        <Checkbox
+        <Input.Checkbox
           labelText={"Remember me"}
           id="remember__me"
           name="isRemember"
           className="mr-2"
-        ></Checkbox>
+        ></Input.Checkbox>
         <Link to={'/resetPassword'} className="text-sm text-indigo-600 hover:underline">
           Forgot password?
         </Link>

@@ -1,5 +1,5 @@
 import React from "react";
-import TextInput from "../components/Input";
+import Input from "../components/Input";
 import Error from "../components/Error";
 import Button from "../components/Button";
 import { Link } from "react-router-dom";
@@ -17,11 +17,11 @@ const ForgotPassword = () => {
 
         <form action="" className="space-y-4">
           <div>
-            <TextInput
+            <Input.TextInput
               type={"email"}
               name="email"
               placeholder="Email"
-            ></TextInput>
+            ></Input.TextInput>
           </div>
 
           <Link to={'/otp'}>
