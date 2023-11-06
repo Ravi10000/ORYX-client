@@ -1,6 +1,6 @@
-import ForgotPassword from "../pages/ForgotPassword";
-import LoginPage from "../pages/LoginPage";
-import OtpPage from "../pages/OtpPage";
+import ForgotPassword from "../pages/Auth/ForgotPassword";
+import LoginPage from "../pages/Auth/LoginPage";
+import OtpPage from "../pages/Auth/OtpPage";
 
 const EntryRoutes = [
   { path: "login", element: <LoginPage /> },

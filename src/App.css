@@ -63,7 +63,7 @@ table:not([role="colored"]) td{
 }
 
 .carousel-container > button{
-  @apply bg-slate-400 opacity-40 w-12 h-12;
+  @apply bg-slate-400 opacity-40 w-12 h-12 z-40;
 }
 
 .carousel-container > button:hover{

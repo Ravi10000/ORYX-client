@@ -3,7 +3,7 @@ import Routes from "./routes";
 import React from "react";
 
 function App() {
-  return <React.Suspense fallback="Loading...">{Routes()}</React.Suspense>;
+  return <>{Routes()}</>;
 }
 
 export default App;

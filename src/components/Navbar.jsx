@@ -10,6 +10,100 @@ import navbar from "../data/NavData";
 import Button from "./Button";
 import { BsFillQuestionCircleFill } from "react-icons/bs";
 
+const Navbar = (props, ref) => {
+  const [showNav, setShowNav] = useState(false);
+  const [isNavShowAnim, setIsNavShowAnim] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(true);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 1020) {
+        setIsDesktop(false);
+      } else {
+        setIsDesktop(true);
+      }
+    };
+
+    // Add event listener for window resize
+    window.addEventListener("resize", handleResize);
+
+    // Initial check for screen width
+    handleResize();
+
+    return () => {
+      // Remove the event listener when the component unmounts
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useImperativeHandle(
+    ref,
+    () => ({
+      showNav: () => {
+        setShowNav(true);
+        setIsNavShowAnim(true);
+      },
+      hideNav: () => {
+        setShowNav(false);
+      },
+    }),
+    []
+  );
+
+  return (
+    <div className="w-full navBreak:sticky navBreak:h-screen navBreak:top-0">
+      {
+        <>
+          {showNav && (
+            <div
+              className="w-screen h-screen bg-black opacity-75 transition-opacity fixed inset-0 z-50 block navBreak:hidden"
+              onClick={() => {
+                setIsNavShowAnim(false);
+              }}
+            ></div>
+          )}
+
+          <aside
+            className={`
+              fixed bg-white w-1/2 min-w-[280px] z-50 transform transition-transform duration-[5000] ${
+                isDesktop ? "" : "-translate-x-full"
+              } border-gray-500 border-r-2
+              navBreak:w-auto navBreak:block navBreak:relative
+              ${isNavShowAnim ? "translate-x-0" : ""}
+              overflow-y-scroll
+            `}
+            onTransitionEnd={function (e) {
+              if (e.propertyName !== "transform") return;
+              const isNavStart = [...e.target.classList].includes(
+                "translate-x-0"
+              );
+              if (!isNavStart) setShowNav(false);
+            }}
+          >
+            <nav className="p-5 pr-0 h-screen z-20">
+              <NavProfile></NavProfile>
+              {navbar?.map((nav) => {
+                return (
+                  <ul key={nav.id} className="mb-7">
+                    <h3 className="mb-3 capitalize text-sm font-semibold">
+                      {nav.name}
+                    </h3>
+                    <Tabs tabs={nav.children}></Tabs>
+                  </ul>
+                );
+              })}
+
+              <div className="pb-8">
+                <HelpCenter />
+              </div>
+            </nav>
+          </aside>
+        </>
+      }
+    </div>
+  );
+};
+
 const Tabs = (props) =>
   props.tabs?.map((tab) => (
     <li key={tab.name} className="mb-3 capitalize flex gap-4">
@@ -61,84 +155,6 @@ const HelpCenter = () => {
           <Button>Visit the Help Center</Button>
         </div>
       </div>
-    </div>
-  );
-};
-
-const Navbar = (props, ref) => {
-  const [showNav, setShowNav] = useState(true);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 1020) {
-        setShowNav(false);
-      } else {
-        setShowNav(true);
-      }
-    };
-
-    // Add event listener for window resize
-    window.addEventListener("resize", handleResize);
-
-    // Initial check for screen width
-    handleResize();
-
-    return () => {
-      // Remove the event listener when the component unmounts
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  useImperativeHandle(
-    ref,
-    () => ({
-      showNav: () => {
-        setShowNav(true);
-      },
-      hideNav: () => {
-        setShowNav(false);
-      },
-    }),
-    []
-  );
-
-  return (
-    <div className="w-full navBreak:sticky navBreak:h-screen navBreak:top-0">
-      {showNav && (
-        <>
-          <div
-            className="w-screen h-screen bg-black opacity-75 fixed inset-0 z-40 block navBreak:hidden"
-            onClick={() => setShowNav(false)}
-          ></div>
-
-          <aside
-            className={`
-              fixed bg-white w-1/2 min-w-[280px] z-40 transform transition-transform -translate-x-full border-gray-500 border-r-2
-              navBreak:w-auto navBreak:block navBreak:relative
-              ${showNav ? "translate-x-0" : ""}
-              overflow-y-scroll
-            `}
-          >
-            <nav className="p-5 pr-0 h-screen z-20">
-              <NavProfile></NavProfile>
-              {navbar?.map((nav) => {
-                return (
-                  <ul key={nav.id} className="mb-7">
-                    <h3 className="mb-3 capitalize text-sm font-semibold">
-                      {nav.name}
-                    </h3>
-                    <Tabs tabs={nav.children}></Tabs>
-                  </ul>
-                );
-              })}
-
-              <div className="pb-8">
-                <HelpCenter />
-              </div>
-            </nav>
-          </aside>
-        </>
-      )}
     </div>
   );
 };

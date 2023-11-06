@@ -1,6 +1,6 @@
 import React from "react";
-import LoginForm from "../screens/LoginForm";
-import FormContainer from "../components/FormContainer";
+import LoginForm from "../../screens/LoginForm";
+import FormContainer from "../../components/FormContainer";
 
 const LoginPage = () => {
   return (
