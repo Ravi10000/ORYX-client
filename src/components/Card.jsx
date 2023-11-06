@@ -5,27 +5,7 @@ import { LuBedDouble } from "react-icons/lu";
 import Button from "./Button";
 import { Link } from "react-router-dom";
 
-const BidStatus = () => {
-  return (
-    <div className="center flex-col my-6">
-      <small className="text-slate-500">The highest current bid is</small>
-      <h2 className="text-blue-600 font-bold">10% below the market price</h2>
-    </div>
-  );
-};
-
-const Progress = () => {
-  return (
-    <>
-      <div className="mb-1 text-base font-bold">600 of 1,000 NFTs Minted</div>
-      <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4 dark:bg-gray-400">
-        <div className="bg-blue-600 h-2.5 rounded-full dark:bg-blue-500 w-1/2"></div>
-      </div>
-    </>
-  );
-};
-
-const Card = ({ isProgress, children }) => {
+const Card = ({ children }) => {
   return (
     <div className="flex-1 mx-1 2xl:max-w-sm bg-white border border-gray-200 rounded-2xl shadow dark:bg-gray-200 dark:border-gray-700">
       <Link to="#" className="relative">
@@ -108,6 +88,58 @@ const Card = ({ isProgress, children }) => {
         </div>
       </div>
     </div>
+  );
+};
+
+const BidStatus = () => {
+  return (
+    <div className="center flex-col my-6">
+      <small className="text-slate-500">The highest current bid is</small>
+      <h2 className="text-blue-600 font-bold">10% below the market price</h2>
+    </div>
+  );
+};
+
+const Progress = () => {
+  return (
+    <>
+      <div className="mb-1 text-base font-bold">600 of 1,000 NFTs Minted</div>
+      <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4 dark:bg-gray-400">
+        <div className="bg-blue-600 h-2.5 rounded-full dark:bg-blue-500 w-1/2"></div>
+      </div>
+    </>
+  );
+};
+
+const Tabs = () => {
+  return (
+    <>
+
+      <ul className="hidden text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg shadow sm:flex dark:divide-gray-400 dark:text-gray-700">
+        <li className="w-full">
+          <div
+            className="inline-block w-full p-4 px-10 bg-gray-100 rounded-l-lg focus:ring-4 focus:ring-blue-300 focus:outline-none"
+            aria-current="page"
+          >
+            <span className="text-green-600">+8%</span>
+          </div>
+        </li>
+        <li className="w-full">
+          <div
+            className="inline-block w-full p-4 px-10 bg-white "
+          >
+            6/1000
+          </div>
+        </li>
+        <li className="w-full">
+          <div
+            className="inline-block w-full p-4 px-10 bg-white  rounded-r-lg"
+          >
+            $14,400
+          </div>
+        </li>
+      </ul>
+    </>
   );
 };
 

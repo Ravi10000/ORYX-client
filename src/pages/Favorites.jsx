@@ -1,18 +1,15 @@
 import React from "react";
 import Heading from "../components/Heading";
-import FilterForm from "../screens/FilterForm";
 import CarouselX from "../components/CarouselX";
 import Card from "../components/Card";
 
-const Auctions = () => {
+const Favorites = () => {
   return (
     <>
       <Heading
-        heading={"auctions"}
-        subHeading={"Get real estate NFTs at the lowest price."}
+        heading={"favorites"}
+        subHeading={"All of your favorite real estate NFTs in one place."}
       ></Heading>
-
-      <FilterForm></FilterForm>
 
       <div className="overflow-hidden my-8">
         <CarouselX>
@@ -34,4 +31,4 @@ const Auctions = () => {
   );
 };
 
-export default Auctions;
+export default Favorites;

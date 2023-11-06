@@ -1,5 +1,5 @@
 import MainLayout from "../layouts/MainLayout";
-import Auctions from "../pages/Auctions";
+import Favorites from "../pages/Favorites";
 import Dashboard from "../pages/Dashboard";
 import Marketplace from "../pages/Marketplace";
 import UpcomingPage from "../pages/UpcomingPage";
@@ -23,9 +23,9 @@ const AuthRoutes = [
         element: <UpcomingPage />,
       },
       {
-        path: "/auctions",
-        element: <Auctions />,
-      }
+        path: "/favorties",
+        element: <Favorites />,
+      },
     ]
   },
 ];

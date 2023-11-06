@@ -1,6 +1,5 @@
 import { LuLayoutDashboard, LuInbox } from "react-icons/lu";
 
-
 const navbar = [
   {
     id: 1,
@@ -33,10 +32,11 @@ const navbar = [
         icon: LuInbox,
       },
       {
-        path: "/auctions",
-        name: "auctions",
+        path: "/favorties",
+        name: "Favorites",
         icon: LuInbox,
       },
+      
     ],
   },
 ];
