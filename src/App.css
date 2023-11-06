@@ -32,15 +32,15 @@ a {
   @apply h1 font-bold flex justify-between items-center;
 }
 
-table th , table td {
+table:not([colored]) th , table td {
   @apply py-4 px-4;
 }
 
-table th{
+table:not([role="colored"]) th{
   @apply text-xs text-gray-500 capitalize;
 }
 
-table td{
+table:not([role="colored"]) td{
   @apply text-base font-bold;
 }
 

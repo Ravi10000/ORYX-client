@@ -39,6 +39,17 @@ const navbar = [
       
     ],
   },
+  {
+    id: 3,
+    name: "my profile",
+    children: [
+      {
+        path: "/overview",
+        name: "overview",
+        icon: LuInbox
+      }
+    ]
+  }
 ];
 
 

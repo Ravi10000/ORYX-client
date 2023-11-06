@@ -143,7 +143,27 @@ const Tabs = () => {
   );
 };
 
+const MortageInfo = () => {
+  return (
+    <div>
+      <div className="center px-8">
+        <div className="flex flex-col gap-4">
+          <div className="center text-xs gap-5 items-center">
+            <div className="flex-1">Profit/Loss</div>
+            <div className="flex-1">NFTs Owned</div>
+            <div className="flex-1">Current Value</div>
+          </div>
+          <div className="text-xs ">
+            <Tabs />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 Card.BidStatus = BidStatus;
 Card.Progress = Progress;
+Card.MortageInfo = MortageInfo;
 
 export default Card;

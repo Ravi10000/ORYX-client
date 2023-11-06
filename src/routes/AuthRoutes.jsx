@@ -3,6 +3,7 @@ import Favorites from "../pages/Favorites";
 import Dashboard from "../pages/Dashboard";
 import Marketplace from "../pages/Marketplace";
 import UpcomingPage from "../pages/UpcomingPage";
+import Overview from "../pages/Overview";
 
 
 const AuthRoutes = [
@@ -25,6 +26,10 @@ const AuthRoutes = [
       {
         path: "/favorties",
         element: <Favorites />,
+      },
+      {
+        path: "/overview",
+        element: <Overview />,
       },
     ]
   },

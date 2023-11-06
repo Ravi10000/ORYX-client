@@ -1,6 +1,7 @@
 import React from "react";
 
-const Heading = ({ heading, subHeading }) => {
+
+const Heading = ({ heading, subHeading, isHorizontalline = true }) => {
   return (
     <>
       <div>
@@ -9,7 +10,7 @@ const Heading = ({ heading, subHeading }) => {
         </h1>
         <p className="text-sm text-gray-500 mt-1">{subHeading}</p>
       </div>
-      <hr className="w-full border-b border-t-0 py-2 border-gray-300" />
+      {isHorizontalline && <hr className="w-full border-b border-t-0 py-2 border-gray-300" />}
     </>
   );
 };
