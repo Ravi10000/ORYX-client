@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const Card = ({ children }) => {
   return (
-    <div className="flex-1 mx-1 2xl:max-w-sm bg-white border border-gray-200 rounded-2xl shadow dark:bg-gray-200 dark:border-gray-700">
+    <div className="flex-1 mx-1 mb-1 2xl:max-w-sm bg-white border border-gray-200 rounded-2xl shadow dark:bg-gray-200 dark:border-gray-700 overflow-hidden">
       <Link to="#" className="relative">
         <img
           className="rounded-t-lg"

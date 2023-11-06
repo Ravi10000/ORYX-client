@@ -1,17 +1,22 @@
+import React from "react"
+
 import MainLayout from "../layouts/MainLayout";
-import Favorites from "../pages/Favorites";
-import Dashboard from "../pages/Dashboard";
-import Marketplace from "../pages/Marketplace";
-import UpcomingPage from "../pages/UpcomingPage";
-import Overview from "../pages/Overview";
-import MyProperties from "../pages/MyProperties";
-import Payouts from "../pages/Payouts";
-import Settings from "../pages/Settings";
+
+const LazyLoad = (path) => React.lazy(() => import(path)) 
+
+const Settings = LazyLoad("../pages/Settings")
+const Payouts = LazyLoad("../pages/Payouts")
+const MyProperties = LazyLoad("../pages/MyProperties")
+const Overview = LazyLoad("../pages/Overview")
+const UpcomingPage = LazyLoad("../pages/UpcomingPage")
+const Marketplace = LazyLoad("../pages/Marketplace")
+const Dashboard = LazyLoad("../pages/Dashboard")
+const Favorites = LazyLoad("../pages/Favorites")
 
 
 const AuthRoutes = [
   {
-    // path: "/",
+    path: "/",
     element: <MainLayout></MainLayout>,
     children: [
       {
@@ -50,4 +55,10 @@ const AuthRoutes = [
   },
 ];
 
-export default AuthRoutes;
+export default AuthRoutes.map(item => ({
+  ...item,
+  children: item.children.map( child => ({
+    ...child,
+    element: <React.Suspense fallback="Loading...">{child.element}</React.Suspense>
+  }))
+}));

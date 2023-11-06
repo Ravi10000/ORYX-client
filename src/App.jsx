@@ -1,15 +1,9 @@
-import './App.css'
-import LoginPage from './pages/LoginPage'
-import { Link, useRoutes } from "react-router-dom";
-import Routes from './routes';
+import "./App.css";
+import Routes from "./routes";
+import React from "react";
 
 function App() {
-
-  return (
-    <>
-      {Routes()}
-    </>
-  )
+  return <React.Suspense fallback="Loading...">{Routes()}</React.Suspense>;
 }
 
-export default App
+export default App;

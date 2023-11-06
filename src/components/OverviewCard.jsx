@@ -24,7 +24,7 @@ const OverviewCard = () => {
         </h5>
       </div>
 
-      <div href="#" className="inline-flex items-center  gap-4">
+      <div href="#" className="inline-flex items-center  gap-4 flex-wrap">
         <span className="text-green-600 center gap-4 font-semibold">
           <BsGraphUpArrow />
           <span>+2.4%</span>

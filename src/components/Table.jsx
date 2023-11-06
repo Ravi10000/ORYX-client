@@ -77,7 +77,7 @@ const Table = () => {
 
 const Colored = () => {
   return (
-    <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <div className="relative overflow-x-auto shadow-md sm:rounded-2xl overflow-hidden">
       <table className="w-full text-left" role="colored">
         <thead className="text-base text-white uppercase bg-blue-400  dark:text-white">
           <tr className="p-5">
@@ -170,7 +170,7 @@ const Bordered = () => {
           <tr className="border-b border-slate-300 font-semibold">
             <td
               scope="row"
-              className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
+              className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white min-w-max "
             >
               <img
                 className="w-14 h-14 rounded-lg"
@@ -183,7 +183,7 @@ const Bordered = () => {
                 </div>
               </div>
             </td>
-            <td className="px-6 py-4 text-sm">01-03-2022</td>
+            <td className="px-6 py-4 text-sm whitespace-nowrap">01-03-2022</td>
             <td className="px-6 py-4">$2999</td>
             <td>50/1000</td>
             <td>$40.10</td>
