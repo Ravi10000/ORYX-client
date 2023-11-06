@@ -1,22 +1,28 @@
 import React from "react";
-import Select from "../components/Select";
-import Search from "../components/Search";
 import CarouselX from "../components/CarouselX";
 import Card from "../components/Card";
 import Heading from "../components/Heading";
+import Input from "../components/Input";
 
 const Marketplace = () => {
   return (
     <>
-      <Heading heading={"Marketplace"} subHeading={"Buy and Sell Real Estate NFTs Within Seconds"}></Heading>
+      <Heading
+        heading={"Marketplace"}
+        subHeading={"Buy and Sell Real Estate NFTs Within Seconds"}
+      ></Heading>
 
       <form className="flex py-3 2xl:gap-10 gap-5 flex-wrap">
-        <Select></Select>
-        <Search className="flex-1" name={"search"} placeholder={"search by name"}></Search>
-        <Select></Select>
-        <Select></Select>
-        <Select></Select>
-        <Select></Select>
+        <Input.Select />
+        <Input.Search
+          className="flex-1"
+          name={"search"}
+          placeholder={"search by name"}
+        ></Input.Search>
+        <Input.Select />
+        <Input.Select />
+        <Input.Select />
+        <Input.Select />
         <input
           type="reset"
           value={"clear all filters"}

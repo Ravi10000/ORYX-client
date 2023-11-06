@@ -1,7 +1,6 @@
 import React from "react";
 import Heading from "../components/Heading";
-import Select from "../components/Select";
-import Search from "../components/Search";
+import Input from "../components/Input";
 import CarouselX from "../components/CarouselX";
 import Card from "../components/Card";
 
@@ -16,16 +15,17 @@ const UpcomingPage = () => {
       ></Heading>
 
       <form className="flex py-3 2xl:gap-10 gap-5 flex-wrap">
-        <Select></Select>
-        <Search
+        <Input.Select />
+        <Input.Search
           className="flex-1"
           name={"search"}
           placeholder={"search by name"}
-        ></Search>
-        <Select></Select>
-        <Select></Select>
-        <Select></Select>
-        <Select></Select>
+        ></Input.Search>
+        <Input.Select />
+        <Input.Select />
+        <Input.Select />
+        <Input.Select />
+
         <input
           type="reset"
           value={"clear all filters"}
