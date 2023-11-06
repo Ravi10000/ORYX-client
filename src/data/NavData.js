@@ -11,7 +11,7 @@ const navbar = [
         icon: LuLayoutDashboard,
       },
       {
-        path: "/",
+        path: "/settings",
         name: "settings",
         icon: LuInbox,
       },

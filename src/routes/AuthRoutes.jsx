@@ -6,6 +6,7 @@ import UpcomingPage from "../pages/UpcomingPage";
 import Overview from "../pages/Overview";
 import MyProperties from "../pages/MyProperties";
 import Payouts from "../pages/Payouts";
+import Settings from "../pages/Settings";
 
 
 const AuthRoutes = [
@@ -40,6 +41,10 @@ const AuthRoutes = [
       {
         path: "/payouts",
         element: <Payouts />,
+      },
+      {
+        path: "/settings",
+        element: <Settings />,
       },
     ]
   },

@@ -13,11 +13,11 @@ export default {
         // Simple 8 row grid
         'homeLayout': '17rem 1fr',
         'homeLayout2': '25vw 1fr',
-
+        'headingLayout': "1fr min-content"
       },
       maxWidth:{
         carouselContainer: "calc(100vw - 23.5rem)",
-        carouselContainer2: "calc(100vw - 25vw - 5rem)"
+        carouselContainer2: "calc(100vw - 25vw - 5rem)",
       },
       screens: {
         navBreak: '1020px'

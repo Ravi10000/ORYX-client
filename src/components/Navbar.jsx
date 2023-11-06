@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { GoHome } from "react-icons/go";
 import navbar from "../data/NavData";
 import Button from "./Button";
-import { BsFillQuestionCircleFill } from 'react-icons/bs'
+import { BsFillQuestionCircleFill } from "react-icons/bs";
 
 const Tabs = (props) =>
   props.tabs?.map((tab) => (
@@ -50,13 +50,13 @@ const HelpCenter = () => {
   return (
     <div className="relative pr-4 center">
       <div className="icon w-10 h-10 rounded-full bg-white absolute top-0 -translate-y-1/2 center">
-        <BsFillQuestionCircleFill color="purple"/>
+        <BsFillQuestionCircleFill color="purple" />
       </div>
       <div className="content w-full min-h-[100px] bg-blue-400 rounded-lg p-8">
-        <h1 className="h1 center mb-5">
-          Help Center
-        </h1>
-        <p className="text-xs text-center text-slate-700">Do you have a question? Please use our Help Center for more info.</p>
+        <h1 className="h1 center mb-5">Help Center</h1>
+        <p className="text-xs text-center text-slate-700">
+          Do you have a question? Please use our Help Center for more info.
+        </p>
         <div className="w-fit mx-auto">
           <Button>Visit the Help Center</Button>
         </div>
@@ -132,7 +132,9 @@ const Navbar = (props, ref) => {
                 );
               })}
 
-              <HelpCenter />
+              <div className="pb-8">
+                <HelpCenter />
+              </div>
             </nav>
           </aside>
         </>
