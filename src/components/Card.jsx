@@ -5,7 +5,27 @@ import { LuBedDouble } from "react-icons/lu";
 import Button from "./Button";
 import { Link } from "react-router-dom";
 
-const Card = ({ isProgress }) => {
+const BidStatus = () => {
+  return (
+    <div className="center flex-col my-6">
+      <small className="text-slate-500">The highest current bid is</small>
+      <h2 className="text-blue-600 font-bold">10% below the market price</h2>
+    </div>
+  );
+};
+
+const Progress = () => {
+  return (
+    <>
+      <div className="mb-1 text-base font-bold">600 of 1,000 NFTs Minted</div>
+      <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4 dark:bg-gray-400">
+        <div className="bg-blue-600 h-2.5 rounded-full dark:bg-blue-500 w-1/2"></div>
+      </div>
+    </>
+  );
+};
+
+const Card = ({ isProgress, children }) => {
   return (
     <div className="flex-1 mx-1 2xl:max-w-sm bg-white border border-gray-200 rounded-2xl shadow dark:bg-gray-200 dark:border-gray-700">
       <Link to="#" className="relative">
@@ -47,27 +67,6 @@ const Card = ({ isProgress }) => {
           <MdLocationOn size={22} />
           <span>Athens, Greece</span>
         </p>
-        {/* <a
-          href="#"
-          className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
-          Read more
-          <svg
-            className="w-3.5 h-3.5 ml-2"
-            ariaHidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 14 10"
-          >
-            <path
-              stroke="currentColor"
-              strokelinecap="round"
-              strokelinejoin="round"
-              strokeWidth="2"
-              d="M1 5h12m0 0L9 1m4 4L9 9"
-            />
-          </svg>
-        </a> */}
 
         <div className="flex gap-3 justify-center my-8">
           <div className="flex flex-col gap-1 items-center">
@@ -95,16 +94,7 @@ const Card = ({ isProgress }) => {
           </div>
         </div>
 
-        {isProgress && (
-          <>
-            <div className="mb-1 text-base font-bold">
-              600 of 1,000 NFTs Minted
-            </div>
-            <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4 dark:bg-gray-400">
-              <div className="bg-blue-600 h-2.5 rounded-full dark:bg-blue-500 w-1/2"></div>
-            </div>
-          </>
-        )}
+        {children}
 
         <div className="flex justify-between flex-wrap">
           <div className="flex flex-col">
@@ -120,5 +110,8 @@ const Card = ({ isProgress }) => {
     </div>
   );
 };
+
+Card.BidStatus = BidStatus;
+Card.Progress = Progress;
 
 export default Card;

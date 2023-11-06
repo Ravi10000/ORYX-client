@@ -32,6 +32,11 @@ const navbar = [
         name: "upcoming",
         icon: LuInbox,
       },
+      {
+        path: "/auctions",
+        name: "auctions",
+        icon: LuInbox,
+      },
     ],
   },
 ];

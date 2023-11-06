@@ -35,14 +35,14 @@ const UpcomingPage = () => {
 
       <div className="overflow-hidden my-8">
         <CarouselX>
-          <Card isProgress={true}></Card>
-          <Card isProgress={true}></Card>
-          <Card isProgress={true}></Card>
-          <Card isProgress={true}></Card>
-          <Card isProgress={true}></Card>
-          <Card isProgress={true}></Card>
-          <Card isProgress={true}></Card>
-          <Card isProgress={true}></Card>
+          <Card><Card.Progress /></Card>
+          <Card><Card.Progress /></Card>
+          <Card><Card.Progress /></Card>
+          <Card><Card.Progress /></Card>
+          <Card><Card.Progress /></Card>
+          <Card><Card.Progress /></Card>
+          <Card><Card.Progress /></Card>
+          <Card><Card.Progress /></Card>
         </CarouselX>
       </div>
     </>

@@ -4,7 +4,7 @@ const Heading = ({ heading, subHeading }) => {
   return (
     <>
       <div>
-        <h1 className="h1 font-bold 2xl:text-3xl md:text-2xl text-lg">
+        <h1 className="h1 font-bold 2xl:text-3xl md:text-2xl text-lg capitalize">
           {heading}
         </h1>
         <p className="text-sm text-gray-500 mt-1">{subHeading}</p>
