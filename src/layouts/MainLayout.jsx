@@ -14,8 +14,8 @@ const MainLayout = ({ children }) => {
 
         <main className="navBreak:pr-10 pl-5 pr-5 h-auto">
           <TopBar toggleNav={navRef}></TopBar>
-          {/* <div className="xl:pl-5"> */}
-          <div>
+          <div className="xl:pl-5">
+          {/* <div className=""> */}
             <section className="main-container">
               <Outlet></Outlet>
             </section>

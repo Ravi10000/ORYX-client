@@ -11,6 +11,7 @@ import { MdOutlineLocalOffer } from "react-icons/md";
 import AccordionComponent from "../screens/Accordion";
 import RoundIcon from "../components/RoundIcon";
 import { IoMdPricetag } from "react-icons/io";
+import MyChart from "../components/MyChart";
 
 const items = [
   {
@@ -130,13 +131,14 @@ const PropertyDetail = () => {
   const params = useParams();
 
   return (
-    <div>
-      <div className="grid grid-rows-2 grid-cols-2 gap-8">
+    <>
+      <div className="2xl:grid grid-rows-2 2xl:grid-cols-2 gap-8 gap-y-8">
         <div>
-          <div className="rounded-xl overflow-hidden">
+          <div className="rounded-xl overflow-hidden mb-4 2xl:m-0">
             <img
               src="https://oryx.maxocart.com/assets/dream2earn/image_02.png"
               alt=""
+              // width={"sm:w-full lg:w-auto"}
             />
           </div>
         </div>
@@ -148,7 +150,7 @@ const PropertyDetail = () => {
             <BiShareAlt size={24} color="gray" />
           </div>
 
-          <div className="flex-1 flex flex-col justify-between">
+          <div className="flex-1 flex flex-col justify-between gap-y-4">
             <div className="flex flex-col gap-4">
               <div className="h1 font-bold text-3xl">
                 Modern 3-Bedroom Family Home
@@ -175,7 +177,7 @@ const PropertyDetail = () => {
               </div>
             </div>
 
-            <div className="grid grid-rows-2 grid-cols-2 gap-4 mb-4">
+            <div className="grid grid-rows-2 sm:grid-cols-2 gap-4 mb-4">
               <Stamp></Stamp>
               <Stamp></Stamp>
               <Stamp></Stamp>
@@ -186,6 +188,8 @@ const PropertyDetail = () => {
         <div>
           <h2 className="text-sm text-gray-500">Price History</h2>
           <HR></HR>
+
+          <MyChart />
         </div>
         <div className="flex flex-col gap-8">
           <h2 className="text-sm text-gray-500">Current Price</h2>
@@ -231,37 +235,41 @@ const PropertyDetail = () => {
         How much can you earn with this Property?*
       </h1>
 
-      <div className="xl:grid xl:grid-cols-[1fr_520px]">
+      <div className="2xl:grid 2xl:grid-cols-[1fr_520px]">
         <div className="py-4 px-4">
-          <div className="grid grid-cols-2 grid-rows-2 gap-4">
+          <div className="grid sm:grid-cols-2 grid-rows-2 gap-4">
             <Stamp.Text></Stamp.Text>
             <Stamp.Text></Stamp.Text>
             <Stamp.Text></Stamp.Text>
             <Stamp.Text></Stamp.Text>
           </div>
+
+          <div className="mt-8">
+            <MyChart gradientHeight={470}></MyChart>
+          </div>
         </div>
-        <div className="border-l border-gray-300 px-10">
-          <div className="wraper flex gap-10 flex-col py-4">
-            <div>
+        <div className="2xl:border-l border-gray-300 px-10">
+          <div className="wraper whitespace-nowrap flex gap-10 2xl:flex-col flex-wrap py-4">
+            <div className="flex-1">
+              <h4 className="text-base text-gray-800 mb-1 ">
+                Total Average Annualized Return
+              </h4>
+              <p className="font-bold text-sm">10.28%</p>
+            </div>
+            <div className="flex-1">
               <h4 className="text-base text-gray-800 mb-1">
                 Total Average Annualized Return
               </h4>
               <p className="font-bold text-sm">10.28%</p>
             </div>
-            <div>
-              <h4 className="text-base text-gray-800 mb-1">
-                Total Average Annualized Return
-              </h4>
-              <p className="font-bold text-sm">10.28%</p>
-            </div>
-            <div>
+            <div className="flex-1">
               <h4 className="text-base text-gray-800 mb-1">
                 Total Average Annualized Return
               </h4>
               <p className="font-bold text-sm">10.28%</p>
             </div>
 
-            <div>
+            <div className="flex-1">
               <h3 className="text-base font-semibold text-gray-800 mb-1">
                 Total Expected Value After 5 Years
               </h3>
@@ -271,21 +279,21 @@ const PropertyDetail = () => {
         </div>
       </div>
 
-      <div className="mb-8">
+      <div className="mb-8 mt-4 2xl:mt-0">
         <div className="center">
           <Button className={"whitespace-nowrap px-8 w-max !mt-0"}>
             Buy Now
           </Button>
         </div>
-        <p className="text-gray-500 text-sm center">
+        <p className="text-gray-500 text-sm center text-center">
           This calculator is for illustrative purposes only. Buying a
           real-estate NFT carries risk and you may not receive the anticipated
           returns.
         </p>
       </div>
-      <h1 className="h1 text-3xl font-bold text-center my-8">Overview</h1>
+      <h1 className="h1 text-3xl font-bold text-center my-8 mt-16">Overview</h1>
 
-      <section className="grid grid-rows-1 grid-cols-2 gap-16">
+      <section className="grid grid-rows-1 lg:grid-cols-2 gap-16">
         <div>
           <h3 className="font-bold text-lg mb-8">About the Property</h3>
           <p className="text-sm pl-4 text-slate-900">
@@ -307,7 +315,7 @@ const PropertyDetail = () => {
             accurate and reliable in current market conditions.
           </p>
         </div>
-        <div className="grid grid-cols-5 place-items-start">
+        <div className="grid 2xl:grid-cols-5 grid-cols-3 gap-5 xl:place-items-start place-items-center">
           <RoundIcon.Stamp></RoundIcon.Stamp>
           <RoundIcon.Stamp></RoundIcon.Stamp>
           <RoundIcon.Stamp></RoundIcon.Stamp>
@@ -322,7 +330,7 @@ const PropertyDetail = () => {
         Financial Details
       </h1>
 
-      <section className="grid grid-cols-2 gap-8 my-8">
+      <section className="grid md:grid-cols-2 gap-8 my-8">
         <AccordionComponent
           items={financialAccordion}
           isSingleAccordion
@@ -339,7 +347,7 @@ const PropertyDetail = () => {
         country, the applicable laws, and other factors.
       </p>
 
-      <div className="my-8 grid grid-cols-2">
+      <div className="my-8 grid md:grid-cols-2">
         <div>
           <h1 className="h1 text-3xl font-bold text-center mt-16 mb-10">
             Property Info{" "}
@@ -372,7 +380,7 @@ const PropertyDetail = () => {
         <p className="text-sm text-white text-center">
           Confidential property documents
         </p>
-        <div className="flex gap-4 mt-8 center">
+        <div className="flex gap-4 mt-8 center flex-wrap">
           <Button.Stamp></Button.Stamp>
           <Button.Stamp></Button.Stamp>
           <Button.Stamp></Button.Stamp>
@@ -395,7 +403,7 @@ const PropertyDetail = () => {
           Developer & Property Manager
         </h1>
 
-        <div className="grid grid-cols-2 place-items-center my-14">
+        <div className="grid md:grid-cols-2 gap-y-8 place-items-center my-14">
           <div className="center flex-col max-w-lg gap-4">
             <h1 className="text-2xl">
                 <img src="https://oryx.maxocart.com/assets/dream2earn/titan.svg" alt="" />
@@ -427,7 +435,7 @@ const PropertyDetail = () => {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 };
 

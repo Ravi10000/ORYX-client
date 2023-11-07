@@ -11,14 +11,14 @@ const AccordionItem = ({
   icon,
   index,
   item,
+  totalItems
 }) => {
   return (
     <div
       className={`border ${
         index === 0 ? "rounded-tl-2xl rounded-tr-2xl" : ""
       } ${
-        // index === items?.length - 1 ? "rounded-bl-2xl rounded-br-2xl" : ""
-        ""
+        index === totalItems - 1 ? "rounded-bl-2xl rounded-br-2xl" : ""
       } overflow-hidden`}
     >
       <div
@@ -49,9 +49,9 @@ const AccordionItem = ({
           <table className="py-3 w-full text-sm" role="colored">
             <thead>
               <tr className="text-start border-b border-gray-200">
-                {item.headings?.map((heading) => {
+                {item.headings?.map((heading, index) => {
                   return (
-                    <th className="font-semibold text-sm text-slate-900 text-start py-4 px-10">
+                    <th key={index} className="font-semibold text-sm text-slate-900 text-start py-4 px-10">
                       {heading.name}
                     </th>
                   );
@@ -151,6 +151,7 @@ const Accordion = ({ items, isSingleAccordion }) => {
             onClick={() => handleItemClick(index)}
             icon={item.icon}
             item={item}
+            totalItems={items.length}
           />
         )
       )}
