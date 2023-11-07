@@ -54,17 +54,18 @@ const Footer = () => {
         <h2 className="footer-h1">
           Subscribe to get exciting updates and offers!
         </h2>
-        <div className="relative">
+        <form className="relative">
           <input
-            type="text"
+            type="email"
             className="py-5 w-full rounded-md px-6 placeholder:text-red-700 outline-none focus:ring-1 text-black"
             placeholder="Enter email address"
+            required
           />
 
           <div className={"absolute right-3 top-[-7px] w-fit"}>
-            <Button className={"w-fit px-6"}>Submit</Button>
+            <Button type={"submit"} className={"w-fit px-6"}>Submit</Button>
           </div>
-        </div>
+        </form>
       </div>
 
       <div className="my-6">

@@ -1,4 +1,10 @@
 import { LuLayoutDashboard, LuInbox } from "react-icons/lu";
+import { FiSettings } from "react-icons/fi";
+import { FaClockRotateLeft } from "react-icons/fa6";
+import { BsCart3 } from "react-icons/bs";
+import { PiRocket, PiWallet, PiClockCounterClockwiseDuotone } from "react-icons/pi";
+import {BiBuildings} from "react-icons/bi";
+import { AiOutlineHeart } from "react-icons/ai";
 
 const navbar = [
   {
@@ -13,7 +19,7 @@ const navbar = [
       {
         path: "/settings",
         name: "settings",
-        icon: LuInbox,
+        icon: FiSettings,
       },
     ],
   },
@@ -24,17 +30,17 @@ const navbar = [
       {
         path: "/marketplace",
         name: "marketplace",
-        icon: LuLayoutDashboard,
+        icon: BsCart3,
       },
       {
         path: "/upcoming-pages",
         name: "upcoming",
-        icon: LuInbox,
+        icon: PiRocket,
       },
       {
         path: "/favorties",
         name: "Favorites",
-        icon: LuInbox,
+        icon: AiOutlineHeart,
       },
       
     ],
@@ -46,17 +52,17 @@ const navbar = [
       {
         path: "/overview",
         name: "overview",
-        icon: LuInbox
+        icon: PiWallet
       },
       {
         path: "/my-properties",
         name: "my properties",
-        icon: LuInbox
+        icon: BiBuildings
       },
       {
         path: "/payouts",
         name: "payouts",
-        icon: LuInbox
+        icon: PiClockCounterClockwiseDuotone
       }
     ]
   }

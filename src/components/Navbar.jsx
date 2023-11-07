@@ -4,7 +4,7 @@ import React, {
   useState,
   useEffect,
 } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { GoHome } from "react-icons/go";
 import navbar from "../data/NavData";
 import Button from "./Button";
@@ -14,6 +14,8 @@ const Navbar = (props, ref) => {
   const [showNav, setShowNav] = useState(false);
   const [isNavShowAnim, setIsNavShowAnim] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
+  const { pathname } = useLocation();
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -35,6 +37,13 @@ const Navbar = (props, ref) => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+// Automatically scrolls to top whenever pathname changes
+useEffect(() => {
+  window.scrollTo(0, 0);
+  if(showNav)
+    setIsNavShowAnim(false)
+}, [pathname]);
 
   useImperativeHandle(
     ref,
@@ -88,7 +97,7 @@ const Navbar = (props, ref) => {
                     <h3 className="mb-3 capitalize text-sm font-semibold">
                       {nav.name}
                     </h3>
-                    <Tabs tabs={nav.children}></Tabs>
+                    <Tabs tabs={nav.children} activePathName={pathname}></Tabs>
                   </ul>
                 );
               })}
@@ -107,13 +116,13 @@ const Navbar = (props, ref) => {
 const Tabs = (props) =>
   props.tabs?.map((tab) => (
     <li key={tab.name} className="mb-3 capitalize flex gap-4">
-      <Link
+      <NavLink
         to={tab.path}
-        className="flex gap-4 hover:bg-gray-300 rounded-tl-md rounded-bl-md px-2 py-2 w-full hover:text-[1.08rem] transition-all text-base"
+        className="flex gap-4 hover:bg-gray-200 rounded-l-lg px-2 py-2 w-full hover:text-[1.08rem] transition-all text-base"
       >
         {<tab.icon size={24} />}
         {tab.name}
-      </Link>
+      </NavLink>
     </li>
   ));
 

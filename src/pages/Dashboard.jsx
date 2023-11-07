@@ -8,7 +8,6 @@ import Table from "../components/Table";
 import RoundIcon from "../components/RoundIcon";
 import CardImage from "../components/CardImage";
 
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import CarouselX from "../components/CarouselX";
 

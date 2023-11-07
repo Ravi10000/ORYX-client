@@ -77,60 +77,99 @@ const Table = () => {
 
 const Colored = () => {
   return (
-    <div className="relative overflow-x-auto shadow-md sm:rounded-2xl overflow-hidden">
+    <div className="relative overflow-x-auto shadow-md sm:rounded-2xl rounded-lg overflow-hidden">
       <table className="w-full text-left" role="colored">
         <thead className="text-base text-white uppercase bg-blue-400  dark:text-white">
           <tr className="p-5">
             <th scope="col" className="p-6 text-sm">
-              Product name
+            Date
             </th>
             <th scope="col" className="p-6 text-sm">
-              Color
+              NFT ID
             </th>
             <th scope="col" className="p-6 text-sm">
-              Category
+              Name
             </th>
             <th scope="col" className="p-6 text-sm">
-              Price
+              Type of Property
             </th>
             <th scope="col" className="p-6 text-sm">
-              Action
+              Order
+            </th>
+            <th scope="col" className="p-6 text-sm">
+              Deposit (USD)
+            </th>
+            <th scope="col" className="p-6 text-sm">
+              Received (USD)
+            </th>
+            <th scope="col" className="p-6 text-sm">
+              Profit/Loss
             </th>
           </tr>
         </thead>
         <tbody>
+          <tr className="border-b border-blue-200 whitespace-nowrap">
+            <th
+              scope="row"
+              className="px-6 py-4 font-medium whitespace-nowrap "
+            >
+              05-07-22
+            </th>
+            <td className="px-6 py-4">
+              5239
+            </td>
+
+            <td
+              scope="row"
+              className="px-6 py-4 font-medium whitespace-nowrap "
+            >
+              Villa Ibiza
+            </td>
+            <td className="px-6 py-4">
+              Holiday Home
+            </td>
+            <td className="px-6 py-4 text-green-600">Dividend</td>
+            <td className="px-6 py-4">$ -</td>
+            <td className="px-6 py-4">
+              $ -
+            </td>
+            <td className="px-6 py-4">
+              + $ 277
+            </td>
+            
+          </tr>
           <tr className="border-b border-blue-200">
             <th
               scope="row"
               className="px-6 py-4 font-medium whitespace-nowrap "
             >
-              Apple MacBook Pro 17"
+              05-07-22
             </th>
-            <td className="px-6 py-4">Silver</td>
-            <td className="px-6 py-4">Laptop</td>
-            <td className="px-6 py-4">$2999</td>
             <td className="px-6 py-4">
-              <a href="#" className="font-medium hover:underline">
-                Edit
-              </a>
+              5239
             </td>
-          </tr>
-          <tr>
-            <th
+
+            <td
               scope="row"
               className="px-6 py-4 font-medium whitespace-nowrap "
             >
-              Microsoft Surface Pro
-            </th>
-            <td className="px-6 py-4">White</td>
-            <td className="px-6 py-4">Laptop PC</td>
-            <td className="px-6 py-4">$1999</td>
-            <td className="px-6 py-4">
-              <a href="#" className="font-medium hover:underline">
-                Edit
-              </a>
+              Villa Ibiza
             </td>
+            <td className="px-6 py-4">
+              Holiday Home
+            </td>
+            <td className="px-6 py-4 text-green-600">Dividend</td>
+            <td className="px-6 py-4">$ -</td>
+            <td className="px-6 py-4">
+              $ -
+            </td>
+            <td className="px-6 py-4">
+              + $ 277
+            </td>
+            
           </tr>
+          
+          
         </tbody>
       </table>
     </div>
@@ -141,7 +180,7 @@ import { BiDotsHorizontal } from "react-icons/bi";
 
 const Bordered = () => {
   return (
-    <div className="relative overflow-x-auto border border-slate-300 sm:rounded-lg">
+    <div className="relative overflow-x-auto border border-slate-300 sm:rounded-2xl rounded-lg">
       <table className="w-full text-left " role="colored">
         <thead className="text-base text-slate-900 uppercase ">
           <tr className="p-5 border-b border-slate-300">

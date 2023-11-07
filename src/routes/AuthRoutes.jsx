@@ -3,7 +3,7 @@ import React from "react"
 import MainLayout from "../layouts/MainLayout";
 import Loader from "../components/Loader";
 
-const LazyLoad = (path) => React.lazy(() => import(path)) 
+const LazyLoad = (path) => React.lazy(() =>  import(path)) 
 
 const Settings = LazyLoad("../pages/Settings")
 const Payouts = LazyLoad("../pages/Payouts")
