@@ -22,7 +22,7 @@ const Stamp = ({ children, type, className }) => {
       }`}
     >
       {/* {children} */}
-      <div className="flex justify-between items-center gap-4">
+      <div className="flex justify-between items-center gap-6">
         <div className="flex flex-col items-start">
           <h1 className="text-black font-semibold text-xs">Download</h1>
           <p className="text-xs text-blue-700">Independent Property Report</p>

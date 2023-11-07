@@ -91,7 +91,7 @@ const SingleAccItem = ({ isActive, onClick, item }) => {
         <MdKeyboardArrowDown
           size={30}
           className={
-            isActive ? "transition-transform rotate-180 duration-300" : ""
+            isActive ? "transition-transform rotate-180 duration-300" : "transition-transform rotate-0 duration-300"
           }
         />
       </div>
