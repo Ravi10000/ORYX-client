@@ -20,4 +20,25 @@ const RoundIcon = () => {
   );
 };
 
+const Stamp = ({ className }) => {
+  return (
+    <div className="flex flex-col center gap-2">
+      <span className={`w-14 h-14 rounded-full flex justify-center items-center bg-slate-700 ${ className ? className : '' }`}>
+        <PiHandCoinsBold size={30} color="white"/>
+      </span>
+      <div>
+        <p className="flex flex-col text-xs font-medium text-gray-600">
+            Real-Estate
+        </p>
+        <p className="flex flex-col text-lg text-center font-medium text-gray-600">
+        $725
+
+        </p>
+      </div>
+    </div>
+  );
+};
+
+RoundIcon.Stamp = Stamp
+
 export default RoundIcon;

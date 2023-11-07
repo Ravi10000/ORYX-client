@@ -16,7 +16,8 @@ export default {
         'headingLayout': "1fr min-content"
       },
       maxWidth:{
-        carouselContainer: "calc(100vw - 23.5rem)",
+        // carouselContainer: "calc(100vw - 23.5rem)",
+        carouselContainer: "calc(100vw - 17rem)",
         carouselContainer2: "calc(100vw - 25vw - 5rem)",
       },
       screens: {

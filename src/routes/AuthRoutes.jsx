@@ -2,6 +2,7 @@ import React from "react"
 
 import MainLayout from "../layouts/MainLayout";
 import Loader from "../components/Loader";
+import PropertyDetail from "../pages/PropertyDetail";
 
 const LazyLoad = (path) => React.lazy(() =>  import(path)) 
 
@@ -52,6 +53,10 @@ const AuthRoutes = [
         path: "/settings",
         element: <Settings />,
       },
+      {
+        path: "/detail/:id",
+        element: <PropertyDetail />
+      }
     ]
   },
 ];
