@@ -22,11 +22,6 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
-
 nav a.active {
   @apply bg-gray-200 text-[1.08rem];
 }
@@ -72,9 +67,6 @@ table:not([role="colored"]) td{
   display: flex;
   gap: 5rem;
   /* @apply grid place-items-center; */
-}
-.carousel-container > ul{
-  /* @apply flex gap-5; */
 }
 
 .carousel-container > ul > li{
