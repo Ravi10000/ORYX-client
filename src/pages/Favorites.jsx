@@ -9,7 +9,7 @@ const Favorites = () => {
       <Heading
         heading={"favorites"}
         subHeading={"All of your favorite real estate NFTs in one place."}
-      ></Heading>
+      />
 
       <div className="overflow-hidden my-8">
         <CarouselX>

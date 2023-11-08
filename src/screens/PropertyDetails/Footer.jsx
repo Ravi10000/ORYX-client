@@ -33,7 +33,7 @@ const Footer = () => {
             <p className="text-xs text-gray-400 text-center">
               This company is fictitious and for illustrative purposes only.
               Founded in 2012, Bed & Chill specializes in full-service property
-              management services. The company’s mission is to help landlords
+              management services. The company&apos;s mission is to help landlords
               save time and turn their house or apartment into a profitable
               revenue stream.
             </p>

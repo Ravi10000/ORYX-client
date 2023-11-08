@@ -10,7 +10,7 @@ const MyProperties = () => {
       <Heading
         heading={"My Properties"}
         subHeading={"Find all of your properties in one place."}
-      ></Heading>
+      />
       <FilterForm></FilterForm>
 
       <div className="py-10 overflow-hidden">

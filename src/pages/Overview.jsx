@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Overview = () => {
   return (
     <div>
-      <Heading heading={"Overview"} isHorizontalline={false}></Heading>
+      <Heading heading={"Overview"} isHorizontalline={false} />
 
       <div className="grid 2xl:grid-cols-4 py-10 gap-6 md:grid-cols-3 grid-cols-2">
         <OverviewCard />
@@ -21,14 +21,14 @@ const Overview = () => {
         <Heading
           heading={"Recent Transactions"}
           isHorizontalline={false}
-        ></Heading>
+        />
         <Link to={"#"} className="text-blue-600 underline">
           View All
         </Link>
       </div>
 
       <div className="py-10">
-        <Table.Colored></Table.Colored>
+        <Table.Colored />
       </div>
 
       <div className="py-10">

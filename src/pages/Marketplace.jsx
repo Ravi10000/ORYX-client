@@ -10,20 +10,20 @@ const Marketplace = () => {
       <Heading
         heading={"Marketplace"}
         subHeading={"Buy and Sell Real Estate NFTs Within Seconds"}
-      ></Heading>
+      />
 
-      <FilterForm></FilterForm>
+      <FilterForm />
 
       <div className="overflow-hidden my-8">
         <CarouselX>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
         </CarouselX>
       </div>
     </>

@@ -1,17 +1,19 @@
 import React from "react";
-import { Route, Link, Routes, useParams } from "react-router-dom";
-import Overview from "../screens/PropertyDetails/Overview";
-import FinancialDetails from "../screens/PropertyDetails/FinancialDetails";
-import AccordionDetail from "../screens/PropertyDetails/AccordionDetail";
-import SpeculateEarn from "../screens/PropertyDetails/SpeculateEarn";
-import Footer from "../screens/PropertyDetails/Footer";
-import Location from "../screens/PropertyDetails/Location";
-import DownloadSection from "../screens/PropertyDetails/DownloadSection";
-import ExtraInfo from "../screens/PropertyDetails/ExtraInfo";
-import PropertyImage from "../screens/PropertyDetails/Image";
-import FirstViewDetails from "../screens/PropertyDetails/FirstViewDetails";
-import BuyIt from "../screens/PropertyDetails/BuyIt";
-import PriceHistory from "../screens/PropertyDetails/PriceHistory";
+import { useParams } from "react-router-dom";
+import {
+  Overview,
+  FinancialDetails,
+  AccordionDetail,
+  SpeculateEarn,
+  Footer,
+  Location,
+  DownloadSection,
+  ExtraInfo,
+  PropertyImage,
+  FirstViewDetails,
+  BuyIt,
+  PriceHistory,
+} from "../screens/PropertyDetails";
 
 const Container = ({ children }) => {
   return (
@@ -34,21 +36,21 @@ const PropertyDetail = () => {
       </Container>
 
       {/* Accordion  */}
-      <AccordionDetail></AccordionDetail>
+      <AccordionDetail />
 
-      <SpeculateEarn></SpeculateEarn>
+      <SpeculateEarn />
 
-      <Overview></Overview>
+      <Overview />
 
-      <FinancialDetails></FinancialDetails>
+      <FinancialDetails />
 
-      <ExtraInfo></ExtraInfo>
+      <ExtraInfo />
 
-      <DownloadSection></DownloadSection>
+      <DownloadSection />
 
-      <Location></Location>
+      <Location />
 
-      <Footer></Footer>
+      <Footer />
     </>
   );
 };

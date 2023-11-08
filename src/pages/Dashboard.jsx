@@ -9,45 +9,27 @@ import RoundIcon from "../components/RoundIcon";
 import CardImage from "../components/CardImage";
 
 import CarouselX from "../components/CarouselX";
+import Banner from "../screens/Banner";
 
 const Dashboard = () => {
   return (
     <>
-      <div className="w-full p-8 bg-blue-400 rounded-xl">
-        <h1 className="text-3xl font-bold text-white">
-          Buy Your First Real Estate in Seconds
-        </h1>
-        <div className="md:px-7 py-5">
-          <p className="text-xs text-white">
-            The world &apos;s first NFT marketplace backed by real-world
-            properties
-          </p>
-
-          <div className="flex pt-7 gap-5 whitespace-nowrap flex-wrap">
-            <Link className="p-7 text-lg">Join Please Now</Link>
-            <div className="px-5">
-              <Button className="w-fit px-5 bg-transparent border-2 border-primary">
-                How It works
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <Banner />
+      
       <div className="container-r my-4">
         <h1 className="h1">Discover New Properties</h1>
 
         {/* <div className="flex gap-5 flex-wrap mx-auto"> */}
         <div className="overflow-hidden">
           <CarouselX>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
           </CarouselX>
         </div>
       </div>
