@@ -19,7 +19,7 @@ const LoginForm = () => {
       />
 
       <Input.IconInput
-        id="email--11"
+        id="passwordd--11"
         name="email"
         placeholder="Password"
         icon={<KeyIcon />}
@@ -30,7 +30,7 @@ const LoginForm = () => {
         </span>
       </Input.IconInput>
 
-      <Link to={"/admin/reset/password"} className="text-sm">
+      <Link to={"/admin/auth/reset/password"} className="text-sm">
         Forgot Password?
       </Link>
 

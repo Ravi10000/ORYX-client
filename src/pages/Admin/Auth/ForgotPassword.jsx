@@ -20,7 +20,7 @@ const ForgotPassword = () => {
 
         <Button className="">Reset Password</Button>
 
-        <Link to={"/admin/login"} className="flex gap-4 items-center w-max">
+        <Link to={"/admin/auth/login"} className="flex gap-4 items-center w-max">
           <ArrowLeft></ArrowLeft>
           <span className="text-textColor">Back to Login</span>
         </Link>
