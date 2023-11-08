@@ -4,6 +4,8 @@ import { IoBedOutline, IoLocationSharp } from "react-icons/io5";
 import { BiShareAlt } from "react-icons/bi";
 import { PiUsersThree } from "react-icons/pi";
 import Stamp from "../../components/Stamp";
+import { CiMoneyBill } from "react-icons/ci";
+
 
 const FirstViewDetails = () => {
   return (
@@ -45,7 +47,7 @@ const FirstViewDetails = () => {
 
         <div className="grid grid-rows-2 sm:grid-cols-2 gap-4 mb-4">
           <Stamp></Stamp>
-          <Stamp></Stamp>
+          <Stamp value={"8.28"} valueUnit={"%"} title={"Dividend Yield"} icon={<CiMoneyBill />} ></Stamp>
           <Stamp></Stamp>
           <Stamp></Stamp>
         </div>
