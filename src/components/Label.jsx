@@ -1,20 +1,33 @@
-import React from 'react'
+import React from "react";
 
-const Label = {}
+const Label = {};
 
 const Bordered = ({ children }) => {
+  const revampedChildern = React.Children.map(children, (child, index) => {
+    if (child.type === undefined) return;
+    if (typeof child.type === "function")
+      return React.cloneElement(child, {
+        size: 23,
+      });
+    return child;
+  });
+
   return (
-    <div className='py-2 px-4 rounded-full border border-blue-600 text-blue-600 w-max text-xs font-semibold center gap-2'>{children}</div>
-  )
-}
+    <div className="py-2 px-4 rounded-full border border-blue-600 text-blue-600 w-max text-xs font-semibold center gap-2">
+      {revampedChildern}
+    </div>
+  );
+};
 
 const Text = ({ children }) => {
   return (
-    <div className='py-2 rounded-full text-gray-400 w-max text-sm font-semibold center gap-2'>{children}</div>
-  )
-}
+    <div className="py-2 rounded-full text-gray-400 w-max text-base font-semibold center gap-2">
+      {children}
+    </div>
+  );
+};
 
-Label.Bordered = Bordered
-Label.Text = Text
+Label.Bordered = Bordered;
+Label.Text = Text;
 
-export default Label
+export default Label;

@@ -15,11 +15,11 @@ const AccordionItem = ({
 }) => {
   return (
     <div
-      className={`border ${
+      className={`border border-b-0 ${
         index === 0 ? "rounded-tl-2xl rounded-tr-2xl" : ""
       } ${
-        index === totalItems - 1 ? "rounded-bl-2xl rounded-br-2xl" : ""
-      } overflow-hidden`}
+        index === totalItems - 1 ? "rounded-bl-2xl rounded-br-2xl !border-b" : ""
+      } overflow-hidden border-gray-300`}
     >
       <div
         className={`p-4 cursor-pointer flex  items-center  justify-between ${
@@ -69,7 +69,7 @@ const AccordionItem = ({
 
 const SingleAccItem = ({ isActive, onClick, item }) => {
   return (
-    <div className={`border rounded-xl overflow-hidden`}>
+    <div className={`border rounded-xl overflow-hidden border-gray-300`}>
       <div
         className={`p-4 cursor-pointer flex  items-center  justify-between ${
           isActive

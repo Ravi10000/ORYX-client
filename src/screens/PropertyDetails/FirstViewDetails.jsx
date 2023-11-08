@@ -10,7 +10,8 @@ const FirstViewDetails = () => {
     <div className="flex flex-col">
       <div className="flex justify-between items-center mb-3">
         <Label.Bordered>
-          <IoBedOutline size={22} /> Beds | 1,793 sqft
+          <IoBedOutline /> 
+          <span>Beds | 1,793 sqft</span>
         </Label.Bordered>
         <BiShareAlt size={24} color="gray" />
       </div>
@@ -36,7 +37,7 @@ const FirstViewDetails = () => {
           </div>
           <div className="text-blue-600 flex gap-3 center justify-start">
             <IoLocationSharp size={20} />
-            <span className="text-gray-400 text-sm">
+            <span className="text-gray-400 text-lg">
               House, Stockholm, Sweden
             </span>
           </div>

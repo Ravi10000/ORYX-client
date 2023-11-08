@@ -4,10 +4,10 @@ import { AiTwotoneLock } from "react-icons/ai"
 
 const Stamp = ({ title, value, icon }) => {
   return (
-    <div className='border border-gray-300 rounded-lg px-4 py-4 gap-6 flex flex-col'>
+    <div className='border border-gray-300 rounded-lg px-4 py-4 gap-10 flex flex-col'>
         <h1 className='text-sm font-semibold text-gray-700'>Property Price</h1>
         <div className='flex justify-between items-center'>
-            <p className='text-lg font-bold'>725,000 USD</p>
+            <p className='text-2xl font-bold'>725,000 USD</p>
             <span className='text-gray-400'>
                 {icon || <CiMoneyBill size={36} />}
             </span>
