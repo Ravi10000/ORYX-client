@@ -1,9 +1,5 @@
 import React from "react";
 import { Route, Link, Routes, useParams } from "react-router-dom";
-import Label from "../components/Label";
-import AccordionComponent from "../screens/Accordion";
-import RoundIcon from "../components/RoundIcon";
-import { IoMdPricetag } from "react-icons/io";
 import Overview from "../screens/PropertyDetails/Overview";
 import FinancialDetails from "../screens/PropertyDetails/FinancialDetails";
 import AccordionDetail from "../screens/PropertyDetails/AccordionDetail";
