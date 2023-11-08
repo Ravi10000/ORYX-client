@@ -1,6 +1,5 @@
 import React from "react";
 import Heading from "../components/Heading";
-import Input from "../components/Input";
 import CarouselX from "../components/CarouselX";
 import Card from "../components/Card";
 import FilterForm from "../screens/FilterForm";
@@ -19,14 +18,30 @@ const UpcomingPage = () => {
 
       <div className="overflow-hidden my-8">
         <CarouselX>
-          <Card><Card.Progress /></Card>
-          <Card><Card.Progress /></Card>
-          <Card><Card.Progress /></Card>
-          <Card><Card.Progress /></Card>
-          <Card><Card.Progress /></Card>
-          <Card><Card.Progress /></Card>
-          <Card><Card.Progress /></Card>
-          <Card><Card.Progress /></Card>
+          <Card>
+            <Card.Progress />
+          </Card>
+          <Card>
+            <Card.Progress />
+          </Card>
+          <Card>
+            <Card.Progress />
+          </Card>
+          <Card>
+            <Card.Progress />
+          </Card>
+          <Card>
+            <Card.Progress />
+          </Card>
+          <Card>
+            <Card.Progress />
+          </Card>
+          <Card>
+            <Card.Progress />
+          </Card>
+          <Card>
+            <Card.Progress />
+          </Card>
         </CarouselX>
       </div>
     </>

@@ -5,23 +5,23 @@ import React, { useEffect, useState } from "react";
 import WebFont from "webfontloader";
 
 function App() {
-  const [ isFontLoaded, setIsFontLoaded ] = useState(false)
-  
+  const [isFontLoaded, setIsFontLoaded] = useState(false);
+  const _Routes = Routes();
+
   useEffect(() => {
     WebFont.load({
       google: {
         families: ["Noto Sans"],
       },
       loading: () => {
-        console.log("Fonts loaded")
-        setIsFontLoaded(true)
-      }
+        setIsFontLoaded(true);
+      },
     });
   }, []);
 
-  if(!isFontLoaded) return <Loader />
-  
-  return <>{Routes()}</>;
+  if (!isFontLoaded) return <Loader />;
+
+  return <>{_Routes}</>;
 }
 
 export default App;

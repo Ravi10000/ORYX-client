@@ -6,14 +6,14 @@ import PropertyDetail from "../pages/PropertyDetail";
 
 const LazyLoad = (path) => React.lazy(() =>  import(path)) 
 
-const Settings = LazyLoad("../pages/Settings")
-const Payouts = LazyLoad("../pages/Payouts")
-const MyProperties = LazyLoad("../pages/MyProperties")
-const Overview = LazyLoad("../pages/Overview")
-const UpcomingPage = LazyLoad("../pages/UpcomingPage")
-const Marketplace = LazyLoad("../pages/Marketplace")
-const Dashboard = LazyLoad("../pages/Dashboard")
-const Favorites = LazyLoad("../pages/Favorites")
+const Settings        = LazyLoad("../pages/Settings")
+const Payouts         = LazyLoad("../pages/Payouts")
+const MyProperties    = LazyLoad("../pages/MyProperties")
+const Overview        = LazyLoad("../pages/Overview")
+const UpcomingPage    = LazyLoad("../pages/UpcomingPage")
+const Marketplace     = LazyLoad("../pages/Marketplace")
+const Dashboard       = LazyLoad("../pages/Dashboard")
+const Favorites       = LazyLoad("../pages/Favorites")
 
 
 const AuthRoutes = [
