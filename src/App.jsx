@@ -4,7 +4,8 @@ import useFonts from "./hooks/useFonts";
 import Routes from "./routes";
 
 function App() {
-  const [isFontsLoaded]   = useFonts(["Noto Sans"]);
+  // const [isFontsLoaded]   = useFonts(["Noto Sans"]);
+  const [isFontsLoaded]   = useFonts(["Poppins"]);
   const _Routes           = Routes();
 
   if (!isFontsLoaded) return <Loader />;

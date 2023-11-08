@@ -5,7 +5,7 @@ const Button = ({ children, type, className }) => {
   return (
     <button
       type={type || "button"}
-      className={`w-full p-2 py-3 my-4 bg- text-white rounded-md bg-primary hover:bg-indigo-600 ${
+      className={`w-full p-2 py-3 my-4 bg- text-white rounded-lg bg-primary hover:bg-hover ${
         className ? className : ""
       }`}
     >

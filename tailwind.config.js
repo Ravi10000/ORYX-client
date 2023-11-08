@@ -7,7 +7,11 @@ export default {
         "login-pattern": "url('https://oryx.maxocart.com/assets/dream2earn/image_01.png')",
       },
       colors: {
-        primary: "rgb(99 102 241)"
+        primary: "rgb(99 102 241)",
+        primary: "#2892F3",
+        hover: "#3793F5",
+        borderColor: "rgba(8, 14, 18, 0.10)",
+        textColor: "#080E12",
       },
       gridTemplateColumns: {
         // Simple 8 row grid

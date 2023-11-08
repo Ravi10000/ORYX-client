@@ -3,6 +3,37 @@ import { IoMdArrowDropdown } from "react-icons/io";
 
 const Input = {};
 
+const IconInput = (props) => {
+  const { type, placeholder , icon, name, id, required, children} = props;
+  return (
+    <>
+      <label
+        htmlFor={id || "default-search"}
+        className="mb-2 text-sm font-medium text-gray-900 sr-only "
+      >
+        Search
+      </label>
+      <div className="relative w-full center">
+        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+          {icon}
+        </div>
+        <input
+          type={type}
+          id={id}
+          name={name}
+          className="block w-full p-4 pl-12 text-sm text-gray-900 border border-borderColor rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500  dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none placeholder:text-[15px] placeholder:text-textColor h-[60px] bg-[rgba(156, 207, 254, 0.10)]"
+          placeholder={placeholder}
+          required={required}
+        />
+        {/* right children */}
+        <button className="absolute right-0 pr-4">
+        {children}
+        </button>
+      </div>
+    </>
+  );
+};
+
 const TextInput = (props) => {
   const { type, name, placeholder } = props;
   return (
@@ -175,5 +206,6 @@ Input.LabelInput  = LabelInput;
 Input.Textarea    = Textarea;
 Input.File        = File;
 Input.Toggle      = Toggle;
+Input.IconInput   = IconInput;
 
 export default Input;
