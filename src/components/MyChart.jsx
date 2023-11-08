@@ -46,12 +46,12 @@ const AreaChart = ({ gradientHeight }) => {
         // pointBorderColor: 'rgba(75, 192, 192, 1)',
         pointBackgroundColor: '#fff',
         pointBorderWidth: 0,
-        pointHoverRadius: 10,
-        pointHoverBackgroundColor: 'rgba(75, 192, 192, 1)',
-        pointHoverBorderColor: 'rgba(220, 220, 220, 1)',
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: 'rgba(1, 50, 32, 1)',
+        pointHoverBorderColor: 'rgba(1, 50, 32, 1)',
         pointHoverBorderWidth: 2,
         pointRadius: 0,
-        pointHitRadius: 10,
+        pointHitRadius: 5,
         data: [60, 65, 59, 80, 81, 66, 65, 60, 65],
       },
     ],
@@ -74,18 +74,17 @@ const AreaChart = ({ gradientHeight }) => {
           text: 'Price',
         },
       },
-      // plugins: {
-      //   title: {
-      //     display: true,
-      //     text: 'Chart.js Line Chart - External Tooltips'
-      //   },
-      //   tooltip: {
-      //     enabled: false,
-      //     position: 'nearest',
-      //     external: CustomToolTip
-      //   }
-      // }
     },
+    responsive: true,
+    plugins: {
+      legend: {
+        display: true ,
+        text: 'Custom Chart Subtitle'
+      },
+      tooltip: {
+        // borderColor: "red"
+      }
+    }
   };
 
   return (

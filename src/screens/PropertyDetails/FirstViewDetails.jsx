@@ -38,7 +38,7 @@ const FirstViewDetails = () => {
             </Label.Text>
           </div>
           <div className="text-blue-600 flex gap-3 center justify-start">
-            <IoLocationSharp size={20} />
+            <IoLocationSharp size={21} />
             <span className="text-gray-400 text-lg">
               House, Stockholm, Sweden
             </span>

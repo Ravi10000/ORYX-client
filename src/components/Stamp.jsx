@@ -30,7 +30,7 @@ const Stamp = ({ title, value, valueUnit, icon }) => {
 const Text = ({ title, value, icon }) => {
   return (
     <div className=" px-4 py-4 gap-6 flex flex-col">
-      <h1 className="font-semibold text-gray-700 text-xs">{title || 'Initial Amount'}</h1>
+      <h1 className="font-semibold text-gray-700 text-sm">{title || 'Initial Amount'}</h1>
       <div className="flex justify-between items-center ml-5">
         <p className="text-sm text-red-700 font-light">USD 725,000</p>
         <span className="text-gray-400">

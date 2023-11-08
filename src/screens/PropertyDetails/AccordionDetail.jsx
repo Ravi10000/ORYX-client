@@ -17,11 +17,20 @@ const items = [
     content: (
       <tbody>
         <tr>
-          <td className="px-10 py-4">$ 725</td>
-          <td className="px-10 py-4">0.4 ETH</td>
-          <td className="px-10 py-4">6 Days</td>
-          <td className="px-10 py-4">MoneyMaster_</td>
-          <td className="px-10 py-4">
+          <td className="px-10 py-2">$ 725</td>
+          <td className="px-10 py-2">0.4 ETH</td>
+          <td className="px-10 py-2">6 Days</td>
+          <td className="px-10 py-2">MoneyMaster_</td>
+          <td className="px-10 py-2">
+            <Button className={"w-max px-4 !m-0"}>Buy Now</Button>
+          </td>
+        </tr>
+        <tr>
+          <td className="px-10 py-2">$ 725</td>
+          <td className="px-10 py-2">0.4 ETH</td>
+          <td className="px-10 py-2">6 Days</td>
+          <td className="px-10 py-2">MoneyMaster_</td>
+          <td className="px-10 py-2">
             <Button className={"w-max px-4 !m-0"}>Buy Now</Button>
           </td>
         </tr>
@@ -31,7 +40,7 @@ const items = [
   },
 
   {
-    title: "Listings",
+    title: "Offers",
     headings: [
       { name: "Price" },
       { name: "Ethereum" },
@@ -56,7 +65,7 @@ const items = [
   },
 
   {
-    title: "Listings",
+    title: "Activity",
     headings: [
       { name: "Price" },
       { name: "Ethereum" },
