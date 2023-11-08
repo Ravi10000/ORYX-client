@@ -26,7 +26,7 @@ const IconInput = (props) => {
           required={required}
         />
         {/* right children */}
-        <button className="absolute right-0 pr-4">
+        <button type="button" className="absolute right-0 pr-4">
         {children}
         </button>
       </div>

@@ -1,4 +1,5 @@
 import AuthLayout from "../layouts/Admin/AuthLayout";
+import ForgotPassword from "../pages/Admin/Auth/ForgotPassword";
 import LoginPage from "../pages/Admin/Auth/Login";
 
 const EntryRoutes = [
@@ -7,6 +8,7 @@ const EntryRoutes = [
         element: <AuthLayout />,
         children: [
             { path: "/admin/login", element: <LoginPage /> },
+            { path: "/admin/reset/password", element: <ForgotPassword /> },
         ]
     }
 ];
