@@ -20,9 +20,19 @@ const Bordered = ({ children }) => {
 };
 
 const Text = ({ children }) => {
+  const revampedChildern = React.Children.map(children, (child, index) => {
+    if (child.type === undefined) return;
+    if (typeof child.type === "function")
+      return React.cloneElement(child, {
+        size: 25,
+      });
+    return child;
+  });
+
+
   return (
     <div className="py-2 rounded-full text-gray-400 w-max text-base font-semibold center gap-2">
-      {children}
+      {revampedChildern}
     </div>
   );
 };

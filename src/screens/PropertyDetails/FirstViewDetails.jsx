@@ -23,16 +23,16 @@ const FirstViewDetails = () => {
           </div>
           <div className="flex justify-between">
             <Label.Text>
-              <PiUsersThree size={20} />
-              600 owners
+              <PiUsersThree />
+              <span>600 owners</span>
             </Label.Text>
             <Label.Text>
-              <PiUsersThree size={20} />
-              600 owners
+              <PiUsersThree />
+              <span>600 owners</span>
             </Label.Text>
             <Label.Text>
-              <PiUsersThree size={20} />
-              600 owners
+              <PiUsersThree />
+              <span>600 owners</span>
             </Label.Text>
           </div>
           <div className="text-blue-600 flex gap-3 center justify-start">
