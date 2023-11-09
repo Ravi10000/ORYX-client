@@ -1,45 +1,66 @@
-import React, { useEffect } from "react";
-import { FiSettings } from "react-icons/fi";
-import { MdNotifications } from "react-icons/md";
-import Button from "../components/Button";
+import React, { useEffect, useState } from "react";
+
+import { IoMdNotificationsOutline } from "react-icons/io";
+import { Link } from "react-router-dom";
 import { AiOutlineBars } from "react-icons/ai";
+import { useLocation } from "react-router";
+import useActiveMenu from "../hooks/useActiveMenu";
+import { PiUsersLight } from "react-icons/pi";
 
 const TopBar = ({ toggleNav }) => {
-  
+  const { pathname } = useLocation();
+  const activeMenu = useActiveMenu(pathname);
+
   return (
-    <div className="topBar h-16 bg-white-600 flex justify-between">
+    <div className="topBar h-auto bg-white-600 flex justify-between px-8 py-2 bg-white">
       <ul className="logo h-full center flex gap-4">
-        <li>
-          <img
-            src="https://oryx.maxocart.com/assets/dream2earn/Oryx.png"
-            className="w-14 translate-y-1 "
-            alt="logo"
-          />
+        <li className="flex flex-col capitalize">
+          {activeMenu && (
+            <>
+              <span className=" text-2xl font-semibold">
+                {activeMenu?.name}
+              </span>
+              <span className="flex text-[20px] gap-4 items-center font-medium">
+                <span>
+                  <PiUsersLight size={26} />{" "}
+                </span>
+                <span>
+                  / {activeMenu.name} / &nbsp;
+                  <span className="text-primary">
+                    {activeMenu?.children[0].name}
+                  </span>{" "}
+                </span>
+              </span>
+            </>
+          )}
         </li>
 
         <li className="cursor-pointer block navBreak:hidden">
-          <AiOutlineBars size={28} className="" 
-            onClick={e => {
-              toggleNav.current?.showNav()
+          <AiOutlineBars
+            size={28}
+            className=""
+            onClick={(e) => {
+              toggleNav.current?.showNav();
             }}
           />
         </li>
       </ul>
 
-      <ul className="flex center gap-5">
-        <li>
-          <FiSettings size={30} className="text-primary" />
-        </li>
+      <ul className="flex center gap-8">
         <li className="relative">
           <span className="absolute flex h-4 w-4 center ">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
           </span>
-          <MdNotifications size={32} className="text-primary" />
+          <IoMdNotificationsOutline size={32} />
         </li>
 
         <li>
-          <Button className={"my-0 py-2 px-6"}>Connect</Button>
+          <Link className="flex items-center">
+            <div className="user-profile w-10 h-10 bg-gray-800 rounded-full ">
+              <img src="" alt="" />
+            </div>
+          </Link>
         </li>
       </ul>
     </div>
