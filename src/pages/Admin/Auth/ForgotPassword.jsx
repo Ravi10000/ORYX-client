@@ -4,11 +4,13 @@ import Input from "../../../components/Input";
 import Button from "../../../components/Button";
 import { ArrowLeft, EmailIcon } from "../../../assets/svg";
 import { Link } from "react-router-dom";
+import Error from "../../../components/Error";
 
 const ForgotPassword = () => {
   return (
     <>
       <TitleLogo title={"forgot your password"}></TitleLogo>
+      <Error.Text message={"enter your email"}></Error.Text>
       <form action="" className="flex flex-col gap-4">
         <Input.IconInput
           id="password--10"

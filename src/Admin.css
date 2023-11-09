@@ -1,3 +1,29 @@
-.container-r{
-    @apply flex flex-col gap-10 min-w-full;
+.auth-container{
+    @apply flex flex-col min-w-full;
+}
+
+body{
+    background-color: #EAF5FE;
+}
+
+nav a.active{
+    @apply font-semibold text-sm;
+}
+
+nav a:not(.active):hover{
+    /* @apply hover:text-[1rem]; */
+    font-size: 1rem;
+}
+
+/* height animation of submenu */
+.subMenu{
+    overflow: hidden;
+    max-height: 0;
+    /* clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); */
+    transition: all .3s;
+}
+
+.subMenu.active{
+    max-height: 300px;
+    @apply mb-2;
 }

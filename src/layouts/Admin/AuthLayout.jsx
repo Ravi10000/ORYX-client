@@ -6,7 +6,7 @@ import AuthBanner from "../../assets/images/auth-banner.png";
 const AuthLayout = () => {
   return (
     <div className="grid grid-cols-[33%_1fr] h-screen gap-x-[72px] pl-12 items-center">
-      <section className="container-r">
+      <section className="auth-container">
         <Outlet></Outlet>
       </section>
       <section>

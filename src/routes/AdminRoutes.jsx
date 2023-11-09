@@ -1,4 +1,6 @@
 import AuthLayout from "../layouts/Admin/AuthLayout";
+import MainLayout from "../layouts/Admin/MainLayout";
+
 import ForgotPassword from "../pages/Admin/Auth/ForgotPassword";
 import LoginPage from "../pages/Admin/Auth/Login";
 import UserManagement from "../pages/Admin/User/UserManagement";
@@ -17,6 +19,7 @@ const AuthRoutes = [
 const UserRoutes = [
   {
     path: "user",
+    element: <MainLayout />,
     children: [
       {
         path: "management",

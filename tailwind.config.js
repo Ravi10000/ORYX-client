@@ -9,9 +9,13 @@ export default {
       colors: {
         primary: "rgb(99 102 241)",
         primary: "#2892F3",
+        lightBlue: "rgba(40, 146, 243, 0.40)",
         hover: "#3793F5",
         borderColor: "rgba(8, 14, 18, 0.10)",
         textColor: "#080E12",
+      },
+      boxShadow: {
+        navShadow: "4px 0px 1px rgba(40, 146, 243, 0.20)"
       },
       gridTemplateColumns: {
         // Simple 8 row grid
