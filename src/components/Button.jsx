@@ -13,6 +13,9 @@ const Button = ({ children, type, className }) => {
     </button>
   );
 };
+const Icon = () => {
+  
+}
 const Stamp = ({ children, type, className }) => {
   return (
     <button

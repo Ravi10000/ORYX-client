@@ -4,7 +4,7 @@ import { IoMdArrowDropdown } from "react-icons/io";
 const Input = {};
 
 const IconInput = (props) => {
-  const { type, placeholder , icon, name, id, required, children} = props;
+  const { type, placeholder , icon, name, id, required, children, rgtIcon=true} = props;
   return (
     <>
       <label
@@ -21,7 +21,7 @@ const IconInput = (props) => {
           type={type}
           id={id}
           name={name}
-          className="block w-full p-4 pl-12 text-sm text-gray-900 border border-borderColor rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500  dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none placeholder:text-[15px] placeholder:text-textColor h-[60px] bg-[rgba(156, 207, 254, 0.10)]"
+          className={`block w-full p-4 py-3 ${rgtIcon ? "pl-12" : ""} text-sm text-gray-900 border border-borderColor rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500  dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none placeholder:text-[15px] placeholder:text-textColor h-[60px] bg-[rgba(156, 207, 254, 0.10)]`}
           placeholder={placeholder}
           required={required}
         />

@@ -4,6 +4,7 @@ import MainLayout from "../layouts/Admin/MainLayout";
 import ForgotPassword from "../pages/Admin/Auth/ForgotPassword";
 import LoginPage from "../pages/Admin/Auth/Login";
 import UserManagement from "../pages/Admin/User/UserManagement";
+import RoleManagement from "../pages/Admin/User/RoleManagement";
 
 const AuthRoutes = [
   {
@@ -24,6 +25,10 @@ const UserRoutes = [
       {
         path: "management",
         element: <UserManagement />,
+      },
+      {
+        path: "role",
+        element: <RoleManagement />,
       },
     ],
   },

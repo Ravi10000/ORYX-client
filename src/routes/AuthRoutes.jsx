@@ -4,16 +4,16 @@ import MainLayout from "../layouts/MainLayout";
 import Loader from "../components/Loader";
 import PropertyDetail from "../pages/PropertyDetail";
 
-const LazyLoad = (path) => React.lazy(() =>  import(path)) 
+const LazyLoad = (path) => React.lazy(() =>  import(`../pages/${path}`)) 
 
-const Settings        = LazyLoad("../pages/Settings")
-const Payouts         = LazyLoad("../pages/Payouts")
-const MyProperties    = LazyLoad("../pages/MyProperties")
-const Overview        = LazyLoad("../pages/Overview")
-const UpcomingPage    = LazyLoad("../pages/UpcomingPage")
-const Marketplace     = LazyLoad("../pages/Marketplace")
-const Dashboard       = LazyLoad("../pages/Dashboard")
-const Favorites       = LazyLoad("../pages/Favorites")
+const Settings        = LazyLoad("Settings")
+const Payouts         = LazyLoad("Payouts")
+const MyProperties    = LazyLoad("MyProperties")
+const Overview        = LazyLoad("Overview")
+const UpcomingPage    = LazyLoad("UpcomingPage")
+const Marketplace     = LazyLoad("Marketplace")
+const Dashboard       = LazyLoad("Dashboard")
+const Favorites       = LazyLoad("Favorites")
 
 
 const AuthRoutes = [
