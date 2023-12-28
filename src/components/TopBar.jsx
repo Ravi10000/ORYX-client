@@ -3,13 +3,20 @@ import React, { useEffect, useState } from "react";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { AiOutlineBars } from "react-icons/ai";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import useActiveMenu from "../hooks/useActiveMenu";
 import { PiUsersLight } from "react-icons/pi";
 
 const TopBar = ({ toggleNav }) => {
   const { pathname } = useLocation();
   const activeMenu = useActiveMenu(pathname);
+
+  const navigate = useNavigate();
+
+  function logout() {
+    localStorage.clear('accessToken');
+    navigate('/login');
+  }
 
   return (
     <div className="topBar h-auto bg-white-600 flex justify-between px-8 py-2 bg-white">
@@ -46,7 +53,15 @@ const TopBar = ({ toggleNav }) => {
         </li>
       </ul>
 
-      <ul className="flex center gap-8">
+      <ul className="flex center gap-8 text-primary">
+        <li>
+          <button onClick={logout}
+            className='font-bold text-secondary'
+          >
+            Logout
+          </button>
+        </li>
+
         <li className="relative">
           <span className="absolute flex h-4 w-4 center ">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
