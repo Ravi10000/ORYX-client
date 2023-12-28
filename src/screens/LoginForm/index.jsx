@@ -1,4 +1,4 @@
-import React, { useState }  from "react";
+import React, { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Input from "../../components/Input";
 import { Link } from "react-router-dom";
@@ -46,6 +46,14 @@ const LoginForm = () => {
           Forgot password?
         </Link>
       </div>
+
+      <div className="flex items-center justify-between flex-wrap gap-y-5 text-sm">
+        <span>Don&apos;t have an account? </span>
+        <Link to='/register' className="text-indigo-600">
+          Register Now
+        </Link>
+      </div>
+
       <div>
         <Button type="submit">Login</Button>
       </div>
