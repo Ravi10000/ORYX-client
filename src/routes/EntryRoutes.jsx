@@ -7,7 +7,7 @@ const EntryRoutes = [
   { path: "register", element: <Register /> },
   { path: "login", element: <LoginPage /> },
   {
-    path: "resetPassword",
+    path: "reset-password",
     element: <ForgotPassword />,
     children: [],
   },

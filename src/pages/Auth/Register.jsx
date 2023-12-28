@@ -22,7 +22,7 @@ export default function Register() {
         try {
             const res = await multiFormApi.post('/user/create',
                 { ...data, status: 'Active', usertype: 'User' });
-            console.log(res.data);
+            // console.log(res.data);
             toast.success('Registered Successfully')
             navigate('/login');
         } catch (error) {

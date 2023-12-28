@@ -64,9 +64,15 @@ function LoginPage() {
           </button>
         </div>
 
-        <div className='text-sm flex justify-between items-center select-none'>
-          <label htmlFor='remember'>Remember Me</label>
-          <input type='checkbox' name='remember' id='remember' />
+        <div className='flex justify-between items-center text-sm'>
+          <div className='flex gap-2 justify-center items-center select-none'>
+            <label htmlFor='remember'>Remember Me</label>
+            <input type='checkbox' name='remember' id='remember' />
+          </div>
+
+          <Link to={"/reset-password"} className="text-indigo-600">
+            Forgot Password?
+          </Link>
         </div>
 
         <div className="flex items-center justify-between flex-wrap gap-y-5 text-sm">
