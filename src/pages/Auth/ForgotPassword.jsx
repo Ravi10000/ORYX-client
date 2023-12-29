@@ -1,18 +1,23 @@
 import React, { useState } from "react";
 import { api } from "../../api";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router";
 
 export default function forgotPassword() {
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [email, setEmail] = useState('');
   const [otp, setOtp] = useState('');
   const [isVerified, setIsVerified] = useState(false);
-  const [password, setPassword] = useState();
+  const [password, setPassword] = useState('');
+  const [userId, setUserId] = useState();
+
+  const navigate = useNavigate();
 
   async function forgotPassword() {
     try {
-      const res = await api.post('/user/reset-password', { email });
-      console.log(res);
+      const res = await api.post('/auth/forgot-password', { email });
+      // console.log(res);
+      setUserId(res?.data?.user._id);
       if (res?.data.success) {
         toast.success('OTP sent Successfully');
         setIsOtpSent(true);
@@ -23,12 +28,14 @@ export default function forgotPassword() {
     }
   }
 
+  // console.log(userId);
+
   async function verifyOtp() {
     try {
-      const res = await api.post('/user/verify-otp', { email, otp });
+      const res = await api.post('/auth/verify-otp', { email, otp });
+      // console.log(res);
       if (res?.data.success) {
         toast.success('OTP Verified Successfully');
-        console.log(res);
       }
       setIsVerified(true);
     } catch (error) {
@@ -39,7 +46,15 @@ export default function forgotPassword() {
 
   async function resetPassword() {
     try {
-      const res = await api.put('/');
+      // console.log(password);
+      const res = await api.put(`/auth/reset-password/${userId}`,
+        { password: password }
+      );
+      // console.log(res);
+      if (res?.data.success) {
+        toast.success('Password Reset Successfully');
+      }
+      navigate('/');
     } catch (error) {
       console.log(error);
     }
@@ -120,7 +135,7 @@ export default function forgotPassword() {
                 onClick={resetPassword}
                 className='w-full p-2 py-3 mt-8 bg- text-white rounded-lg bg-primary hover:bg-hover'
               >
-                Send OTP
+                Submit
               </button>
             </div>
           )}
