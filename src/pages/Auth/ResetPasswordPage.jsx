@@ -3,7 +3,7 @@ import { api } from "../../api";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router";
 
-export default function forgotPassword() {
+export default function ResetPasswordPage() {
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [email, setEmail] = useState('');
   const [otp, setOtp] = useState('');
