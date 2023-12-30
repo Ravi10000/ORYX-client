@@ -3,7 +3,7 @@ import { api } from "../../api";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router";
 
-export default function ResetPasswordPage() {
+export default function ForgotPassword() {
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [email, setEmail] = useState('');
   const [otp, setOtp] = useState('');
@@ -13,7 +13,7 @@ export default function ResetPasswordPage() {
 
   const navigate = useNavigate();
 
-  async function forgotPassword() {
+  async function handleForgotPassword() {
     try {
       const res = await api.post('/auth/forgot-password', { email });
       // console.log(res);
@@ -105,7 +105,7 @@ export default function ResetPasswordPage() {
 
                   <button
                     type="button"
-                    onClick={forgotPassword}
+                    onClick={handleForgotPassword}
                     className='w-full p-2 py-3 mt-8 bg- text-white rounded-lg bg-primary hover:bg-hover'
                   >
                     Send OTP

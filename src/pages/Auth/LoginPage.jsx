@@ -70,7 +70,7 @@ function LoginPage() {
             <input type='checkbox' name='remember' id='remember' />
           </div>
 
-          <Link to={"/reset-password"} className="text-indigo-600">
+          <Link to={"/forgot-password"} className="text-indigo-600">
             Forgot Password?
           </Link>
         </div>
