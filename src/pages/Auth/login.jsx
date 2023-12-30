@@ -8,7 +8,6 @@ import toast from 'react-hot-toast';
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
-  const [backendError, setBackendError] = useState();
   const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
 
@@ -26,15 +25,13 @@ export default function Login() {
       navigate('/');
     } catch (error) {
       // console.log(error);
-      setBackendError(error?.response.data.message);
+      toast.error(error?.response?.data?.error)
     }
   }
 
   return (
     <FormContainer>
       <h2 className="text-2xl font-semibold text-center text-primary">Login</h2>
-
-      <p className='text-red-500 font-medium text-lg'>{backendError}</p>
 
       <form onSubmit={handleSubmit(login)}
         className="space-y-4">
@@ -65,10 +62,11 @@ export default function Login() {
         </div>
 
         <div className='flex justify-between items-center text-sm'>
-          <div className='flex gap-2 justify-center items-center select-none'>
+
+          {/* <div className='flex gap-2 justify-center items-center select-none'>
             <label htmlFor='remember'>Remember Me</label>
             <input type='checkbox' name='remember' id='remember' />
-          </div>
+          </div> */}
 
           <Link to={"/forgot-password"} className="text-indigo-600">
             Forgot Password?
