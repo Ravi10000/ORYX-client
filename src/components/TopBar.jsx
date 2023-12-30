@@ -1,15 +1,10 @@
-import React, { useEffect, useState } from "react";
-
-import { IoMdNotificationsOutline } from "react-icons/io";
+import React from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
+import { IoMdNotificationsOutline } from "react-icons/io";
 import { AiOutlineBars } from "react-icons/ai";
-import { useLocation, useNavigate } from "react-router";
-import useActiveMenu from "../hooks/useActiveMenu";
-import { PiUsersLight } from "react-icons/pi";
 
 const TopBar = ({ toggleNav }) => {
-  const { pathname } = useLocation();
-  const activeMenu = useActiveMenu(pathname);
 
   const navigate = useNavigate();
 
@@ -19,28 +14,8 @@ const TopBar = ({ toggleNav }) => {
   }
 
   return (
-    <div className="topBar h-auto bg-white-600 flex justify-between px-8 py-2 bg-white">
+    <div className="topBar h-auto bg-white-600 flex justify-between px-8 py-2 bg-white border-b">
       <ul className="logo h-full center flex gap-4">
-        <li className="flex flex-col capitalize">
-          {activeMenu && (
-            <>
-              <span className=" text-2xl font-semibold">
-                {activeMenu?.name}
-              </span>
-              <span className="flex text-[20px] gap-4 items-center font-medium">
-                <span>
-                  <PiUsersLight size={26} />{" "}
-                </span>
-                <span>
-                  / {activeMenu.name} / &nbsp;
-                  <span className="text-primary">
-                    {activeMenu?.children[0].name}
-                  </span>{" "}
-                </span>
-              </span>
-            </>
-          )}
-        </li>
 
         <li className="cursor-pointer block navBreak:hidden">
           <AiOutlineBars

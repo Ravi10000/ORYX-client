@@ -2,7 +2,7 @@ import { LuLayoutDashboard } from "react-icons/lu";
 import { FiSettings } from "react-icons/fi";
 import { BsCart3 } from "react-icons/bs";
 import { PiRocket, PiWallet, PiClockCounterClockwiseDuotone } from "react-icons/pi";
-import {BiBuildings} from "react-icons/bi";
+import { BiBuildings } from "react-icons/bi";
 import { AiOutlineHeart } from "react-icons/ai";
 
 const navbar = [
@@ -41,7 +41,7 @@ const navbar = [
         name: "Favorites",
         icon: AiOutlineHeart,
       },
-      
+
     ],
   },
   {

@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { api } from '../../api';
 import toast from 'react-hot-toast';
 
-function LoginPage() {
+export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [backendError, setBackendError] = useState();
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -92,6 +92,4 @@ function LoginPage() {
       </form>
     </FormContainer>
   );
-};
-
-export default LoginPage;
+}

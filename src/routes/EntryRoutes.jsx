@@ -1,10 +1,10 @@
-import LoginPage from "../pages/Auth/LoginPage";
-import Register from "../pages/Auth/Register";
+import Register from "../pages/Auth/register";
+import Login from "../pages/Auth/login";
 import ForgotPassword from "../pages/Auth/forgotPassword";
 
 const EntryRoutes = [
   { path: "register", element: <Register /> },
-  { path: "login", element: <LoginPage /> },
+  { path: "login", element: <Login /> },
   {
     path: "forgot-password",
     element: <ForgotPassword />,
