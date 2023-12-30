@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Heading from '../../components/Heading';
 import axios from 'axios';
+import { useDropzone } from 'react-dropzone';
 
 export default function AddProject() {
     const [city, setCity] = useState();
     const [state, setState] = useState();
     const [country, setCountry] = useState();
+    const [selectedImages, setSelectedImages] = useState([]);
 
     async function fetchPincode(e) {
         try {
@@ -32,6 +34,13 @@ export default function AddProject() {
             });
         }
     }
+
+    const onDrop = useCallback((acceptedFiles) => {
+        // Update the state with the selected images
+        setSelectedImages((prevImages) => [...prevImages, ...acceptedFiles]);
+    }, []);
+
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
     return (
         <>
@@ -209,67 +218,41 @@ export default function AddProject() {
 
                     </div>
 
-                    <div className='flex-1 flex flex-col gap-5'>
-                        <div className='flex flex-col gap-1 relative'>
-                            <label htmlFor='image' className='font-medium'>Images</label>
-                            <div className='border-2 border-[#eef2f6] bg-[#f7fbff] w-full h-20 flex justify-center items-center outline-primary rounded-lg'>
-                                <input
-                                    className='opacity-0 absolute p-2 cursor-pointer'
-                                    type='file'
-                                    id='image'
-                                />
-                                <div className='flex justify-center items-center gap-2 p-2'>
-                                    <img
-                                        src='/src/assets/upload.png'
-                                        alt='upload'
-                                        className='w-4 h-4'
-                                    />
-                                    <span>Upload Images</span>
+                    <div className='flex-1 '>
+                        <div>
+                            <div {...getRootProps()} className={`dropzone ${isDragActive ? 'active' : ''}`}>
+                                <input {...getInputProps()} />
+
+                                <div className='flex flex-col gap-1 relative cursor-pointer'>
+                                    <label htmlFor='image' className='font-medium'>Images</label>
+                                    <div className='border-2 border-[#eef2f6] bg-[#f7fbff] max-w-80 h-20 flex justify-center items-center outline-primary rounded-lg'>
+                                        <div className='flex justify-center items-center gap-2 p-2'>
+                                            <img
+                                                src='/src/assets/upload.png'
+                                                alt='upload'
+                                                className='w-4 h-4'
+                                            />
+                                            <span>Upload Images</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                            {selectedImages.length > 0 && (
+                                <div className='flex flex-wrap justify-center gap-5 mt-5'>
+                                    {selectedImages.map((image, index) => (
+                                        <img
+                                            key={index}
+                                            src={URL.createObjectURL(image)}
+                                            alt={`Selected ${index + 1}`}
+                                            className='max-w-[128px] h-auto'
+                                        />
+                                    ))}
+                                </div>
+                            )}
                         </div>
-
-                        <div className='flex flex-wrap gap-10 justify-center items-center'>
-                            <img
-                                src='/src/assets/projectPicsmall.png'
-                                alt='pic 1'
-                                className='w-40 h-32 opacity-60'
-                            />
-
-                            <img
-                                src='/src/assets/projectPicsmall.png'
-                                alt='pic 1'
-                                className='w-40 h-32 opacity-60'
-                            />
-
-                            <img
-                                src='/src/assets/projectPicsmall.png'
-                                alt='pic 1'
-                                className='w-40 h-32 opacity-60'
-                            />
-
-                            <img
-                                src='/src/assets/projectPicsmall.png'
-                                alt='pic 1'
-                                className='w-40 h-32 opacity-60'
-                            />
-
-                            <img
-                                src='/src/assets/projectPicsmall.png'
-                                alt='pic 1'
-                                className='w-40 h-32 opacity-60'
-                            />
-
-                            <img
-                                src='/src/assets/projectPicsmall.png'
-                                alt='pic 1'
-                                className='w-40 h-32 opacity-60'
-                            />
-                        </div>
-
-
                     </div>
-                </div>
+
+                </div >
 
                 <div className='flex justify-center items-center mt-5'>
                     <button
@@ -277,9 +260,7 @@ export default function AddProject() {
                         Add
                     </button>
                 </div>
-            </div>
-
-
+            </div >
         </>
     )
 }
