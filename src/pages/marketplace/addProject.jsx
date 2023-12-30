@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Heading from '../../components/Heading';
 import axios from 'axios';
-import { data } from 'autoprefixer';
 
 export default function AddProject() {
-    const [pincodeData, setPincodeData] = useState();
+    const [city, setCity] = useState();
+    const [state, setState] = useState();
+    const [country, setCountry] = useState();
 
     async function fetchPincode(e) {
         try {
@@ -15,12 +16,13 @@ export default function AddProject() {
             );
             // console.log(data);
             const hasPostOffice = data[0]?.PostOffice;
-            console.log(hasPostOffice);
+            // console.log(hasPostOffice);
             if (!hasPostOffice) throw new Error("No Office");
             if (hasPostOffice) {
                 return {
-                    city: hasPostOffice[0].Block,
+                    city: hasPostOffice.map((data) => data?.Name),
                     state: hasPostOffice[0].State,
+                    country: hasPostOffice[0].Country,
                 };
             }
         } catch (error) {
@@ -30,6 +32,7 @@ export default function AddProject() {
             });
         }
     }
+
     return (
         <>
             <Heading
@@ -51,7 +54,7 @@ export default function AddProject() {
                             <input
                                 type='text'
                                 id='name'
-                                className='p-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-secondary rounded-lg' />
+                                className='p-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg' />
                         </div>
 
                         <div className='flex flex-col gap-1'>
@@ -59,7 +62,7 @@ export default function AddProject() {
                             <textarea
                                 id='description'
                                 rows='5'
-                                className='p-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-secondary rounded-lg'>
+                                className='p-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg'>
                             </textarea>
                         </div>
 
@@ -67,7 +70,7 @@ export default function AddProject() {
                             <label htmlFor='propertyType' className='font-medium'>Project Type</label>
                             <select
                                 id='propertyType'
-                                className='py-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-secondary rounded-lg'>
+                                className='py-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg'>
                                 <option value=''>Select Project</option>
                                 <option value=''>Project 1</option>
                                 <option value=''>Project 2</option>
@@ -81,7 +84,7 @@ export default function AddProject() {
                             <label htmlFor='projectStatus' className='font-medium'>Project Status</label>
                             <select
                                 id='projectStatus'
-                                className='py-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-secondary rounded-lg'>
+                                className='py-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg'>
                                 <option value=''>Select Project</option>
                                 <option value=''>Project 1</option>
                                 <option value=''>Project 2</option>
@@ -97,7 +100,7 @@ export default function AddProject() {
                                 <input
                                     type='text'
                                     id='address1'
-                                    className='p-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-secondary rounded-lg' />
+                                    className='p-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg' />
                             </div>
 
                             <div className='flex-[1] flex flex-col gap-1'>
@@ -105,7 +108,7 @@ export default function AddProject() {
                                 <Link
                                     to='https://google.com/maps'
                                     target='blank'
-                                    className='w-40 p-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-secondary rounded-lg'
+                                    className='w-40 p-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg'
                                 >
                                     <div className='p-1'>
                                         <img src='/src/assets/locationBlack.png' className='w-4' />
@@ -121,8 +124,15 @@ export default function AddProject() {
                                 <input
                                     type='number'
                                     id='pincode'
-                                    onChange={e => fetchPincode(e)}
-                                    className='py-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-secondary rounded-lg'
+                                    name='pincode'
+                                    onChange={async e => {
+                                        const data = await fetchPincode(e);
+                                        setCity(data.city);
+                                        setState(data.state);
+                                        setCountry(data.country);
+                                        // console.log(data);
+                                    }}
+                                    className='py-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg'
                                 />
                                 <div>
                                 </div>
@@ -132,11 +142,10 @@ export default function AddProject() {
                                 <label htmlFor='propertyType' className='font-medium'>City</label>
                                 <select
                                     id='propertyType'
-                                    className='py-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-secondary rounded-lg'>
-                                    <option value=''>Select City</option>
-                                    <option value=''>New York</option>
-                                    <option value=''>New York 2</option>
-                                    <option value=''>New York 3</option>
+                                    className='py-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg'>
+                                    {city?.map((name, index) => (
+                                        <option key={index} value={name}>{name}</option>
+                                    ))}
                                 </select>
                                 <div>
                                 </div>
@@ -145,31 +154,23 @@ export default function AddProject() {
 
                         <div className='flex gap-10'>
                             <div className='flex-1 flex flex-col gap-1'>
-                                <label htmlFor='propertyType' className='font-medium'>State</label>
-                                <select
-                                    id='propertyType'
-                                    className='py-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-secondary rounded-lg'>
-                                    <option value=''>Select State</option>
-                                    <option value=''>California</option>
-                                    <option value=''>California 2</option>
-                                    <option value=''>California 3</option>
-                                </select>
-                                <div>
-                                </div>
+                                <label htmlFor='name' className='font-medium'>State</label>
+                                <input
+                                    type='text'
+                                    id='name'
+                                    disabled
+                                    value={state || ''}
+                                    className='p-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg' />
                             </div>
 
                             <div className='flex-1 flex flex-col gap-1'>
-                                <label htmlFor='country' className='font-medium'>Country</label>
-                                <select
-                                    id='country'
-                                    className='py-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-secondary rounded-lg'>
-                                    <option value=''>Select Country</option>
-                                    <option value=''>Country 1</option>
-                                    <option value=''>Country 2</option>
-                                    <option value=''>Country 3</option>
-                                </select>
-                                <div>
-                                </div>
+                                <label htmlFor='name' className='font-medium'>Country</label>
+                                <input
+                                    type='text'
+                                    id='name'
+                                    disabled
+                                    value={country || ''}
+                                    className='p-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg' />
                             </div>
                         </div>
 
@@ -178,7 +179,7 @@ export default function AddProject() {
                             <input
                                 type='text'
                                 id='pincode'
-                                className='py-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-secondary rounded-lg'
+                                className='py-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg'
                             />
                             <div>
                             </div>
@@ -189,7 +190,7 @@ export default function AddProject() {
                             <input
                                 type='text'
                                 id='pincode'
-                                className='py-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-secondary rounded-lg'
+                                className='py-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg'
                             />
                             <div>
                             </div>
@@ -200,7 +201,7 @@ export default function AddProject() {
                             <input
                                 type='text'
                                 id='pincode'
-                                className='py-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-secondary rounded-lg'
+                                className='py-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg'
                             />
                             <div>
                             </div>
@@ -211,7 +212,7 @@ export default function AddProject() {
                     <div className='flex-1 flex flex-col gap-5'>
                         <div className='flex flex-col gap-1 relative'>
                             <label htmlFor='image' className='font-medium'>Images</label>
-                            <div className='border-2 border-[#eef2f6] bg-[#f7fbff] w-full h-20 flex justify-center items-center outline-secondary rounded-lg'>
+                            <div className='border-2 border-[#eef2f6] bg-[#f7fbff] w-full h-20 flex justify-center items-center outline-primary rounded-lg'>
                                 <input
                                     className='opacity-0 absolute p-2 cursor-pointer'
                                     type='file'
