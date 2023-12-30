@@ -36,7 +36,6 @@ export default function AddProject() {
     }
 
     const onDrop = useCallback((acceptedFiles) => {
-        // Update the state with the selected images
         setSelectedImages((prevImages) => [...prevImages, ...acceptedFiles]);
     }, []);
 
