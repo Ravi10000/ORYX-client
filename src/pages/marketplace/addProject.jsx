@@ -1,14 +1,21 @@
-import React, { useCallback, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useCallback, useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Heading from '../../components/Heading';
 import axios from 'axios';
 import { useDropzone } from 'react-dropzone';
+import { authApi, authMultiFormApi } from '../../api';
+import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 
 export default function AddProject() {
     const [city, setCity] = useState();
     const [state, setState] = useState();
     const [country, setCountry] = useState();
     const [selectedImages, setSelectedImages] = useState([]);
+    const [projectTypes, setProjectTypes] = useState();
+
+    const { register, handleSubmit, setValue, formState: { errors } } = useForm();
+    const navigate = useNavigate();
 
     async function fetchPincode(e) {
         try {
@@ -36,10 +43,51 @@ export default function AddProject() {
     }
 
     const onDrop = useCallback((acceptedFiles) => {
-        setSelectedImages((prevImages) => [...prevImages, ...acceptedFiles]);
+        const newImages = acceptedFiles.map((file) => ({
+            id: Math.random().toString(36).substring(7),
+            file,
+        }));
+
+        setSelectedImages((prevImages) => [...prevImages, ...newImages]);
     }, []);
 
-    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+    const removeImage = (id) => {
+        setSelectedImages((prevImages) => prevImages.filter((img) => img.id !== id));
+    };
+
+    const { getRootProps, getInputProps } = useDropzone({
+        onDrop,
+        accept: {
+            'image/png': ['.png'],
+            'image/jpeg': ['.jpg', '.jpeg']
+        },
+        multiple: true,
+    });
+
+    async function getProjectType() {
+        const { data: { data } } = await authApi.get('/project-type/read');
+        // console.log(data);
+        setProjectTypes(data);
+    }
+
+    async function createProject(data) {
+        // console.log(data);
+        let images = selectedImages?.map(item => item.file)
+        // console.log(images);
+        try {
+            const res = await authMultiFormApi.post('/project/create',
+                { ...data, images });
+            // console.log(res.data);
+            toast.success('Project Created Successfully')
+            // navigate('/marketplace');
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        getProjectType();
+    }, [])
 
     return (
         <>
@@ -53,177 +101,178 @@ export default function AddProject() {
                     <h2 className='py-3 px-10 text-lg bg-bodyBg font-semibold'>Project 101</h2>
                 </div>
 
-                <div className='flex gap-10 px-10'>
+                <form onSubmit={handleSubmit(createProject)}>
 
-                    <div className='flex-1 flex flex-col gap-5'>
+                    <div className='flex gap-10 px-10'>
+                        <div className='flex-1 flex flex-col gap-5 w-[50%]'>
 
-                        <div className='flex flex-col gap-1'>
-                            <label htmlFor='name' className='font-medium'>Project Name</label>
-                            <input
-                                type='text'
-                                id='name'
-                                className='p-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg' />
-                        </div>
-
-                        <div className='flex flex-col gap-1'>
-                            <label htmlFor='description' className='font-medium'>Description</label>
-                            <textarea
-                                id='description'
-                                rows='5'
-                                className='p-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg'>
-                            </textarea>
-                        </div>
-
-                        <div className='flex flex-col gap-1'>
-                            <label htmlFor='propertyType' className='font-medium'>Project Type</label>
-                            <select
-                                id='propertyType'
-                                className='py-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg'>
-                                <option value=''>Select Project</option>
-                                <option value=''>Project 1</option>
-                                <option value=''>Project 2</option>
-                                <option value=''>Project 3</option>
-                            </select>
-                            <div>
-                            </div>
-                        </div>
-
-                        <div className='flex flex-col gap-1'>
-                            <label htmlFor='projectStatus' className='font-medium'>Project Status</label>
-                            <select
-                                id='projectStatus'
-                                className='py-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg'>
-                                <option value=''>Select Project</option>
-                                <option value=''>Project 1</option>
-                                <option value=''>Project 2</option>
-                                <option value=''>Project 3</option>
-                            </select>
-                            <div>
-                            </div>
-                        </div>
-
-                        <div className='flex gap-3'>
-                            <div className='flex-[3] flex flex-col gap-1'>
-                                <label htmlFor='address1' className='font-medium'>Street Address</label>
-                                <input
+                            <div className='flex flex-col gap-1'>
+                                <label htmlFor='name' className='font-medium'>Project Name</label>
+                                <input {...register('name')}
                                     type='text'
-                                    id='address1'
+                                    id='name'
                                     className='p-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg' />
                             </div>
 
-                            <div className='flex-[1] flex flex-col gap-1'>
-                                <label className='font-medium'>View In Map</label>
-                                <Link
-                                    to='https://google.com/maps'
-                                    target='blank'
-                                    className='w-40 p-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg'
-                                >
-                                    <div className='p-1'>
-                                        <img src='/src/assets/locationBlack.png' className='w-4' />
-                                    </div>
-
-                                </Link>
+                            <div className='flex flex-col gap-1'>
+                                <label htmlFor='description' className='font-medium'>Description</label>
+                                <textarea {...register('description')}
+                                    id='description'
+                                    rows='5'
+                                    className='p-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg'>
+                                </textarea>
                             </div>
-                        </div>
 
-                        <div className='flex gap-10'>
-                            <div className='flex-1 flex flex-col gap-1'>
-                                <label htmlFor='propertyType' className='font-medium'>Pincode</label>
-                                <input
-                                    type='number'
-                                    id='pincode'
-                                    name='pincode'
-                                    onChange={async e => {
-                                        const data = await fetchPincode(e);
-                                        setCity(data.city);
-                                        setState(data.state);
-                                        setCountry(data.country);
-                                        // console.log(data);
-                                    }}
+                            <div className='flex flex-col gap-1 w-80 '>
+                                <label htmlFor='propertyType' className='font-medium'>Project Type</label>
+                                <select {...register('projectType')}
+                                    id='propertyType'
+                                    className='py-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg'>
+                                    {projectTypes?.map((projectType) => (
+                                        <option key={projectType._id} value={projectType._id}>{projectType.name}</option>
+                                    ))}
+                                </select>
+                                <div>
+                                </div>
+                            </div>
+
+                            <div className='flex flex-col gap-1 w-80'>
+                                <label htmlFor='projectStatus' className='font-medium'>Current Status</label>
+                                <select {...register('currentStatus')}
+                                    id=''
+                                    className='py-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg'>
+                                    <option value='UnderDevelopment'>Under Development</option>
+                                    <option value='DevelopmentCompleted'>DevelopmentCompleted</option>
+                                </select>
+                                <div>
+                                </div>
+                            </div>
+
+                            <div className='flex gap-3'>
+                                <div className='flex-[2] flex flex-col gap-1 w-[60%]'>
+                                    <label htmlFor='address1' className='font-medium'>Street Address</label>
+                                    <input {...register('street')}
+                                        type='text'
+                                        id='address1'
+                                        className='p-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg' />
+                                </div>
+
+                                <div className='flex-[1] flex flex-col gap-1 w-[30%]'>
+                                    <label className='font-medium'>View In Map</label>
+                                    <Link {...register('googleMap')}
+                                        to='https://google.com/maps'
+                                        target='blank'
+                                        className='p-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg'
+                                    >
+                                        <div className='p-1'>
+                                            <img src='/src/assets/locationBlack.png' className='w-4' />
+                                        </div>
+
+                                    </Link>
+                                </div>
+                            </div>
+
+                            <div className='flex gap-10'>
+                                <div className='flex-1 flex flex-col gap-1 w-[40%]'>
+                                    <label htmlFor='propertyType' className='font-medium'>Pincode</label>
+                                    <input {...register('pincode')}
+                                        type='number'
+                                        id='pincode'
+                                        name='pincode'
+                                        onChange={async e => {
+                                            const data = await fetchPincode(e);
+                                            setCity(data.city);
+                                            setValue('city', data.city)
+                                            setState(data.state);
+                                            setValue('state', data.state)
+                                            setCountry(data.country);
+                                            setValue('country', data.country)
+                                            // console.log(data);
+                                        }}
+                                        className='py-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg'
+                                    />
+                                    <div>
+                                    </div>
+                                </div>
+
+                                <div className='flex-1 flex flex-col gap-1 w-[40%]'>
+                                    <label htmlFor='propertyType' className='font-medium'>City</label>
+                                    <select {...register('city')}
+                                        id='propertyType'
+                                        className='py-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg'>
+                                        <option value=''>Select City</option>
+                                        {city?.map((name, index) => (
+                                            <option key={index} value={name}>{name}</option>
+                                        ))}
+                                    </select>
+                                    <div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className='flex gap-10'>
+                                <div className='flex-1 flex flex-col gap-1 w-[40%]'>
+                                    <label htmlFor='name' className='font-medium'>State</label>
+                                    <input {...register('state')}
+                                        type='text'
+                                        id='name'
+                                        disabled
+                                        value={state || ''}
+                                        className='p-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg' />
+                                </div>
+
+                                <div className='flex-1 flex flex-col gap-1 w-[40%]'>
+                                    <label htmlFor='name' className='font-medium'>Country</label>
+                                    <input {...register('country')}
+                                        type='text'
+                                        id='name'
+                                        disabled
+                                        value={country || ''}
+                                        className='p-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg' />
+                                </div>
+                            </div>
+
+                            <div className='flex flex-col gap-1'>
+                                <label htmlFor='weekly' className='font-medium'>Weekly Withraw Limit</label>
+                                <input {...register('weeklyWithrawLimit')}
+                                    type='text'
+                                    id='weekly'
                                     className='py-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg'
                                 />
                                 <div>
                                 </div>
                             </div>
 
-                            <div className='flex-1 flex flex-col gap-1'>
-                                <label htmlFor='propertyType' className='font-medium'>City</label>
-                                <select
-                                    id='propertyType'
-                                    className='py-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg'>
-                                    {city?.map((name, index) => (
-                                        <option key={index} value={name}>{name}</option>
-                                    ))}
-                                </select>
+                            <div className='flex flex-col gap-1'>
+                                <label htmlFor='propertyType' className='font-medium'>Monthly Withraw Limit</label>
+                                <input {...register('monthlyWithrawLimit')}
+                                    type='text'
+                                    id='pincode'
+                                    className='py-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg'
+                                />
                                 <div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div className='flex gap-10'>
-                            <div className='flex-1 flex flex-col gap-1'>
-                                <label htmlFor='name' className='font-medium'>State</label>
-                                <input
+                            <div className='flex flex-col gap-1'>
+                                <label htmlFor='propertyType' className='font-medium'>Annual Withraw Limit</label>
+                                <input {...register('annualWithrawLimit')}
                                     type='text'
-                                    id='name'
-                                    disabled
-                                    value={state || ''}
-                                    className='p-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg' />
+                                    id='pincode'
+                                    className='py-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg'
+                                />
+                                <div>
+                                </div>
                             </div>
 
-                            <div className='flex-1 flex flex-col gap-1'>
-                                <label htmlFor='name' className='font-medium'>Country</label>
-                                <input
-                                    type='text'
-                                    id='name'
-                                    disabled
-                                    value={country || ''}
-                                    className='p-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg' />
-                            </div>
-                        </div>
+                        </div >
 
-                        <div className='flex flex-col gap-1'>
-                            <label htmlFor='country' className='font-medium'>Weekly Withraw Limit</label>
-                            <input
-                                type='text'
-                                id='pincode'
-                                className='py-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg'
-                            />
-                            <div>
-                            </div>
-                        </div>
-
-                        <div className='flex flex-col gap-1'>
-                            <label htmlFor='propertyType' className='font-medium'>Monthly Withraw Limit</label>
-                            <input
-                                type='text'
-                                id='pincode'
-                                className='py-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg'
-                            />
-                            <div>
-                            </div>
-                        </div>
-
-                        <div className='flex flex-col gap-1'>
-                            <label htmlFor='propertyType' className='font-medium'>Annual Withraw Limit</label>
-                            <input
-                                type='text'
-                                id='pincode'
-                                className='py-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg'
-                            />
-                            <div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div className='flex-1 '>
-                        <div>
-                            <div {...getRootProps()} className={`dropzone ${isDragActive ? 'active' : ''}`}>
+                        <div className='flex-1 w-[50%]'>
+                            <div {...getRootProps({ className: "dropzone" })}>
                                 <input {...getInputProps()} />
 
                                 <div className='flex flex-col gap-1 relative cursor-pointer'>
-                                    <label htmlFor='image' className='font-medium'>Images</label>
+                                    <h5 htmlFor='image' className='font-medium'>Images</h5>
                                     <div className='border-2 border-[#eef2f6] bg-[#f7fbff] max-w-80 h-20 flex justify-center items-center outline-primary rounded-lg'>
                                         <div className='flex justify-center items-center gap-2 p-2'>
                                             <img
@@ -237,28 +286,35 @@ export default function AddProject() {
                                 </div>
                             </div>
                             {selectedImages.length > 0 && (
-                                <div className='flex flex-wrap justify-center gap-5 mt-5'>
-                                    {selectedImages.map((image, index) => (
-                                        <img
-                                            key={index}
-                                            src={URL.createObjectURL(image)}
-                                            alt={`Selected ${index + 1}`}
-                                            className='max-w-[128px] h-auto'
-                                        />
+                                <div className='flex flex-row flex-wrap justify-center items-center gap-5 mt-5'>
+                                    {selectedImages.map((img) => (
+                                        <div key={img.id}>
+                                            <div className='flex flex-col gap-2'>
+                                                <img
+                                                    src={URL.createObjectURL(img.file)}
+                                                    alt={`project ${img.id}`}
+                                                    className='w-28 h-24'
+                                                />
+                                                <button
+                                                    className='w-full text-sm p-1 bg- text-white rounded-lg bg-primary hover:bg-hover'
+                                                    onClick={() => removeImage(img.id)}>
+                                                    Remove
+                                                </button>
+                                            </div>
+                                        </div>
                                     ))}
                                 </div>
                             )}
                         </div>
                     </div>
+                    <div className='flex justify-center items-center mt-5'>
+                        <button type='submit'
+                            className='text-lg w-20 p-2 py-3 my-4 bg- text-white rounded-lg bg-primary hover:bg-hover'>
+                            Add
+                        </button>
+                    </div>
+                </form>
 
-                </div >
-
-                <div className='flex justify-center items-center mt-5'>
-                    <button
-                        className='text-lg w-20 p-2 py-3 my-4 bg- text-white rounded-lg bg-primary hover:bg-hover'>
-                        Add
-                    </button>
-                </div>
             </div >
         </>
     )
