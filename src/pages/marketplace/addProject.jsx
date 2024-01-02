@@ -123,7 +123,7 @@ export default function AddProject() {
                                 </textarea>
                             </div>
 
-                            <div className='flex flex-col gap-1 w-80 '>
+                            <div className='flex flex-col gap-1'>
                                 <label htmlFor='propertyType' className='font-medium'>Project Type</label>
                                 <select {...register('projectType')}
                                     id='propertyType'
@@ -136,7 +136,7 @@ export default function AddProject() {
                                 </div>
                             </div>
 
-                            <div className='flex flex-col gap-1 w-80'>
+                            <div className='flex flex-col gap-1'>
                                 <label htmlFor='projectStatus' className='font-medium'>Current Status</label>
                                 <select {...register('currentStatus')}
                                     id=''
