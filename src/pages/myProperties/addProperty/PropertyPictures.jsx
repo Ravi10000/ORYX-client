@@ -1,8 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import { useDropzone } from 'react-dropzone';
 
-export default function PropertyPictures() {
-    const [selectedImages, setSelectedImages] = useState([]);
+export default function PropertyPictures({ selectedImages, setSelectedImages }) {
 
     const onDrop = useCallback((acceptedFiles) => {
         const newImages = acceptedFiles.map((file) => ({

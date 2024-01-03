@@ -6,11 +6,13 @@
   font-family: 'Poppins';
 
 }
+
 .center {
   @apply flex justify-center items-center;
 }
 
-main::-webkit-scrollbar, aside::-webkit-scrollbar{
+main::-webkit-scrollbar,
+aside::-webkit-scrollbar {
   display: none
 }
 
@@ -26,7 +28,7 @@ nav a.active:not([role="admin"]) {
   @apply bg-gray-200 text-[1.08rem];
 }
 
-.main-container{
+.main-container {
   @apply w-full flex-1 mt-6 xl:max-w-carouselContainer navBreak:max-w-carouselContainer2 max-w-[100vw];
 }
 
@@ -34,19 +36,20 @@ a {
   @apply text-sm text-indigo-600;
 }
 
-.container-r{
+.container-r {
   @apply flex flex-col gap-5 my-10;
 }
 
-.h1, .footer-h1{
+.h1,
+.footer-h1 {
   @apply sm:text-2xl text-lg font-semibold;
 }
 
-.h1-between{
+.h1-between {
   @apply h1 font-bold flex justify-between items-center;
 }
 
-table:not([role="colored"]) th , table:not([role="colored"]) td {
+/* table:not([role="colored"]) th , table:not([role="colored"]) td {
   @apply py-4 px-4;
 }
 
@@ -56,37 +59,37 @@ table:not([role="colored"]) th{
 
 table:not([role="colored"]) td{
   @apply text-base font-bold;
-}
+} */
 
-.footer-h1{
+.footer-h1 {
   @apply sm:text-2xl text-xl font-bold;
 }
 
-.carousel-container{
+.carousel-container {
   /* background-color: hotpink; */
   display: flex;
   gap: 5rem;
   /* @apply grid place-items-center; */
 }
 
-.carousel-container > ul > li{
+.carousel-container>ul>li {
   @apply flex justify-center;
 }
 
-.carousel-container > button{
+.carousel-container>button {
   @apply bg-slate-400 opacity-40 w-12 h-12 z-40;
 }
 
-.carousel-container > button:hover{
+.carousel-container>button:hover {
   @apply bg-slate-500 opacity-70;
 }
 
 /* Accordion styles */
-.acc-item.active{
+.acc-item.active {
   max-height: 300px;
 }
 
-.acc-item{
+.acc-item {
   overflow: hidden;
   max-height: 0;
   transition: all .5s;

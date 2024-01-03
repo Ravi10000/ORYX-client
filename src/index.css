@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+table {
+    @apply w-full
+}
+
+table thead {
+    @apply bg-[#f1f8ff]
+}
+
+table th {
+    @apply p-3 font-semibold text-center
+}
+
+table tbody tr {
+    @apply border-b-2 border-[#eef2f6]
+}
+
+table td {
+    @apply p-3 text-center
+}
+
+.active-btn {
+    @apply bg-[#deffe4] text-[#4cc655] font-medium border border-[#7cdb8c] px-3 py-1 rounded-full
+}
+
+.inactive-btn {
+    @apply bg-[#fabfbe] text-[#f5403e] font-medium border border-[#f67271] px-3 py-1 rounded-full
+}
