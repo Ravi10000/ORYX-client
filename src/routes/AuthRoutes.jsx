@@ -6,7 +6,8 @@ import PropertyDetail from "../pages/PropertyDetail";
 
 const Settings = React.lazy(() => import(`../pages/Settings`))
 const Payouts = React.lazy(() => import(`../pages/Payouts`))
-const MyProperties = React.lazy(() => import(`../pages/MyProperties`))
+const MyProperties = React.lazy(() => import(`../pages/myProperties`))
+const AddProperty = React.lazy(() => import(`../pages/myProperties/addProperty`))
 const Overview = React.lazy(() => import(`../pages/Overview`))
 const UpcomingPage = React.lazy(() => import(`../pages/UpcomingPage`))
 const Marketplace = React.lazy(() => import(`../pages/marketplace`))
@@ -46,6 +47,10 @@ const AuthRoutes = [
       {
         path: "/my-properties",
         element: <MyProperties />,
+      },
+      {
+        path: "/my-properties/add-property",
+        element: <AddProperty />
       },
       {
         path: "/payouts",

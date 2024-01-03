@@ -6,7 +6,7 @@ import Input from "../../components/Input";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { Link } from "react-router-dom";
 
-const Marketplace = () => {
+export default function Marketplace() {
   return (
     <>
       <Heading
@@ -104,6 +104,4 @@ const Marketplace = () => {
       </div>
     </>
   );
-};
-
-export default Marketplace;
+}
