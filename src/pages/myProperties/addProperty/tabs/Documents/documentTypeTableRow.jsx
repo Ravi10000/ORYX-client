@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 export default function DocumentTypeTableRow({ documentType }) {
+
     return (
         <tr className='border-b-2 border-[#eef2f6]'>
             <td className='p-3 text-center'>{documentType.name}</td>

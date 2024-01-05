@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import DocumentTypeTableRow from './documentTypeTableRow'
 import { authApi } from '../../../../../api';
 
@@ -47,6 +47,7 @@ export default function Documents({ setActiveTab }) {
                     Next
                 </button>
             </div>
+
         </div>
     )
 }
