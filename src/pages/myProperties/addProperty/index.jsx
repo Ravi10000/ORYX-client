@@ -15,7 +15,7 @@ export default function AddProperty() {
     const [propertyTypes, setPropertyTypes] = useState();
     const [selectedImages, setSelectedImages] = useState([]);
 
-    const { register, handleSubmit, setValue, formState: { errors } } = useForm();
+    const { register, handleSubmit, setValue, getValues, formState: { errors } } = useForm();
 
     async function getPropertyType() {
         const { data: { data } } = await authApi.get('/property-type/read');
@@ -113,7 +113,14 @@ export default function AddProperty() {
                     }
 
                     {activeTab === 'documents' &&
-                        <Documents setActiveTab={setActiveTab} register={register} />
+                        <Documents
+                            setActiveTab={setActiveTab}
+                            register={register}
+                            getValues={getValues}
+                            handleSubmit={handleSubmit}
+                            errors={errors}
+
+                        />
                     }
 
                     {activeTab === 'auditDetails' &&

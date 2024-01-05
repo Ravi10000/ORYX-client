@@ -1,15 +1,20 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import DocumentTypeTableRow from './documentTypeTableRow'
 import { authApi } from '../../../../../api';
 
-export default function Documents({ setActiveTab }) {
+export default function Documents({ register, handleSubmit, getValues, errors, setActiveTab }) {
 
     const [documentTypes, setDocumentTypes] = useState();
 
     async function getDocumentTypes() {
-        const { data: { data } } = await authApi.get('/document-type/read');
-        console.log(data);
-        setDocumentTypes(data);
+        try {
+            const { data: { data } } = await authApi.get('/document-type/read');
+            // console.log(data);
+            setDocumentTypes(data);
+        }
+        catch (error) {
+            console.log(error);
+        }
     }
 
     useEffect(() => {
@@ -28,12 +33,15 @@ export default function Documents({ setActiveTab }) {
                 </thead>
 
                 <tbody>
-                    {documentTypes?.map((documentType) => (
+                    {documentTypes?.map((documentType, index) => (
                         <DocumentTypeTableRow
                             key={documentType?._id}
                             getDocumentTypes={getDocumentTypes}
-                            // setModal={setModal}
                             documentType={documentType}
+                            index={index}
+                            register={register}
+                            getValues={getValues}
+                            errors={errors}
                         />
                     ))}
                 </tbody>
@@ -41,13 +49,15 @@ export default function Documents({ setActiveTab }) {
             <div className='mt-10 flex justify-end items-center'>
                 <button
                     type='button'
-                    onClick={() => setActiveTab('auditDetails')}
+                    onClick={handleSubmit((data) => {
+                        console.log(data);
+                        setActiveTab('auditDetails')
+                    })}
                     className='p-2 w-60 cursor-pointer bg-primary text-white font-medium text-xl text-center rounded-lg'
                 >
                     Next
                 </button>
             </div>
-
         </div>
     )
 }
