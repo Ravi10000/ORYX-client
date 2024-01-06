@@ -1,7 +1,25 @@
-import React from 'react';
-import AmeticsCard from './AmeticsCard'
+import React, { useEffect, useState } from 'react';
+import AmeticsCard from './AmeticsCard';
+import { authApi } from '../../../../../api';
 
-export default function BasicDetails({ setActiveTab, register, propertyTypes }) {
+export default function BasicDetails({ setActiveTab, register, propertyTypes, selectedAmenities, handleAmenity }) {
+    const [amenities, setAmenities] = useState();
+
+    async function getAmenities() {
+        try {
+            const { data: { data } } = await authApi.get('/amenities/read');
+            // console.log(data);
+            setAmenities(data);
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        getAmenities();
+    }, []);
+
     return (
         <div className='flex flex-col gap-2'>
 
@@ -47,19 +65,14 @@ export default function BasicDetails({ setActiveTab, register, propertyTypes }) 
             <div className='flex flex-col gap-1'>
                 <label htmlFor='projectStatus' className='font-medium'>Amenities</label>
                 <div className='flex justify-center items-center flex-wrap gap-5 p-5 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg'>
-                    <AmeticsCard />
-                    <AmeticsCard />
-                    <AmeticsCard />
-                    <AmeticsCard />
-                    <AmeticsCard />
-                    <AmeticsCard />
-
-                    <AmeticsCard />
-                    <AmeticsCard />
-                    <AmeticsCard />
-                    <AmeticsCard />
-                    <AmeticsCard />
-                    <AmeticsCard />
+                    {amenities?.map(amenity => (
+                        <AmeticsCard
+                            key={amenity?._id}
+                            amenity={amenity}
+                            handleAmenity={handleAmenity}
+                            selectedAmenities={selectedAmenities}
+                        />
+                    ))}
                 </div>
             </div>
 

@@ -50,7 +50,7 @@ export default function Documents({ register, handleSubmit, getValues, errors, s
                 <button
                     type='button'
                     onClick={handleSubmit((data) => {
-                        console.log(data);
+                        // console.log(data);
                         setActiveTab('auditDetails')
                     })}
                     className='p-2 w-60 cursor-pointer bg-primary text-white font-medium text-xl text-center rounded-lg'

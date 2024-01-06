@@ -14,14 +14,33 @@ export default function AddProperty() {
     const [activeTab, setActiveTab] = useState('basicDetails');
     const [propertyTypes, setPropertyTypes] = useState();
     const [selectedImages, setSelectedImages] = useState([]);
+    const [selectedAmenities, setSelectedAmenities] = useState([]);
 
     const { register, handleSubmit, setValue, getValues, formState: { errors } } = useForm();
 
     async function getPropertyType() {
-        const { data: { data } } = await authApi.get('/property-type/read');
-        // console.log(data);
-        setPropertyTypes(data);
+        try {
+            const { data: { data } } = await authApi.get('/property-type/read');
+            // console.log(data);
+            setPropertyTypes(data);
+        }
+        catch (error) {
+            console.log(error);
+        }
     }
+
+    function handleAmenity(id) {
+        setSelectedAmenities((prev) => {
+            const isIdSelected = prev.includes(id);
+            if (isIdSelected) {
+                return prev.filter((amenityId) => amenityId !== id);
+            } else {
+                return [...prev, id];
+            }
+        });
+    }
+
+    // console.log(selectedAmenities);
 
     async function addProperty(data) {
         const dataClone = { ...data }
@@ -29,7 +48,8 @@ export default function AddProperty() {
         dataClone.docs = data.docs?.map(item => item[0])
 
         try {
-            const res = await authMultiFormApi.post('/property/add', { ...dataClone, status: 'Added', url });
+            const res = await authMultiFormApi.post('/property/add',
+                { ...dataClone, status: 'Added', url, amenities: selectedAmenities });
             console.log(res.data);
             if (res?.data?.success) {
                 toast.success('Properties Added Successfully');
@@ -109,7 +129,13 @@ export default function AddProperty() {
                     </div>
 
                     {activeTab === 'basicDetails' &&
-                        <BasicDetails setActiveTab={setActiveTab} register={register} propertyTypes={propertyTypes} />
+                        <BasicDetails
+                            setActiveTab={setActiveTab}
+                            register={register}
+                            propertyTypes={propertyTypes}
+                            handleAmenity={handleAmenity}
+                            selectedAmenities={selectedAmenities}
+                        />
                     }
 
                     {activeTab === 'documents' &&
