@@ -4,8 +4,8 @@ export default function DocumentTypeTableRow({ register, getValues, errors, docu
     const [file, setFile] = useState(null);
 
     useEffect(() => {
-        const doc = getValues(`docs[${index}]`)
-        console.log(doc);
+        const doc = getValues(`${documentType.name}`)
+        // console.log(doc);
         if (doc.length <= 0) return;
         setFile(doc)
     }, []);
@@ -35,16 +35,20 @@ export default function DocumentTypeTableRow({ register, getValues, errors, docu
             <td className='p-3 text-center flex gap-1 justify-center items-center'>
                 <div className='flex-1 relative text-sm'>
                     <div className='border border-[#EEF2F6] bg-[#F7FBFF] w-full outline-secondary rounded-lg'>
-                        <input {...register(`docs[${index}]`, { ...(documentType?.isRequired === 'Yes' && { required: 'Doc is Required.' }) })}
-                            className='opacity-0 absolute w-16 top-[2px] right-[2px]'
+                        <input
                             type='file'
-                            onChange={handleFileChange}
+                            className='opacity-0 absolute w-16 top-[2px] right-[2px]'
+                            {...register(`${documentType.name}`, {
+                                ...(documentType?.isRequired === 'Yes' && { required: `${documentType.name} is Required.` }),
+                                onChange: e => { handleFileChange(e) }
+                            })}
                         />
-                        {errors.doc && <p className='text-red-500 font-medium'>{errors.doc.message}</p>}
+
                         <div className='flex justify-center items-center gap-2 px-2 py-1 cursor-pointer'>
                             <span>Upload</span>
                         </div>
                     </div>
+                    {errors?.docs?.[index] && <p className=' mt- text-red-500 font-medium'>{errors?.docs?.[index].message}</p>}
                 </div>
 
                 <div className='flex-1'>

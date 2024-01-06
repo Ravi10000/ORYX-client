@@ -24,12 +24,12 @@ export default function AddProperty() {
     }
 
     async function addProperty(data) {
-        // console.log(data);
+        const dataClone = { ...data }
         let url = selectedImages?.map(item => item.file)
-        // console.log(images);
+        dataClone.docs = data.docs?.map(item => item[0])
+
         try {
-            const res = await authMultiFormApi.post('/property/add',
-                { ...data, status: 'Added', url });
+            const res = await authMultiFormApi.post('/property/add', { ...dataClone, status: 'Added', url });
             console.log(res.data);
             if (res?.data?.success) {
                 toast.success('Properties Added Successfully');
