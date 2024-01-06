@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import toast from 'react-hot-toast';
 
 export default function DocumentTypeTableRow({ register, getValues, errors, documentType, index }) {
     const [file, setFile] = useState(null);
@@ -26,6 +27,7 @@ export default function DocumentTypeTableRow({ register, getValues, errors, docu
             toast.error('Please select a document file first.');
         }
     }
+
     return (
         <tr className='border-b-2 border-[#eef2f6]'>
             <td className='p-3 text-center'>{documentType.name}</td>
@@ -39,22 +41,22 @@ export default function DocumentTypeTableRow({ register, getValues, errors, docu
                             type='file'
                             className='opacity-0 absolute w-16 top-[2px] right-[2px]'
                             {...register(`${documentType.name}`, {
-                                ...(documentType?.isRequired === 'Yes' && { required: `${documentType.name} is Required.` }),
+                                required: documentType?.isRequired === 'Yes' ? `${documentType.name} is Required.` : false,
                                 onChange: e => { handleFileChange(e) }
-                            })}
+                            })
+                            }
                         />
-
                         <div className='flex justify-center items-center gap-2 px-2 py-1 cursor-pointer'>
                             <span>Upload</span>
                         </div>
                     </div>
-                    {errors?.docs?.[index] && <p className=' mt- text-red-500 font-medium'>{errors?.docs?.[index].message}</p>}
+                    {errors?.[documentType?.name]?.type === "required" && <p className='text-red-500 font-medium'>{errors?.[documentType?.name]?.message}</p>}
                 </div>
 
                 <div className='flex-1'>
                     {file &&
                         <button type='button'
-                            className='w- text-primary border-b border-primary cursor-pointer'
+                            className='text-primary border-b border-primary cursor-pointer'
                             onClick={handleViewDocument}>View</button>
                     }
                 </div>

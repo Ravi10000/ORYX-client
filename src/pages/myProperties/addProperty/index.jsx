@@ -119,7 +119,6 @@ export default function AddProperty() {
                             getValues={getValues}
                             handleSubmit={handleSubmit}
                             errors={errors}
-
                         />
                     }
 
