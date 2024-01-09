@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+const withMT = require("@material-tailwind/react/utils/withMT");
+
+export default withMT({
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
@@ -23,7 +25,7 @@ export default {
         'homeLayout2': '25vw 1fr',
         'headingLayout': "1fr min-content"
       },
-      maxWidth:{
+      maxWidth: {
         carouselContainer: "calc(100vw - 23.5rem)",
         // carouselContainer: "calc(100vw - 17rem)",
         carouselContainer2: "calc(100vw - 25vw - 5rem)",
@@ -34,4 +36,4 @@ export default {
     },
   },
   plugins: [],
-};
+})

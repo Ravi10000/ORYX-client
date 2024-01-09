@@ -1,12 +1,13 @@
 import React from "react";
 import CarouselX from "../../components/CarouselX";
-import Card from "../../components/Card";
 import Heading from "../../components/Heading";
 import Input from "../../components/Input";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { Link } from "react-router-dom";
+import PropertyCard from "./PropertyCard";
 
 export default function MyProperties() {
+
     return (
         <>
             <Heading
@@ -92,14 +93,7 @@ export default function MyProperties() {
 
             <div className="overflow-hidden my-8">
                 <CarouselX>
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
+                    <PropertyCard />
                 </CarouselX>
             </div>
         </>

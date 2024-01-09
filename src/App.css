@@ -77,11 +77,11 @@ table:not([role="colored"]) td{
 }
 
 .carousel-container>button {
-  @apply bg-slate-400 opacity-40 w-12 h-12 z-40;
+  @apply bg-[#96a3b9] opacity-40 w-12 h-12 z-40;
 }
 
 .carousel-container>button:hover {
-  @apply bg-slate-500 opacity-70;
+  @apply bg-[#66748c] opacity-70;
 }
 
 /* Accordion styles */

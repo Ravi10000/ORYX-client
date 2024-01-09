@@ -3,7 +3,7 @@ import Button from "./Button";
 
 const Footer = () => {
   return (
-    <footer className="bg-slate-900 sm:w-auto w-full text-white xl:px-44 md:px-16 px-4  h-auto py-20 box-border">
+    <footer className="bg-[#10172b] sm:w-auto w-full text-white xl:px-44 md:px-16 px-4  h-auto py-20 box-border">
       <div className="sm:grid md:grid-rows-1 md:grid-cols-4 sm:grid-cols-2 sm:grid-rows-2 grid-cols-1 grid-rows-4 md:gap-5 flex flex-col gap-5">
         <div>
           {/* <div className="logo h-full center">
