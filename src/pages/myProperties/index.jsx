@@ -12,7 +12,7 @@ export default function MyProperties() {
 
     async function getProperties() {
         const { data: { data } } = await authMultiFormApi.get('/property/read');
-        // console.log(data);
+        console.log(data);
         setProperties(data);
     }
 

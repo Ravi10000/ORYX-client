@@ -5,7 +5,7 @@ import {
     MenuList,
     MenuItem,
 } from "@material-tailwind/react";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function PropertyCard({ property }) {
 
@@ -24,11 +24,17 @@ export default function PropertyCard({ property }) {
             <div className='w-72 h-[500px] bg-white shadow-lg rounded-xl text-primary'>
 
                 <div className='flex flex-col gap-2 text-sm'>
-                    <img
-                        src={`${import.meta.env.VITE_ASSET_URI}/${property?.images?.[0].url}`}
-                        alt='cardHouse'
-                        className='w-72 h-64'
-                    />
+
+                    <Link
+                        to={`/property-detail/${property._id}`}
+                        state={property}
+                    >
+                        <img
+                            src={`${import.meta.env.VITE_ASSET_URI}/${property?.images?.[0].url}`}
+                            alt='cardHouse'
+                            className='w-72 h-64'
+                        />
+                    </Link>
 
                     <div className='flex justify-between items-center px-3'>
                         <h5 className='font-medium'>{property?.name}</h5>
@@ -69,74 +75,118 @@ export default function PropertyCard({ property }) {
                     <div className='bg-[#f1f8ff] text-xs mx-5 text-center'>
                         <div className='p-2 flex gap-2'>
 
-                            <div className='flex-1 flex flex-col gap-1 justify-center items-center'>
-                                <span className='text-secondary font-medium'>{property?.expectedReturns}</span>
-                                <img
-                                    src='/src/assets/return.png'
-                                    alt='return'
-                                    className='w-4 h-4'
-                                />
-                                <span>Expected Return</span>
+                            <div className='flex-1 flex flex-col justify-center items-center'>
+                                <div className='flex-1'>
+                                    <span className='text-secondary font-medium'>{property?.expectedReturns}</span>
+                                </div>
+                                <div className='flex-1'>
+                                    <img
+                                        src='/src/assets/return.png'
+                                        alt='return'
+                                        className='w-4 h-4'
+                                    />
+                                </div>
+                                <div className='flex-1'>
+                                    <span >Expected Return</span>
+                                </div>
+
                             </div>
 
                             <div className='flex-1 flex flex-col gap-1 justify-center items-center'>
-                                <span className='text-secondary font-medium'>{property?.dividendYield}</span>
-                                <img
-                                    src='/src/assets/yield.png'
-                                    alt='return'
-                                    className='w-4 h-4'
-                                />
-                                <span>Dividend Yield</span>
+                                <div className='flex-1'>
+                                    <span className='text-secondary font-medium'>{property?.dividendYield}</span>
+                                </div>
+
+                                <div className='flex-1'>
+                                    <img
+                                        src='/src/assets/yield.png'
+                                        alt='return'
+                                        className='w-4 h-4'
+                                    />
+                                </div>
+
+                                <div className='flex-1'>
+                                    <span>Dividend Yield</span>
+                                </div>
+
                             </div>
 
                             <div className='flex-1 flex flex-col gap-1 justify-center items-center'>
-                                <span className='text-secondary font-medium'>{property?.dividendFrequency}</span>
-                                <img
-                                    src='/src/assets/frequency.png'
-                                    alt='return'
-                                    className='w-4 h-4'
-                                />
-                                <span>Dividend Frequency</span>
-                            </div>
+                                <div className='flex-1'>
+                                    <span className='text-secondary font-medium'>{property?.dividendFrequency}</span>
+                                </div>
 
+                                <div className='flex-1'>
+                                    <img
+                                        src='/src/assets/frequency.png'
+                                        alt='return'
+                                        className='w-4 h-4'
+                                    />
+                                </div>
+
+                                <div className='flex'>
+                                    <span>Dividend Frequency</span>
+                                </div>
+                            </div>
                         </div>
-
                     </div>
 
                     <div className='bg-[#d4e8fd] text-xs text-center mt-3 rounded-b-xl'>
                         <div className='p-2 flex gap-2'>
 
                             <div className='flex-1 flex flex-col gap-1 justify-center items-center'>
-                                <img
-                                    src='/src/assets/owner.png'
-                                    alt='return'
-                                    className='w-4 h-4'
-                                />
-                                <span>Owner NFTs</span>
-                                <span className='text-secondary font-medium'>{property?.totalOwnerNFT}</span>
+                                <div className='flex-1'>
+                                    <img
+                                        src='/src/assets/owner.png'
+                                        alt='return'
+                                        className='w-4 h-4'
+                                    />
+                                </div>
+
+                                <div className='flex-1'>
+                                    <span>Owner NFTs</span>
+                                </div>
+
+                                <div className='flex-1'>
+                                    <span className='text-secondary font-medium'>{property?.totalOwnerNFT}</span>
+                                </div>
                             </div>
 
                             <div className='flex-1 flex flex-col gap-1 justify-center items-center'>
-                                <img
-                                    src='/src/assets/rental.png'
-                                    alt='return'
-                                    className='w-4 h-4'
-                                />
-                                <span>Rental NFTs</span>
-                                <span className='text-secondary font-medium'>{property?.totalRentalNFT}</span>
+                                <div className='flex-1'>
+                                    <img
+                                        src='/src/assets/rental.png'
+                                        alt='return'
+                                        className='w-4 h-4'
+                                    />
+                                </div>
+
+                                <div className='flex-1'>
+                                    <span>Rental NFTs</span>
+                                </div>
+
+                                <div className='flex-1'>
+                                    <span className='text-secondary font-medium'>{property?.totalRentalNFT}</span>
+                                </div>
                             </div>
 
                             <div className='flex-1 flex flex-col gap-1 justify-center items-center'>
-                                <img
-                                    src='/src/assets/price.png'
-                                    alt='return'
-                                    className='w-4 h-4'
-                                />
-                                <span>Price NFTs</span>
-                                <span className='text-secondary font-medium'>150,000</span>
+                                <div className='flex-1'>
+                                    <img
+                                        src='/src/assets/price.png'
+                                        alt='return'
+                                        className='w-4 h-4'
+                                    />
+                                </div>
+
+                                <div className='flex-1'>
+                                    <span>Price NFTs</span>
+                                </div>
+
+                                <div className='flex-1'>
+                                    <span className='text-secondary font-medium'>150,000</span>
+                                </div>
                             </div>
-
-
                         </div>
 
                     </div>
