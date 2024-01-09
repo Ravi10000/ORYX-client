@@ -7,7 +7,7 @@ import {
 } from "@material-tailwind/react";
 import { useNavigate } from 'react-router-dom';
 
-export default function PropertyCard() {
+export default function PropertyCard({ property }) {
 
     const navigate = useNavigate();
 
@@ -25,13 +25,13 @@ export default function PropertyCard() {
 
                 <div className='flex flex-col gap-2 text-sm'>
                     <img
-                        src='/src/assets/propertyImg.png'
+                        src={`${import.meta.env.VITE_ASSET_URI}/${property?.images?.[0].url}`}
                         alt='cardHouse'
                         className='w-72 h-64'
                     />
 
                     <div className='flex justify-between items-center px-3'>
-                        <h5 className='font-medium'>I Authentic 3-Bedroom</h5>
+                        <h5 className='font-medium'>{property?.name}</h5>
                         <Menu
                             animate={{
                                 mount: { y: 0 },
@@ -70,7 +70,7 @@ export default function PropertyCard() {
                         <div className='p-2 flex gap-2'>
 
                             <div className='flex-1 flex flex-col gap-1 justify-center items-center'>
-                                <span className='text-secondary font-medium'>34%</span>
+                                <span className='text-secondary font-medium'>{property?.expectedReturns}</span>
                                 <img
                                     src='/src/assets/return.png'
                                     alt='return'
@@ -80,7 +80,7 @@ export default function PropertyCard() {
                             </div>
 
                             <div className='flex-1 flex flex-col gap-1 justify-center items-center'>
-                                <span className='text-secondary font-medium'>4.8%</span>
+                                <span className='text-secondary font-medium'>{property?.dividendYield}</span>
                                 <img
                                     src='/src/assets/yield.png'
                                     alt='return'
@@ -90,7 +90,7 @@ export default function PropertyCard() {
                             </div>
 
                             <div className='flex-1 flex flex-col gap-1 justify-center items-center'>
-                                <span className='text-secondary font-medium'>Monthly</span>
+                                <span className='text-secondary font-medium'>{property?.dividendFrequency}</span>
                                 <img
                                     src='/src/assets/frequency.png'
                                     alt='return'
@@ -98,7 +98,6 @@ export default function PropertyCard() {
                                 />
                                 <span>Dividend Frequency</span>
                             </div>
-
 
                         </div>
 
@@ -114,7 +113,7 @@ export default function PropertyCard() {
                                     className='w-4 h-4'
                                 />
                                 <span>Owner NFTs</span>
-                                <span className='text-secondary font-medium'>100</span>
+                                <span className='text-secondary font-medium'>{property?.totalOwnerNFT}</span>
                             </div>
 
                             <div className='flex-1 flex flex-col gap-1 justify-center items-center'>
@@ -124,7 +123,7 @@ export default function PropertyCard() {
                                     className='w-4 h-4'
                                 />
                                 <span>Rental NFTs</span>
-                                <span className='text-secondary font-medium'>200</span>
+                                <span className='text-secondary font-medium'>{property?.totalRentalNFT}</span>
                             </div>
 
                             <div className='flex-1 flex flex-col gap-1 justify-center items-center'>

@@ -1,12 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CarouselX from "../../components/CarouselX";
 import Heading from "../../components/Heading";
 import Input from "../../components/Input";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { Link } from "react-router-dom";
 import PropertyCard from "./PropertyCard";
+import { authMultiFormApi } from "../../api";
 
 export default function MyProperties() {
+    const [properties, setProperties] = useState(null);
+
+    async function getProperties() {
+        const { data: { data } } = await authMultiFormApi.get('/property/read');
+        // console.log(data);
+        setProperties(data);
+    }
+
+    useEffect(() => {
+        getProperties();
+    }, []);
+
+    // console.log(properties);
 
     return (
         <>
@@ -88,13 +102,18 @@ export default function MyProperties() {
                         className="text-gray-500 capitalize font-semibold"
                     />
                 </div>
-
             </form>
 
             <div className="overflow-hidden my-8">
-                <CarouselX>
-                    <PropertyCard />
-                </CarouselX>
+                {
+                    properties && (
+                        <CarouselX>
+                            {properties?.map(property => (
+                                <PropertyCard key={property._id} property={property} />
+                            ))}
+                        </CarouselX>
+                    )
+                }
             </div>
         </>
     );
