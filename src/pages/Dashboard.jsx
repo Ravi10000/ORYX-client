@@ -1,36 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
-import Button from "../components/Button";
-import Card from "../components/Card";
 import Table from "../components/Table";
-
 import RoundIcon from "../components/RoundIcon";
 import CardImage from "../components/CardImage";
-
 import CarouselX from "../components/CarouselX";
 import Banner from "../screens/Banner";
+import { authMultiFormApi } from "../api";
+import PropertyCard from "./myProperties/PropertyCard";
 
-const Dashboard = () => {
+export default function Dashboard() {
+  const [properties, setProperties] = useState(null);
+
+  async function getProperties() {
+    const { data: { data } } = await authMultiFormApi.get('/property/read');
+    // console.log(data);
+    setProperties(data);
+  }
+
+  useEffect(() => {
+    getProperties();
+  }, []);
+
+  // console.log(properties);
+
   return (
     <>
       <Banner />
-      
+
       <div className="container-r my-4">
         <h1 className="h1">Discover New Properties</h1>
 
         {/* <div className="flex gap-5 flex-wrap mx-auto"> */}
         <div className="overflow-hidden">
-          <CarouselX>
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-          </CarouselX>
+          {
+            properties && (
+              <CarouselX>
+                {properties?.map(property => (
+                  <PropertyCard key={property._id} property={property} />
+                ))}
+              </CarouselX>
+            )
+          }
         </div>
       </div>
 
@@ -79,5 +89,3 @@ const Dashboard = () => {
     </>
   );
 };
-
-export default Dashboard;
