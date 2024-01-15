@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Heading from '../../components/Heading';
 import axios from 'axios';
 import { useDropzone } from 'react-dropzone';
@@ -8,13 +8,25 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 
 export default function AddProject() {
+    const location = useLocation();
+    const project = location?.state?.project;
+    // console.log(project);
+
     const [city, setCity] = useState();
     const [state, setState] = useState();
     const [country, setCountry] = useState();
     const [selectedImages, setSelectedImages] = useState([]);
     const [projectTypes, setProjectTypes] = useState();
 
-    const { register, handleSubmit, setValue, formState: { errors } } = useForm();
+    const { register, handleSubmit, setValue, formState: { errors } } = useForm({
+        defaultValues: useMemo(() => {
+            if (!project) return;
+            return {
+                ...project
+            }
+        })
+    });
+
     const navigate = useNavigate();
 
     async function fetchPincode(e) {
@@ -47,7 +59,6 @@ export default function AddProject() {
             id: Math.random().toString(36).substring(7),
             file,
         }));
-
         setSelectedImages((prevImages) => [...prevImages, ...newImages]);
     }, []);
 
@@ -74,15 +85,28 @@ export default function AddProject() {
         // console.log(data);
         let images = selectedImages?.map(item => item.file)
         // console.log(images);
-        try {
-            const res = await authMultiFormApi.post('/project/create',
-                { ...data, images });
-            // console.log(res.data);
-            toast.success('Project Created Successfully')
-            // navigate('/marketplace');
-        } catch (error) {
-            console.log(error);
+        if (project) {
+            try {
+                const res = await authMultiFormApi.put(`/project/update/${project?._id}`,
+                    { ...data, images });
+                console.log(res.data);
+                toast.success('Project Updated Successfully')
+                navigate('/marketplace');
+            } catch (error) {
+                console.log(error);
+            }
+        } else {
+            try {
+                const res = await authMultiFormApi.post('/project/create',
+                    { ...data, images });
+                // console.log(res.data);
+                toast.success('Project Created Successfully')
+                navigate('/marketplace');
+            } catch (error) {
+                console.log(error);
+            }
         }
+
     }
 
     useEffect(() => {
@@ -309,8 +333,8 @@ export default function AddProject() {
                     </div>
                     <div className='flex justify-center items-center mt-5'>
                         <button type='submit'
-                            className='text-lg w-20 p-2 py-3 my-4 bg- text-white rounded-lg bg-primary hover:bg-hover'>
-                            Add
+                            className='text-lg w-24 p-2 py-3 my-4 bg- text-white rounded-lg bg-primary hover:bg-hover'>
+                            {project ? 'Update' : 'Add'}
                         </button>
                     </div>
                 </form>
