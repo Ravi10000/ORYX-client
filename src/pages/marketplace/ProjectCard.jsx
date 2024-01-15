@@ -8,7 +8,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 
 export default function ProjectCard({ project }) {
-
+    const projectId = project._id;
     const navigate = useNavigate();
 
     function handleEditProject() {
@@ -24,17 +24,29 @@ export default function ProjectCard({ project }) {
     }
 
     function handleViewProperties() {
-        navigate('/projects/manage-projects/view-properties');
+        navigate('/marketplace/view-properties',
+            {
+                state: { projectId }
+            }
+        );
     }
 
     return (
         <div className='w-72 h-96 bg-white shadow-lg rounded-2xl mb-5'>
             <div className='flex flex-col gap-2 text-sm'>
-                <img
-                    src={`${import.meta.env.VITE_ASSET_URI}/${project?.images?.[0]}`}
-                    alt='cardHouse'
-                    className='w-72 h-64'
-                />
+                {project.images.length > 0 ?
+                    <img
+                        src={`${import.meta.env.VITE_ASSET_URI}/${project?.images?.[0]}`}
+                        alt='cardHouse'
+                        className='w-72 h-64'
+                    />
+                    :
+                    <img
+                        src=''
+                        alt='cardHouse'
+                        className='w-72 h-64'
+                    />
+                }
 
                 <div className='flex justify-between items-center px-3'>
                     <h5 className='font-medium'>{project.name}</h5>

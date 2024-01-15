@@ -166,7 +166,7 @@ export default function AddProject() {
                                     id=''
                                     className='py-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg'>
                                     <option value='UnderDevelopment'>Under Development</option>
-                                    <option value='DevelopmentCompleted'>DevelopmentCompleted</option>
+                                    <option value='DevelopmentCompleted'>Development Completed</option>
                                 </select>
                                 <div>
                                 </div>

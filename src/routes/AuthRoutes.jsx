@@ -12,6 +12,8 @@ const Overview = React.lazy(() => import(`../pages/Overview`))
 const UpcomingPage = React.lazy(() => import(`../pages/UpcomingPage`))
 const Marketplace = React.lazy(() => import(`../pages/marketplace`))
 const AddProject = React.lazy(() => import(`../pages/marketplace/addProject`))
+const ViewProperties = React.lazy(() => import(`../pages/marketplace/viewProperties`))
+const AddProjectProperty = React.lazy(() => import(`../pages/marketplace/viewProperties/addProperty`))
 const Dashboard = React.lazy(() => import(`../pages/Dashboard`))
 const Favorites = React.lazy(() => import(`../pages/Favorites`))
 
@@ -31,6 +33,14 @@ const AuthRoutes = [
       {
         path: '/marketplace/add-project',
         element: <AddProject />
+      },
+      {
+        path: '/marketplace/view-properties',
+        element: <ViewProperties />
+      },
+      {
+        path: '/marketplace/view-properties/add-property',
+        element: <AddProjectProperty />
       },
       {
         path: "/upcoming-pages",
