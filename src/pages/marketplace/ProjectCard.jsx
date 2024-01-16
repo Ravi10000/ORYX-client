@@ -19,9 +19,9 @@ export default function ProjectCard({ project }) {
         );
     }
 
-    function handleAssignProject() {
-        navigate('/projects/manage-projects/assign-project');
-    }
+    // function handleAssignProject() {
+    //     navigate('/projects/manage-projects/assign-project');
+    // }
 
     function handleViewProperties() {
         navigate('/marketplace/view-properties',
@@ -71,12 +71,12 @@ export default function ProjectCard({ project }) {
                                 Edit Project
                             </MenuItem>
                             <hr />
-                            <MenuItem
+                            {/* <MenuItem
                                 onClick={handleAssignProject}
                             >
                                 Assign Project
                             </MenuItem>
-                            <hr />
+                            <hr /> */}
                             <MenuItem
                                 onClick={handleViewProperties}
                             >

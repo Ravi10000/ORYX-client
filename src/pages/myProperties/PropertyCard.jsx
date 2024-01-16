@@ -29,11 +29,19 @@ export default function PropertyCard({ property }) {
                         to={`/property-detail/${property._id}`}
                         state={property}
                     >
-                        <img
-                            src={`${import.meta.env.VITE_ASSET_URI}/${property?.images?.[0].url}`}
-                            alt='cardHouse'
-                            className='w-72 h-64'
-                        />
+                        {property.images.length > 0 ?
+                            <img
+                                src={`${import.meta.env.VITE_ASSET_URI}/${property?.images?.[0]?.url}`}
+                                alt='cardHouse'
+                                className='w-72 h-64'
+                            />
+                            :
+                            <img
+                                src=''
+                                alt='cardHouse'
+                                className='w-72 h-64'
+                            />
+                        }
                     </Link>
 
                     <div className='flex justify-between items-center px-3'>
