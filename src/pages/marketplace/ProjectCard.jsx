@@ -32,19 +32,19 @@ export default function ProjectCard({ project }) {
     }
 
     return (
-        <div className='w-72 h-96 bg-white shadow-lg rounded-2xl mb-5'>
+        <div className='w-72 h-96 bg-white shadow-2xl rounded-2xl my-5'>
             <div className='flex flex-col gap-2 text-sm'>
                 {project.images.length > 0 ?
                     <img
                         src={`${import.meta.env.VITE_ASSET_URI}/${project?.images?.[0]}`}
                         alt='cardHouse'
-                        className='w-72 h-64'
+                        className='w-72 h-64 p-2'
                     />
                     :
                     <img
                         src=''
                         alt='cardHouse'
-                        className='w-72 h-64'
+                        className='w-72 h-64 p-2'
                     />
                 }
 

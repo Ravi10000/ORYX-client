@@ -22,14 +22,16 @@ export default function Marketplace() {
 
   return (
     <>
-      <Heading
-        heading={"Marketplace"}
-        subHeading={"Buy and Sell Real Estate NFTs Within Seconds"}
-      />
+      <div className="px-5">
+        <Heading
+          heading={"Marketplace"}
+          subHeading={"Buy and Sell Real Estate NFTs Within Seconds"}
+        />
+      </div>
 
       <form className="flex flex-col py-3 2xl:gap-10 gap-5 flex-wrap">
-        <div className="flex gap-20 justify-between items-center">
-          <div className="w-[50%]">
+        <div className="flex flex-wrap gap-x-5 lg:gap-20 justify-between items-center px-5">
+          <div className="lg:w-[50%]">
             <Input.Search
               className="flex-1 min-w-[250px]"
               name={"search"}
@@ -48,7 +50,7 @@ export default function Marketplace() {
 
         </div>
 
-        <div className="flex gap-10 items-center">
+        <div className="flex flex-wrap gap-5 lg:gap-10 items-center px-5">
           <div className="relative">
             <select
               name=""
@@ -106,11 +108,11 @@ export default function Marketplace() {
       <div className="overflow-hidden my-8">
         {
           projects && (
-            <CarouselX>
+            <div className="flex gap-x-5 justify-center flex-wrap">
               {projects?.map(project => (
                 <ProjectCard key={project._id} project={project} />
               ))}
-            </CarouselX>
+            </div>
           )
         }
       </div>

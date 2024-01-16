@@ -26,14 +26,16 @@ export default function ViewProperties() {
 
     return (
         <>
-            <Heading
-                heading={"Marketplace / Property"}
-                subHeading={"Buy and Sell Real Estate NFTs Within Seconds"}
-            />
+            <div className="px-5">
+                <Heading
+                    heading={"Marketplace / Property"}
+                    subHeading={"Buy and Sell Real Estate NFTs Within Seconds"}
+                />
+            </div>
 
             <form className="flex flex-col py-3 2xl:gap-10 gap-5 flex-wrap">
-                <div className="flex gap-20 justify-between items-center">
-                    <div className="w-[50%]">
+                <div className="flex flex-wrap gap-x-5 lg:gap-20 justify-between items-center px-5">
+                    <div className="lg:w-[50%]">
                         <Input.Search
                             className="flex-1 min-w-[250px]"
                             name={"search"}
@@ -54,7 +56,7 @@ export default function ViewProperties() {
 
                 </div>
 
-                <div className="flex gap-10 items-center">
+                <div className="flex gap-5 lg:gap-10 flex-wrap items-center px-5">
                     <div className="relative">
                         <select
                             name=""

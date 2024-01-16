@@ -14,7 +14,7 @@ const TopBar = ({ toggleNav }) => {
   }
 
   return (
-    <div className="topBar h-auto bg-white-600 flex justify-between px-8 py-2 bg-white border-b">
+    <div className="topBar h-auto bg-white-600 flex justify-between px-8 py-2 bg-white border-b sticky top-0 z-20">
       <ul className="logo h-full center flex gap-4">
 
         <li className="cursor-pointer block navBreak:hidden">

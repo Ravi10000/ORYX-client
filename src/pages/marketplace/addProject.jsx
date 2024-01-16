@@ -120,15 +120,15 @@ export default function AddProject() {
                 subHeading={"Buy and Sell Real Estate NFTs Within Seconds"}
             />
 
-            <div className='bg-white flex flex-col shadow-2xl rounded-lg m-10 py-10'>
+            <div className='bg-white flex flex-col shadow-2xl rounded-lg my-2 lg:m-10 py-5 lg:py-10'>
                 <div className='pb-10'>
-                    <h2 className='py-3 px-10 text-lg bg-bodyBg font-semibold'>Project 101</h2>
+                    <h2 className='lg:py-3 px-5 lg:px-10 text-lg bg-bodyBg font-semibold'>Project 101</h2>
                 </div>
 
                 <form onSubmit={handleSubmit(createProject)}>
 
-                    <div className='flex gap-10 px-10'>
-                        <div className='flex-1 flex flex-col gap-5 w-[50%]'>
+                    <div className='flex flex-col lg:flex-row gap-10 px-5 lg:px-10'>
+                        <div className='flex-1 flex flex-col gap-5 lg:w-[50%]'>
 
                             <div className='flex flex-col gap-1'>
                                 <label htmlFor='name' className='font-medium'>Project Name</label>
@@ -172,8 +172,8 @@ export default function AddProject() {
                                 </div>
                             </div>
 
-                            <div className='flex gap-3'>
-                                <div className='flex-[2] flex flex-col gap-1 w-[60%]'>
+                            <div className='flex flex-wrap lg:flex-nowrap gap-4'>
+                                <div className='lg:flex-[2] flex flex-col gap-1 w-full lg:w-[60%]'>
                                     <label htmlFor='address1' className='font-medium'>Street Address</label>
                                     <input {...register('street')}
                                         type='text'
@@ -181,7 +181,7 @@ export default function AddProject() {
                                         className='p-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg' />
                                 </div>
 
-                                <div className='flex-[1] flex flex-col gap-1 w-[30%]'>
+                                <div className='lg:flex-[1] flex flex-col gap-1 w-full lg:w-[30%]'>
                                     <label className='font-medium'>View In Map</label>
                                     <Link {...register('googleMap')}
                                         to='https://google.com/maps'
@@ -196,8 +196,8 @@ export default function AddProject() {
                                 </div>
                             </div>
 
-                            <div className='flex gap-10'>
-                                <div className='flex-1 flex flex-col gap-1 w-[40%]'>
+                            <div className='flex flex-wrap lg:flex-nowrap gap-4 lg:gap-x-10'>
+                                <div className='flex-1 flex flex-col gap-1 w-full lg:w-[40%]'>
                                     <label htmlFor='propertyType' className='font-medium'>Pincode</label>
                                     <input {...register('pincode')}
                                         type='number'
@@ -219,7 +219,7 @@ export default function AddProject() {
                                     </div>
                                 </div>
 
-                                <div className='flex-1 flex flex-col gap-1 w-[40%]'>
+                                <div className='flex-1 flex flex-col gap-1 w-full lg:w-[40%]'>
                                     <label htmlFor='propertyType' className='font-medium'>City</label>
                                     <select {...register('city')}
                                         id='propertyType'
@@ -234,8 +234,8 @@ export default function AddProject() {
                                 </div>
                             </div>
 
-                            <div className='flex gap-10'>
-                                <div className='flex-1 flex flex-col gap-1 w-[40%]'>
+                            <div className='flex flex-wrap lg:flex-nowrap gap-4 lg:gap-x-10'>
+                                <div className='flex-1 flex flex-col gap-1 w-full lg:w-[40%]'>
                                     <label htmlFor='name' className='font-medium'>State</label>
                                     <input {...register('state')}
                                         type='text'
@@ -245,7 +245,7 @@ export default function AddProject() {
                                         className='p-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg' />
                                 </div>
 
-                                <div className='flex-1 flex flex-col gap-1 w-[40%]'>
+                                <div className='flex-1 flex flex-col gap-1 w-full lg:w-[40%]'>
                                     <label htmlFor='name' className='font-medium'>Country</label>
                                     <input {...register('country')}
                                         type='text'
@@ -291,7 +291,7 @@ export default function AddProject() {
 
                         </div >
 
-                        <div className='flex-1 w-[50%]'>
+                        <div className='flex-1 lg:w-[50%]'>
                             <div {...getRootProps({ className: "dropzone" })}>
                                 <input {...getInputProps()} />
 

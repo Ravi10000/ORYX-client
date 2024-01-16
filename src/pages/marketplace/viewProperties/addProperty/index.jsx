@@ -100,10 +100,10 @@ export default function AddProperty() {
 
     return (
         <form onSubmit={handleSubmit(addProperty)}
-            className='bg-white flex flex-col shadow-2xl rounded-lg m-10 pb-10'>
+            className='bg-white flex flex-col shadow-2xl rounded-lg lg:m-10 pb-10 mb-5'>
 
-            <div className='flex items-center gap-10 mt-8 px-10 text-lg bg-bodyBg font-semibold'>
-                <h2 className='py-3 px-10 text-lg bg-bodyBg font-semibold'>Project 101</h2>
+            <div className='flex flex-wrap items-center ga-5 lg:gap-10 mt-3 lg:mt-8 px-5 lg:px-10 text-lg bg-bodyBg font-semibold'>
+                <h2 className='py-3 px-5 lg:px-10 text-lg bg-bodyBg font-semibold'>Project 101</h2>
 
                 <div className='pt-3 flex py-3 gap-5 px-3 text-xs'>
                     <button className='bg-[#e0cdfb] px-2 py-1 text-[#a36df3] font-semibold border border-[#a36df3] rounded-full'>Appointment</button>
@@ -112,9 +112,9 @@ export default function AddProperty() {
                 </div>
             </div>
 
-            <div className='flex gap-10 px-10'>
+            <div className='flex flex-col lg:flex-row gap-5 lg:gap-10 px-5 lg:px-10'>
 
-                <div className='flex-1 w-[50%]'>
+                <div className='flex-1 lg:w-[50%]'>
                     <div className='flex flex-wrap gap-x-5 gap-y-3 font-semibold text-sm py-5'>
                         <button
                             type='button'
