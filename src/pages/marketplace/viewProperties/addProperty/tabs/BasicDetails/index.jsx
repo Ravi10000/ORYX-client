@@ -2,7 +2,16 @@ import React, { useEffect, useState } from 'react';
 import AmeticsCard from './AmeticsCard';
 import { authApi } from '../../../../../../api';
 
-export default function BasicDetails({ setActiveTab, register, propertyTypes, selectedAmenities, handleAmenity }) {
+export default function BasicDetails({
+    setActiveTab,
+    register,
+    errors,
+    handleSubmit,
+    propertyTypes,
+    selectedAmenities,
+    handleAmenity
+}) {
+
     const [amenities, setAmenities] = useState();
 
     async function getAmenities() {
@@ -25,10 +34,11 @@ export default function BasicDetails({ setActiveTab, register, propertyTypes, se
 
             <div className='flex flex-col gap-1'>
                 <label htmlFor='name' className='font-medium'>Name</label>
-                <input {...register('name')}
+                <input {...register('name', { required: 'Property Name is Required.' })}
                     type='text'
                     id='name'
                     className='p-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg' />
+                {errors.name && <p className='text-red-500 font-medium'>{errors?.name?.message}</p>}
             </div>
 
             <div className='flex flex-col gap-1'>
@@ -79,7 +89,10 @@ export default function BasicDetails({ setActiveTab, register, propertyTypes, se
             <div className='mt-10 flex justify-end items-center'>
                 <button
                     type='button'
-                    onClick={() => setActiveTab('documents')}
+                    onClick={handleSubmit((data) => {
+                        // console.log(data);
+                        setActiveTab('documents')
+                    })}
                     className='p-2 w-60 cursor-pointer bg-primary text-white font-medium text-xl text-center rounded-lg'
                 >
                     Next

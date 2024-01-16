@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import PropertyPictures from './PropertyPictures';
 import BasicDetails from './tabs/basicDetails';
 import Documents from './tabs/Documents';
@@ -13,7 +13,10 @@ import { useLocation, useNavigate } from 'react-router-dom';
 export default function AddProperty() {
     const location = useLocation();
     const projectId = location?.state;
-    console.log(projectId);
+    // console.log(projectId);
+
+    const id = projectId?._id;
+    // console.log(id);
 
     const navigate = useNavigate();
 
@@ -22,7 +25,16 @@ export default function AddProperty() {
     const [selectedImages, setSelectedImages] = useState([]);
     const [selectedAmenities, setSelectedAmenities] = useState([]);
 
-    const { register, handleSubmit, setValue, getValues, formState: { errors } } = useForm();
+    const { register, handleSubmit, setValue, getValues, formState: { errors } } = useForm(
+        {
+            defaultValues: useMemo(() => {
+                if (!projectId?.name) return;
+                return {
+                    ...projectId,
+                }
+            }, [projectId])
+        }
+    );
 
     async function getPropertyType() {
         try {
@@ -53,17 +65,32 @@ export default function AddProperty() {
         let url = selectedImages?.map(item => item.file)
         dataClone.docs = data.docs?.map(item => item[0])
 
-        try {
-            const res = await authMultiFormApi.post('/property/add',
-                { ...dataClone, projectId, status: 'Added', url, amenities: selectedAmenities });
-            // console.log(res.data);
-            if (res?.data?.success) {
-                toast.success('Properties Added Successfully');
+        if (projectId?.name) {
+            try {
+                const res = await authMultiFormApi.put(`/property/update/${id}`,
+                    { ...dataClone, url, amenities: selectedAmenities });
+                // console.log(res.data);
+                if (res?.data?.success) {
+                    toast.success('Properties Updated Successfully');
+                }
+                navigate(-1);
+            } catch (error) {
+                console.log(error);
+                toast.error(error?.response?.data?.error)
             }
-            navigate('/marketplace/view-properties')
-        } catch (error) {
-            console.log(error);
-            toast.error(error?.response?.data?.error)
+        } else {
+            try {
+                const res = await authMultiFormApi.post('/property/add',
+                    { ...dataClone, projectId, status: 'Added', url, amenities: selectedAmenities });
+                // console.log(res.data);
+                if (res?.data?.success) {
+                    toast.success('Properties Added Successfully');
+                }
+                navigate(-1);
+            } catch (error) {
+                console.log(error);
+                toast.error(error?.response?.data?.error)
+            }
         }
     }
 
@@ -139,6 +166,8 @@ export default function AddProperty() {
                         <BasicDetails
                             setActiveTab={setActiveTab}
                             register={register}
+                            errors={errors}
+                            handleSubmit={handleSubmit}
                             propertyTypes={propertyTypes}
                             handleAmenity={handleAmenity}
                             selectedAmenities={selectedAmenities}
@@ -156,11 +185,11 @@ export default function AddProperty() {
                     }
 
                     {activeTab === 'auditDetails' &&
-                        <AuditDetails setActiveTab={setActiveTab} register={register} />
+                        <AuditDetails setActiveTab={setActiveTab} register={register} handleSubmit={handleSubmit} />
                     }
 
                     {activeTab === 'NFTsDetails' &&
-                        <NFTsDetails register={register} />
+                        <NFTsDetails register={register} handleSubmit={handleSubmit} />
                     }
 
                     {/* {activeTab === 'affiliateDetails' &&
@@ -170,7 +199,7 @@ export default function AddProperty() {
                 </div>
 
                 <div className='flex-1 pt-5'>
-                    <PropertyPictures selectedImages={selectedImages} setSelectedImages={setSelectedImages} />
+                    <PropertyPictures selectedImages={selectedImages} setSelectedImages={setSelectedImages} handleSubmit={handleSubmit} />
                 </div>
 
             </div>

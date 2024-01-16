@@ -10,7 +10,7 @@ import PropertyCard from "./PropertyCard";
 export default function ViewProperties() {
     const location = useLocation();
     const projectId = location?.state?.projectId;
-    console.log(projectId);
+    // console.log(projectId);
 
     const [properties, setProperties] = useState(null);
 

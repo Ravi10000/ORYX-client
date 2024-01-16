@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function AuditDetails({ setActiveTab, register }) {
+export default function AuditDetails({ setActiveTab, register, handleSubmit }) {
     return (
         <div className='flex flex-col gap-5'>
 
@@ -110,7 +110,10 @@ export default function AuditDetails({ setActiveTab, register }) {
             <div className='mt-10 flex justify-end items-center'>
                 <button
                     type='button'
-                    onClick={() => setActiveTab('NFTsDetails')}
+                    onClick={handleSubmit((data) => {
+                        // console.log(data);
+                        setActiveTab('NFTsDetails')
+                    })}
                     className='p-2 w-60 cursor-pointer bg-primary text-white font-medium text-xl text-center rounded-lg'
                 >
                     Next

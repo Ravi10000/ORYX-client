@@ -12,7 +12,9 @@ export default function PropertyCard({ property }) {
     const navigate = useNavigate();
 
     function handleEditProperty() {
-        navigate('/projects/manage-projects/view-properties/edit-property');
+        navigate('/marketplace/view-properties/add-property',
+            { state: property }
+        );
     }
 
     return (
@@ -24,8 +26,6 @@ export default function PropertyCard({ property }) {
             <div className='w-72 h-[500px] bg-white shadow-lg rounded-xl text-primary'>
 
                 <div className='flex flex-col gap-2 text-sm'>
-
-
                     <Link
                         to={`/property-detail/${property._id}`}
                         state={property}
