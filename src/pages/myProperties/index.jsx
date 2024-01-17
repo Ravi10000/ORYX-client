@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import CarouselX from "../../components/CarouselX";
 import Heading from "../../components/Heading";
 import Input from "../../components/Input";
 import { IoMdArrowDropdown } from "react-icons/io";
@@ -106,14 +105,14 @@ export default function MyProperties() {
                 </div>
             </form>
 
-            <div className="overflow-hidden my-8">
+            <div className="my-5">
                 {
                     properties && (
-                        <CarouselX>
+                        <div className="flex gap-5 justify-center flex-wrap">
                             {properties?.map(property => (
                                 <PropertyCard key={property._id} property={property} />
                             ))}
-                        </CarouselX>
+                        </div>
                     )
                 }
             </div>

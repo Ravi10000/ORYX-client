@@ -32,7 +32,7 @@ export default function ProjectCard({ project }) {
     }
 
     return (
-        <div className='w-72 h-96 bg-white shadow-2xl rounded-2xl my-5'>
+        <div className='w-72 h-96 bg-white shadow-2xl rounded-2xl'>
             <div className='flex flex-col gap-2 text-sm'>
                 {project.images.length > 0 ?
                     <img

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import CarouselX from "../../components/CarouselX";
 import Heading from "../../components/Heading";
 import Input from "../../components/Input";
 import { IoMdArrowDropdown } from "react-icons/io";
@@ -105,10 +104,10 @@ export default function Marketplace() {
 
       </form>
 
-      <div className="overflow-hidden my-8">
+      <div className="my-5">
         {
           projects && (
-            <div className="flex gap-x-5 justify-center flex-wrap">
+            <div className="flex gap-5 justify-center flex-wrap">
               {projects?.map(project => (
                 <ProjectCard key={project._id} project={project} />
               ))}

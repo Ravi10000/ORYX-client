@@ -89,9 +89,9 @@ export default function AddProject() {
             try {
                 const res = await authMultiFormApi.put(`/project/update/${project?._id}`,
                     { ...data, images });
-                console.log(res.data);
+                // console.log(res.data);
                 toast.success('Project Updated Successfully')
-                navigate('/marketplace');
+                navigate(-1);
             } catch (error) {
                 console.log(error);
             }
