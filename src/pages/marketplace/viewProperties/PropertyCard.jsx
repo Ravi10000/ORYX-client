@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Menu,
     MenuHandler,
@@ -6,10 +6,15 @@ import {
     MenuItem,
 } from "@material-tailwind/react";
 import { Link, useNavigate } from 'react-router-dom';
+import { FaRegHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
+import { authApi } from '../../../api';
+import toast from 'react-hot-toast';
 
 export default function PropertyCard({ property }) {
-
+    const [isFav, setIsFav] = useState(false);
     const navigate = useNavigate();
+    const propertyId = property?._id;
 
     function handleEditProperty() {
         navigate('/marketplace/view-properties/add-property',
@@ -17,10 +22,67 @@ export default function PropertyCard({ property }) {
         );
     }
 
+    async function addFavorite() {
+        setIsFav(true);
+        try {
+            // console.log(propertyId);
+            const res = await authApi.post('/favorites/add', { propertyId });
+            console.log(res);
+            if (res.data.success) {
+                toast.success('Property has added to Favorites.');
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async function removeFavorite() {
+        setIsFav(false);
+        try {
+            // console.log(propertyId);
+            const res = await authApi.delete(`/favorites/remove/${propertyId}`);
+            console.log(res);
+            if (res.data.success) {
+                toast.success('Property has romoved from Favorites.');
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async function getFavorite() {
+        try {
+            const { data: { data } } = await authApi.get('/favorites/read');
+            // console.log(data);
+            const savedFav = data?.some(d => d.propertyId === propertyId);
+            // console.log(savedFav);
+            setIsFav(savedFav)
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    // console.log(savedFav);
+
+    useEffect(() => {
+        getFavorite();
+    }, []);
+
     return (
         <div className='relative'>
             <div className='absolute z-20 left-5 top-5'>
                 <button className='px-2 text-sm text-secondary bg-white border border-secondary rounded-full'>Rental Property</button>
+            </div>
+
+            <div className='text-2xl absolute z-20 right-5 top-5 text-white'>
+                {isFav ?
+                    <FaHeart
+                        className='text-red-500'
+                        onClick={removeFavorite} />
+                    :
+                    <FaRegHeart
+                        onClick={addFavorite} />
+                }
             </div>
 
             <div className='w-72 h-[500px] bg-white shadow-lg rounded-xl text-primary'>
