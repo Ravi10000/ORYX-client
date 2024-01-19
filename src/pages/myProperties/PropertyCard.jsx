@@ -11,8 +11,9 @@ import { FaHeart } from "react-icons/fa";
 import { authApi } from '../../api';
 import toast from 'react-hot-toast';
 
-export default function PropertyCard({ property }) {
+export default function PropertyCard({ property, getProperties }) {
     const [isFav, setIsFav] = useState(false);
+
     const propertyId = property?._id;
     const navigate = useNavigate();
 
@@ -54,7 +55,8 @@ export default function PropertyCard({ property }) {
             // console.log(data);
             const savedFav = data?.some(d => d.propertyId === propertyId);
             // console.log(savedFav);
-            setIsFav(savedFav)
+            setIsFav(savedFav);
+            getProperties();
         } catch (error) {
             console.log(error);
         }
@@ -64,7 +66,7 @@ export default function PropertyCard({ property }) {
 
     useEffect(() => {
         getFavorite();
-    }, []);
+    }, [isFav]);
 
     return (
         <div className='relative'>
