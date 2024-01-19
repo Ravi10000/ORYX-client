@@ -14,7 +14,6 @@ export default function Favorites() {
 
   useEffect(() => {
     getProperties();
-    console.log('jjj');
   }, []);
 
   return (

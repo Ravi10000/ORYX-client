@@ -110,7 +110,7 @@ export default function MyProperties() {
                     properties && (
                         <div className="flex gap-5 justify-center flex-wrap">
                             {properties?.map(property => (
-                                <PropertyCard key={property._id} property={property} />
+                                <PropertyCard key={property._id} property={property} getProperties={getProperties} />
                             ))}
                         </div>
                     )

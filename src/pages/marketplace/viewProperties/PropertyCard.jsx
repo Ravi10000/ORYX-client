@@ -27,7 +27,7 @@ export default function PropertyCard({ property }) {
         try {
             // console.log(propertyId);
             const res = await authApi.post('/favorites/add', { propertyId });
-            console.log(res);
+            // console.log(res);
             if (res.data.success) {
                 toast.success('Property has added to Favorites.');
             }
@@ -41,7 +41,7 @@ export default function PropertyCard({ property }) {
         try {
             // console.log(propertyId);
             const res = await authApi.delete(`/favorites/remove/${propertyId}`);
-            console.log(res);
+            // console.log(res);
             if (res.data.success) {
                 toast.success('Property has romoved from Favorites.');
             }
