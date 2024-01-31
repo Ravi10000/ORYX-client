@@ -137,7 +137,7 @@ export default function PropertyCard({ property }) {
 
                     <div className='flex items-center gap-2 px-3 text-[#a3a3ad]'>
                         <img
-                            src='/src/assets/location.png'
+                            src='/location.png'
                             alt='location'
                             className='w-4   h-4'
                         />
@@ -153,7 +153,7 @@ export default function PropertyCard({ property }) {
                                 </div>
                                 <div className='flex-1'>
                                     <img
-                                        src='/src/assets/return.png'
+                                        src='/return.png'
                                         alt='return'
                                         className='w-4 h-4'
                                     />
@@ -171,7 +171,7 @@ export default function PropertyCard({ property }) {
 
                                 <div className='flex-1'>
                                     <img
-                                        src='/src/assets/yield.png'
+                                        src='/yield.png'
                                         alt='return'
                                         className='w-4 h-4'
                                     />
@@ -190,7 +190,7 @@ export default function PropertyCard({ property }) {
 
                                 <div className='flex-1'>
                                     <img
-                                        src='/src/assets/frequency.png'
+                                        src='/frequency.png'
                                         alt='return'
                                         className='w-4 h-4'
                                     />
@@ -209,7 +209,7 @@ export default function PropertyCard({ property }) {
                             <div className='flex-1 flex flex-col gap-1 justify-center items-center'>
                                 <div className='flex-1'>
                                     <img
-                                        src='/src/assets/owner.png'
+                                        src='/owner.png'
                                         alt='return'
                                         className='w-4 h-4'
                                     />
@@ -227,7 +227,7 @@ export default function PropertyCard({ property }) {
                             <div className='flex-1 flex flex-col gap-1 justify-center items-center'>
                                 <div className='flex-1'>
                                     <img
-                                        src='/src/assets/rental.png'
+                                        src='/rental.png'
                                         alt='return'
                                         className='w-4 h-4'
                                     />
@@ -245,7 +245,7 @@ export default function PropertyCard({ property }) {
                             <div className='flex-1 flex flex-col gap-1 justify-center items-center'>
                                 <div className='flex-1'>
                                     <img
-                                        src='/src/assets/price.png'
+                                        src='/price.png'
                                         alt='return'
                                         className='w-4 h-4'
                                     />

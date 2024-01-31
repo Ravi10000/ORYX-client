@@ -189,7 +189,7 @@ export default function AddProject() {
                                         className='p-2 bg-[#f7fbff] border-2 border-[#ebeff3] outline-primary rounded-lg'
                                     >
                                         <div className='p-1'>
-                                            <img src='/src/assets/locationBlack.png' className='w-4' />
+                                            <img src='/locationBlack.png' className='w-4' />
                                         </div>
 
                                     </Link>
@@ -300,7 +300,7 @@ export default function AddProject() {
                                     <div className='border-2 border-[#eef2f6] bg-[#f7fbff] max-w-80 h-20 flex justify-center items-center outline-primary rounded-lg'>
                                         <div className='flex justify-center items-center gap-2 p-2'>
                                             <img
-                                                src='/src/assets/upload.png'
+                                                src='/upload.png'
                                                 alt='upload'
                                                 className='w-4 h-4'
                                             />

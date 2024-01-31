@@ -102,7 +102,7 @@ export default function ProjectCard({ project }) {
                 <div className='flex  gap-2 px-3 text-[#a3a3ad]'>
                     <div className='flex-[1] mt-1'>
                         <img
-                            src='/src/assets/location.png'
+                            src='/location.png'
                             alt='location'
                             className='w-4 h-4'
                         />

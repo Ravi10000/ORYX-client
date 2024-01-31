@@ -7,7 +7,7 @@ export default function AmeticsCard({ amenity, handleAmenity, selectedAmenities 
                 selectedAmenities.includes(amenity._id) &&
                 (<div>
                     <img
-                        src='/src/assets/done.png'
+                        src='/done.png'
                         alt='done'
                         className='w-3 h-3 absolute right-0 top-[-4px]'
                     />

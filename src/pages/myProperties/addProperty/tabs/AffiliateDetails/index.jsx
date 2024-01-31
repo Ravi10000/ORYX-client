@@ -30,7 +30,7 @@ export default function AffiliateDetails() {
 
                     <span className='flex-1 flex justify-center items-center border-l'>
                         <img
-                            src='/src/assets/percent.png'
+                            src='/percent.png'
                             alt='dollar'
                             className='w-4 h-4'
                         />

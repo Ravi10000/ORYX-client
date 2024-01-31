@@ -17,7 +17,7 @@ export default function AuditDetails({ setActiveTab, register }) {
                 <div className='flex bg-[#f7fbff] border-2 border-[#ebeff3] hover:border-primary rounded-lg'>
                     <span className='flex-1 flex justify-center items-center border-r'>
                         <img
-                            src='/src/assets/dollar.png'
+                            src='/dollar.png'
                             alt='dollar'
                             className='w-3 h-5'
                         />
@@ -44,7 +44,7 @@ export default function AuditDetails({ setActiveTab, register }) {
 
                     <span className='flex-1 flex justify-center items-center border-l'>
                         <img
-                            src='/src/assets/percent.png'
+                            src='/percent.png'
                             alt='dollar'
                             className='w-4 h-4'
                         />
@@ -58,7 +58,7 @@ export default function AuditDetails({ setActiveTab, register }) {
                 <div className='flex bg-[#f7fbff] border-2 border-[#ebeff3] hover:border-primary rounded-lg'>
                     <span className='flex-1 flex justify-center items-center border-r'>
                         <img
-                            src='/src/assets/dollar.png'
+                            src='/dollar.png'
                             alt='dollar'
                             className='w-3 h-5'
                         />
@@ -85,7 +85,7 @@ export default function AuditDetails({ setActiveTab, register }) {
 
                     <span className='flex-1 flex justify-center items-center border-l'>
                         <img
-                            src='/src/assets/percent.png'
+                            src='/percent.png'
                             alt='dollar'
                             className='w-4 h-4'
                         />
