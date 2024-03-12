@@ -16,7 +16,7 @@ const useFonts = (arrOffonts) => {
         console.error("Browser not support fonts or Fonts may be not loaded.");
       },
     });
-  }, []);
+  }, [arrOffonts]);
 
   return [isFontsLoaded, setIsFontsLoaded]
 };

@@ -1,9 +1,13 @@
-import React from "react";
+export const HR = () => (
+  <hr className="w-full border-b border-t-0 py-2 border-gray-300" />
+);
 
-
-export const HR = () => <hr className="w-full border-b border-t-0 py-2 border-gray-300" />
-
-const Heading = ({ heading, subHeading, isHorizontalline = true, children }) => {
+const Heading = ({
+  heading,
+  subHeading,
+  isHorizontalline = true,
+  children,
+}) => {
   return (
     <>
       <div className="grid sm:grid-cols-headingLayout gap-y-4">
@@ -13,14 +17,10 @@ const Heading = ({ heading, subHeading, isHorizontalline = true, children }) => 
           </h1>
           <p className="text-sm text-gray-500 mt-1">{subHeading}</p>
         </div>
-        <div>
-          {children}
-        </div>
+        <div>{children}</div>
       </div>
 
-      {isHorizontalline && (
-        <HR />
-      )}
+      {isHorizontalline && <HR />}
     </>
   );
 };

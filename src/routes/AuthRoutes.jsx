@@ -14,7 +14,7 @@ const AddProperty = React.lazy(() =>
 );
 const Overview = React.lazy(() => import(`../pages/Overview`));
 const UpcomingPage = React.lazy(() => import(`../pages/UpcomingPage`));
-const Marketplace = React.lazy(() => import(`../pages/marketplace`));
+// const Marketplace = React.lazy(() => import(`../pages/marketplace`));
 const AddProject = React.lazy(() => import(`../pages/marketplace/addProject`));
 const ViewProperties = React.lazy(() =>
   import(`../pages/marketplace/viewProperties`)
@@ -34,10 +34,10 @@ const _AuthRoutes = [
         path: "/",
         element: <Dashboard />,
       },
-      {
-        path: "/marketplace",
-        element: <Marketplace />,
-      },
+      // {
+      //   path: "/marketplace",
+      //   element: <Marketplace />,
+      // },
       {
         path: "/marketplace/add-project",
         element: <AddProject />,

@@ -10,23 +10,19 @@ const MainLayout = ({ children }) => {
   const [admin, setAdmin] = useState(null);
 
   function handleAdmin() {
-    const token = localStorage.getItem('accessToken');
-    token ?
-      setAdmin(true)
-      :
-      setAdmin(false)
+    const token = localStorage.getItem("accessToken");
+    token ? setAdmin(true) : setAdmin(false);
   }
 
   useEffect(() => {
     handleAdmin();
   }, [admin]);
 
-  if (admin === null)
-    return;
+  // if (admin === null) return;
 
-  if (!admin) {
-    return <Navigate to={'/login'} />
-  }
+  // if (!admin) {
+  //   return <Navigate to={'/login'} />
+  // }
 
   return (
     <>
