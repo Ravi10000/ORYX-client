@@ -8,24 +8,36 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
-import { authApi } from "../../api";
+import {
+  api,
+  // authApi
+} from "../../api";
 import toast from "react-hot-toast";
+import { useAddress } from "@thirdweb-dev/react";
 
-export default function PropertyCard({ property, getProperties }) {
+export default function PropertyCard({
+  property,
+  getProperties,
+  mintProperty,
+  isLoading,
+}) {
+  console.log({ property });
+  const address = useAddress();
+  const navigate = useNavigate();
+
   const [isFav, setIsFav] = useState(false);
 
   const propertyId = property?._id;
-  const navigate = useNavigate();
 
   function handleEditProperty() {
-    // navigate('/projects/manage-projects/view-properties/edit-property');
+    // navigate("/projects/manage-projects/view-properties/edit-property");
   }
 
   async function addFavorite() {
     setIsFav(true);
     try {
       // console.log(propertyId);
-      const res = await authApi.post("/favorites/add", { propertyId });
+      const res = await api.post("/favorites/add", { propertyId });
       // console.log(res);
       if (res.data.success) {
         toast.success("Property has added to Favorites.");
@@ -39,7 +51,7 @@ export default function PropertyCard({ property, getProperties }) {
     setIsFav(false);
     try {
       // console.log(propertyId);
-      const res = await authApi.delete(`/favorites/remove/${propertyId}`);
+      const res = await api.delete(`/favorites/remove/${propertyId}`);
       // console.log(res);
       if (res.data.success) {
         toast.success("Property has romoved from Favorites.");
@@ -53,12 +65,12 @@ export default function PropertyCard({ property, getProperties }) {
     try {
       const {
         data: { data },
-      } = await authApi.get("/favorites/read");
+      } = await api.get("/favorites/read");
       // console.log(data);
       const savedFav = data?.some((d) => d.propertyId === propertyId);
       // console.log(savedFav);
       setIsFav(savedFav);
-      getProperties?.();
+      // getProperties?.();
     } catch (error) {
       console.log(error);
     }
@@ -66,9 +78,9 @@ export default function PropertyCard({ property, getProperties }) {
 
   // console.log(savedFav);
 
-  useEffect(() => {
-    getFavorite();
-  }, [isFav]);
+  // useEffect(() => {
+  //   getFavorite();
+  // }, [isFav]);
 
   return (
     <div className="relative">
@@ -133,6 +145,48 @@ export default function PropertyCard({ property, getProperties }) {
               </MenuHandler>
               <MenuList>
                 <MenuItem onClick={handleEditProperty}>Edit Property</MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    // address _owner,
+                    // uint256 _buyPrice,
+                    // uint256 _numOwnerNFTs,
+                    // uint256 _rentPrice,
+                    // uint256 _numRentalNFTs,
+                    // string memory _projectId,
+                    // string memory _propertyId,
+                    // string memory _propertyName,
+                    // string memory _category,
+                    // string memory _propertyAddress,
+                    // string memory _description
+                    mintProperty(
+                      address,
+                      property.propertyValueAudited, // TODO: chage with buy price
+                      property.totalOwnerNFT,
+                      property.currentRentAmount,
+                      property.totalRentalNFT,
+                      property.projectId,
+                      property._id,
+                      property.name,
+                      property.propertyTypeId,
+                      "test address",
+                      property.description
+                    );
+                  }}
+                >
+                  {
+                    // arguments: [
+                    // "_ownerAddress"
+                    //"_buyPrice"
+                    // "_numOwnerNFTs"
+                    // "_projectId",
+                    //"_propertyId",
+                    // "_propertyName",
+                    // "_category"
+                    //"_propertyAddress",
+                    // "_description" ]
+                  }
+                  Mint{isLoading && "ing"} Property
+                </MenuItem>
               </MenuList>
             </Menu>
           </div>

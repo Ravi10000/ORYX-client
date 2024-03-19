@@ -1,16 +1,15 @@
 import { useAddress } from "@thirdweb-dev/react";
 import { useEffect } from "react";
 import userStore from "#/stores/user.store";
-import { api, authApi, getAccessToken } from "#/api";
+import { api } from "#/api";
 
 function useWalletAddress() {
   const address = useAddress();
-  const { setUser } = userStore();
+  const { setUser, user } = userStore();
   useEffect(() => {
-    console.count("address changed");
     console.log({ address });
     if (address?.length) {
-      if (!getAccessToken()) {
+      if (!user) {
         (async function () {
           try {
             const { data } = await api.get(
@@ -28,7 +27,7 @@ function useWalletAddress() {
       } else {
         (async function () {
           try {
-            const res = await authApi.post("/auth/attach-wallet", {
+            const res = await api.post("/auth/attach-wallet", {
               walletAddress: address,
             });
             console.log({ res });
@@ -38,7 +37,7 @@ function useWalletAddress() {
         })();
       }
     }
-  }, [address, setUser]);
+  }, [address, setUser, user]);
 }
 
 export default useWalletAddress;

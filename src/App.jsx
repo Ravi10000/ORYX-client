@@ -3,7 +3,6 @@ import { Suspense } from "react";
 import Loader from "./components/Loader";
 import useFonts from "./hooks/useFonts";
 // import Routes from "./routes";
-import { useAddress } from "@thirdweb-dev/react";
 import useFetchUser from "#/hooks/fetch-user";
 import { Route, Routes } from "react-router-dom";
 import Register from "./pages/Auth/Register";
@@ -62,7 +61,6 @@ function App() {
             path="/marketplace/view-properties/add-property"
             element={<AddProjectProperty />}
           />
-
           <Route path="/upcoming-pages" element={<UpcomingPage />} />
           <Route path="/favorties" element={<Favorites />} />
           <Route path="/overview" element={<Overview />} />

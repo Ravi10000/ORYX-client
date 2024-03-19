@@ -1,4 +1,4 @@
-import { api, authApi } from "#/api";
+import { api } from "#/api";
 // import { fetchUserDetails } from "#api/auth.req";
 // import { getAuthToken } from "#api/index";
 // import { clearIsFetching, setCurrentUser } from "#redux/user/user.actions";
@@ -13,16 +13,15 @@ function useFetchUser(onSuccess) {
   const { setUser, setIsFetching } = userStore();
 
   const userQuery = useQuery({
-    queryKey: ["user"],
+    queryKey: ["user", address],
     retry: 0,
     queryFn: async () => {
-      console.log("fetching user");
       if (!getAuthToken() && !address) {
         setIsFetching(false);
         return null;
       }
       if (getAuthToken()) {
-        const { data } = await authApi.get("/auth/fetch-user");
+        const { data } = await api.get("/auth/fetch-user");
         if (data?.status === "success") {
           setUser(data.user);
           onSuccess?.(data.user);

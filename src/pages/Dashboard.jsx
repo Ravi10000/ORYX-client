@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Table from "../components/Table";
 import RoundIcon from "../components/RoundIcon";
 import CardImage from "../components/CardImage";
 import CarouselX from "../components/CarouselX";
 import Banner from "../screens/Banner";
-import { authMultiFormApi } from "../api";
+import { api } from "../api";
 import PropertyCard from "./myProperties/PropertyCard";
 
 export default function Dashboard() {
   const [properties, setProperties] = useState(null);
 
   async function getProperties() {
-    const { data: { data } } = await authMultiFormApi.get('/property/read');
+    const {
+      data: { data },
+    } = await api.get("/property/read");
     // console.log(data);
     setProperties(data);
   }
@@ -32,15 +34,13 @@ export default function Dashboard() {
 
         {/* <div className="flex gap-5 flex-wrap mx-auto"> */}
         <div className="overflow-hidden">
-          {
-            properties && (
-              <CarouselX>
-                {properties?.map(property => (
-                  <PropertyCard key={property._id} property={property} />
-                ))}
-              </CarouselX>
-            )
-          }
+          {properties && (
+            <CarouselX>
+              {properties?.map((property) => (
+                <PropertyCard key={property._id} property={property} />
+              ))}
+            </CarouselX>
+          )}
         </div>
       </div>
 
@@ -88,4 +88,4 @@ export default function Dashboard() {
       </div>
     </>
   );
-};
+}

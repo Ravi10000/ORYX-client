@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Heading from "../components/Heading";
-import { authMultiFormApi } from "../api";
+import { api } from "../api";
 import PropertyCard from "./myProperties/PropertyCard";
 
 export default function Favorites() {
   const [properties, setProperties] = useState(null);
 
   async function getProperties() {
-    const { data: { favProperties } } = await authMultiFormApi.get('/property/read-fav');
+    const {
+      data: { favProperties },
+    } = await api.get("/property/read-fav");
     // console.log(favProperties);
     setProperties(favProperties);
   }
@@ -25,18 +27,19 @@ export default function Favorites() {
         />
       </div>
 
-
       <div className="my-5">
-        {
-          properties && (
-            <div className="flex gap-5 justify-center flex-wrap">
-              {properties?.map(property => (
-                <PropertyCard key={property._id} property={property} getProperties={getProperties} />
-              ))}
-            </div>
-          )
-        }
+        {properties && (
+          <div className="flex gap-5 justify-center flex-wrap">
+            {properties?.map((property) => (
+              <PropertyCard
+                key={property._id}
+                property={property}
+                getProperties={getProperties}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </>
   );
-};
+}

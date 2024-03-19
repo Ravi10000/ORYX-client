@@ -21,15 +21,18 @@ export default function Login() {
 
   async function login(data) {
     try {
-      const res = await api.post("/auth/login-user", data);
-      // console.log(res.data);
-      const accessToken = res.data.accessToken;
-      localStorage.setItem("accessToken", accessToken);
-      toast.success("Login Successfull");
+      const { data: response } = await api.post("/auth/login-user", data);
+      console.log({ response });
+      // const accessToken = res.data.accessToken;
+      // localStorage.setItem("accessToken", accessToken);
+      toast.success("Logged in successfull");
       navigate("/");
     } catch (error) {
       // console.log(error);
-      toast.error(error?.response?.data?.error);
+      toast.error(
+        error?.response?.data?.error ||
+          "Something went wrong while logging you into your account."
+      );
     }
   }
 
